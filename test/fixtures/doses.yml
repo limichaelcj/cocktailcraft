@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  cocktail: one
+  ingredient: one
+  measurement: one
+
+two:
+  amount: 1
+  cocktail: two
+  ingredient: two
+  measurement: two
