@@ -66,3 +66,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # added
 gem "devise", "~> 4.7"
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem "jquery-rails", "~> 4.3"

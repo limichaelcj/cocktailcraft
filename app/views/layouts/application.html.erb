@@ -10,8 +10,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+    <div class="ui container" style="padding-top: 1rem;">
+      <%= yield %>
+      <%= render "layouts/notifications" %>
+    </div>
+
   </body>
 </html>

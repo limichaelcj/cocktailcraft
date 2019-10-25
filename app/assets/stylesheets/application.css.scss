@@ -14,4 +14,12 @@
  *= require_self
  */
 
-@import 'semantic-ui'
+@import 'semantic-ui';
+
+.notifications-box {
+  position: fixed;
+  top: 1rem;
+}
+
+.app-notice{}
+.app-alert{}
