@@ -1,3 +1,22 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'variables';
+
+.home-banner {
+  background-image:
+    linear-gradient($alpha-dark, $alpha-dark),
+    url(homebanner.jpg);
+  box-shadow: inset 0 0 100px black;
+  display: block;
+  height: 500px;
+
+  @media only screen and (min-width: map-get($breakpoints, 'tablet')){
+    height: 600px;
+  }
+
+  @media only screen and (min-width: map-get($breakpoints, 'monitor')){
+    height: 700px;
+  }
+}

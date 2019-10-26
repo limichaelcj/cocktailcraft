@@ -9,12 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="padding-top: 54px">
 
-    <div class="ui container" style="padding-top: 1rem;">
-      <%= yield %>
-      <%= render "layouts/notifications" %>
-    </div>
+    <%= render "shared/navbar" %>
+
+    <%= yield %>
+    <%= render "shared/notifications" %>
 
   </body>
 </html>
