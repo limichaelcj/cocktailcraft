@@ -1,25 +1,73 @@
 <div class="ui fluid home-banner cover-image">
 
 </div>
-<div class="ui container">
 
-  <div class="ui four column doubling stackable grid container">
-    <% 4.times do %>
-    <div class="column">
-      <div class="ui raised segment">
-        <div class="ui placeholder">
-          <div class="image header">
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
-          <div class="paragraph">
-            <div class="medium line"></div>
-            <div class="short line"></div>
+<div class="ui fluid home-content">
+  <div class="ui container">
+
+    <!-- user actions -->
+
+    <section>
+      <div class="ui three column middle aligned stackable grid container">
+        <% @actions.each do |action| %>
+        <div class="column">
+          <div class="ui basic middle aligned icon message home-user-action">
+            <i class="<%= action[:icon] %> icon"></i>
+            <div class="content">
+              <div class="header"><%= action[:name] %></div>
+              <p><%= action[:text] %></p>
+            </div>
           </div>
         </div>
+        <% end %>
       </div>
-    </div>
-    <% end %>
-  </div>
+    </section>
 
+    <!-- featured cocktails -->
+
+    <section>
+      <h3 class="ui horizontal divider header">Featured Cocktails</h3>
+      <div class="ui four column middle aligned doubling stackable grid">
+        <% 8.times do %>
+          <div class="column">
+            <div class="ui segment">
+              <div class="ui placeholder">
+                <div class="header">
+                  <div class="very short line"></div>
+                  <div class="medium line"></div>
+                </div>
+                <div class="paragraph">
+                  <div class="short line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+    <!-- popular drinks -->
+
+    <section>
+      <h3 class="ui horizontal divider header">Popular Drinks</h3>
+      <div class="ui four column middle aligned doubling stackable grid">
+        <% 8.times do %>
+          <div class="column">
+            <div class="ui segment">
+              <div class="ui placeholder">
+                <div class="header">
+                  <div class="very short line"></div>
+                  <div class="medium line"></div>
+                </div>
+                <div class="paragraph">
+                  <div class="short line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+
+  </div>
 </div>

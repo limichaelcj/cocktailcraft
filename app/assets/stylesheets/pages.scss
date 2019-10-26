@@ -9,14 +9,23 @@
     linear-gradient($alpha-dark, $alpha-dark),
     url(homebanner.jpg);
   box-shadow: inset 0 0 100px black;
-  display: block;
   height: 500px;
 
   @media only screen and (min-width: map-get($breakpoints, 'tablet')){
     height: 600px;
   }
-
   @media only screen and (min-width: map-get($breakpoints, 'monitor')){
     height: 700px;
   }
+}
+
+.home-content {
+  padding-bottom: 4rem;
+  section {
+    margin-top: 2rem;
+  }
+}
+
+.home-user-action {
+  height: 160px;
 }
