@@ -1,0 +1,17 @@
+<div class="ui padded basic container segment">
+
+  <div class="ui raised very padded purple segment">
+    <div class="ui very relaxed divided list">
+      <% @cocktails.each_with_index do |cocktail, index| %>
+        <%= link_to cocktail_path(cocktail), class: 'item' do %>
+          <i class="large middle aligned glass martini icon"></i>
+          <div class="content">
+            <div class="header"><%= cocktail.name %></div>
+            <p class="description"><%= cocktail.description %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
