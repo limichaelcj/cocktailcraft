@@ -11,6 +11,6 @@ require 'faker'
 # seed fake cocktails
 12.times do
   name = Faker::Coffee.blend_name
-  description = [Faker::Dessert.flavor, Faker::Dessert.topping, Faker::Dessert.variety].join(' ')
+  description = [Faker::Dessert.flavor, Faker::Dessert.flavor, Faker::Dessert.topping].join(' ')
   Cocktail.create!(name: name, description: description)
 end
