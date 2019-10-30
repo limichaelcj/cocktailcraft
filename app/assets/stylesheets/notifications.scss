@@ -1,0 +1,12 @@
+@import './variables';
+
+.notifications-box {
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: $navbar-height;
+  opacity: 0.9;
+}
+
+.app-notice{}
+.app-alert{}

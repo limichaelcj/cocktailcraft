@@ -1,3 +1,13 @@
+@import './variables';
+
+.navbar-offset-margin {
+  margin-top: $navbar-height;
+}
+
+.navbar-offset-top {
+  top: $navbar-height;
+}
+
 .cover-image {
   background-size: cover;
   background-position: center;

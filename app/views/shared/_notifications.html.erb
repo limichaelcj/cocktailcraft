@@ -1,25 +1,29 @@
 <% if notice || alert %>
-  <div class="ui container notifications-box">
-    <% if notice %>
-      <div class="ui icon message app-notice">
-        <i class="info circle icon"></i>
-        <i class="close icon"></i>
-        <div class="content">
-          <div class="header">Notice</div>
-          <p><%= notice %></p>
-        </div>
-      </div>
-    <% end %>
+  <div class="notifications-box">
+    <div class="ui padded middle aligned basic container segment">
 
-    <% if alert %>
-      <div class="ui icon message app-alert">
-        <i class="exclamation triangle icon"></i>
-        <i class="close icon"></i>
-        <div class="content">
-          <div class="header">Alert</div>
-          <p><%= alert %></p>
+      <% if notice %>
+        <div class="ui info icon message app-notice">
+          <i class="info circle icon"></i>
+          <i class="close icon"></i>
+          <div class="content">
+            <div class="header">Notice</div>
+            <p><%= notice %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+
+      <% if alert %>
+        <div class="ui warning icon message app-alert">
+          <i class="exclamation triangle icon"></i>
+          <i class="close icon"></i>
+          <div class="content">
+            <div class="header">Alert</div>
+            <p><%= alert %></p>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
   </div>
 <% end %>

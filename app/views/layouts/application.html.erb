@@ -9,12 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="padding-top: 54px">
+  <body class="navbar-offset-margin">
 
     <%= render "shared/navbar" %>
 
     <%= yield %>
-    
+
     <%= render "shared/notifications" %>
 
   </body>
