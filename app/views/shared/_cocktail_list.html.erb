@@ -1,7 +1,7 @@
 <div class="ui relaxed middle aligned unstackable items cocktail-list">
   <% cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail), class: 'item' do %>
-      <img src="<%= cl_image_path(cocktail.remote_image_path ? cocktail.remote_image_path : ENV['DEFAULT_IMAGE_PATH']) %>" alt="<%= cocktail.name %>" class="ui circular image">
+      <img src="<%= cl_image_path(cocktail.remote_image_path ? cocktail.remote_image_path : ENV['DEFAULT_IMAGE_PATH']) %>" alt="<%= cocktail.name %>" class="ui circular image cocktail-avatar-size">
       <div class="content">
         <h4 class="header">
           <%= cocktail.name %>

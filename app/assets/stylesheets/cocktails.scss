@@ -9,15 +9,6 @@
     flex-direction: row;
     align-items: center;
     padding: 1rem;
-
-    img {
-      height: 125px;
-      width: 125px;
-      @media only screen and (min-width: map-get($breakpoints, 'tablet')){
-        height: 80px;
-        width: 80px;
-      }
-    }
   }
 }
 
@@ -36,5 +27,14 @@
       justify-content: flex-start;
       align-items: center;
     }
+  }
+}
+
+.cocktail-avatar-size {
+  height: 125px;
+  width: 125px;
+  @media only screen and (min-width: map-get($breakpoints, 'tablet')){
+    height: 80px;
+    width: 80px;
   }
 }

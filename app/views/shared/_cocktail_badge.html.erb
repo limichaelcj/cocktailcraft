@@ -1,10 +1,6 @@
 <%= link_to cocktail_path(cocktail), class: 'item cocktail-badge' do %>
   <div class="cocktail-badge-content">
-    <% if cocktail.remote_image_path %>
-      <img src="<%= cl_image_path('cocktail.jpg') %>" alt="" class="ui tiny circular middle aligned image margin-bot">
-    <% else %>
-      <i class="circular glass martini icon"></i>
-    <% end %>
+    <img src="<%= cl_image_path(cocktail.remote_image_path ? cocktail.remote_image_path : 'cocktail.jpg') %>" alt="" class="ui middle aligned circular image cocktail-avatar-size margin-bot">
     <h4 class="ui center aligned header">
       <div class="sub header">
         <%= cocktail.name %>
