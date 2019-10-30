@@ -1,6 +1,6 @@
 <%= link_to cocktail_path(cocktail), class: 'item cocktail-badge' do %>
   <div class="cocktail-badge-content">
-    <img src="<%= cl_image_path(cocktail.remote_image_path ? cocktail.remote_image_path : ENV['DEFAULT_IMAGE_PATH']) %>" alt="" class="ui middle aligned circular image cocktail-avatar-size margin-bot">
+    <img src="<%= render partial: 'shared/image_tag', locals: { resource: cocktail } %>" alt="" class="ui middle aligned circular image cocktail-avatar-size margin-bot">
     <h4 class="ui center aligned header">
       <div class="sub header">
         <%= cocktail.name %>
