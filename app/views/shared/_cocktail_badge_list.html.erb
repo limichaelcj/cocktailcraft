@@ -1,0 +1,5 @@
+<div class="ui horizontal selection list scrolling-width cocktail-badge-list">
+  <% cocktails.each_with_index do |cocktail, index| %>
+    <%= render partial: 'shared/cocktail_badge', locals: { cocktail: cocktail } %>
+  <% end %>
+</div>

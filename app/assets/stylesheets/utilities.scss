@@ -18,3 +18,18 @@
 .margin-top {
   margin-top: 1rem;
 }
+
+.margin-bot {
+  margin-bottom: 1rem;
+}
+
+.scrolling-width {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+.bordered {
+  border: 1px solid black;
+}
