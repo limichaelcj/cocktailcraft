@@ -2,21 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .cocktail-badge-list {
   &::-webkit-scrollbar {
     display: none;
   }
-}
+  .cocktail-badge {
+    white-space: normal;
 
-.cocktail-badge {
-  white-space: normal;
-
-  .cocktail-badge-content {
-    height: 150px;
-    width: 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    .cocktail-badge-content {
+      height: 150px;
+      width: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
   }
 }
