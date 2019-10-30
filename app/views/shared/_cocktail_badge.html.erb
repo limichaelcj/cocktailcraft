@@ -1,6 +1,6 @@
 <%= link_to cocktail_path(cocktail), class: 'item cocktail-badge' do %>
   <div class="cocktail-badge-content">
-    <img src="https://source.unsplash.com/random/200x200" alt="" class="ui tiny circular middle aligned image margin-bot">
+    <img src="<%= cl_image_path('cocktail.jpg') %>" alt="" class="ui tiny circular middle aligned image margin-bot">
     <h4 class="ui center aligned header">
       <div class="sub header">
         <%= cocktail.name %>

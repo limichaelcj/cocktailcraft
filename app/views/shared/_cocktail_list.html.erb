@@ -1,7 +1,7 @@
 <div class="ui very relaxed middle aligned divided selection list">
   <% cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail), class: 'item' do %>
-      <img src="https://source.unsplash.com/random/200x200" alt="" class="ui avatar middle aligned image">
+      <img src="<%= cl_image_path('cocktail.jpg') %>" alt="" class="ui avatar middle aligned image">
       <div class="content">
         <h4 class="header"><%= cocktail.name %></h4>
         <div class="description"><%= cocktail.description %></div>

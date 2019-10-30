@@ -69,3 +69,9 @@ gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem "jquery-rails", "~> 4.3"
 gem 'simple_form'
 gem 'faker'
+
+# remote image hosting via cloudinary and dependencies
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'cloudinary'
+gem 'rest-client', '~> 2.0', '>= 2.0.2'
+gem 'carrierwave', '~> 1.2'
