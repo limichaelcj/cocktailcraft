@@ -10,6 +10,6 @@ class User < ApplicationRecord
   # uniqueness validation
   validates :name, presence: :true, uniqueness: { case_sensitive: false }
   # validate user name via regex
-  validates_format_of :name, with: /^[a-zA-Z0-9_\s]+\s*[a-zA-Z0-9_\s]*$/, multiline: true
+  validates_format_of :name, with: /^[^@]+$/, multiline: true
 
 end

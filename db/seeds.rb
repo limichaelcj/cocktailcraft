@@ -10,11 +10,26 @@ require 'faker'
 
 puts "Seeding database..."
 
-# seed fake cocktails
-12.times do
+puts "Seeding users..."
+
+6.times do |i|
+  name = Faker::Name.middle_name
+  username = Faker::Internet.username(specifier: name)
+  email = Faker::Internet.email(name: name)
+  pw = Faker::Internet.password
+  puts "#{i+1}) #{username} :: #{email} :: #{pw}"
+  User.create!(name: username, email: email, password: pw, password_confirmation: pw)
+end
+
+all_users = User.all
+
+puts "Seeding cocktails..."
+
+# seed cocktails
+20.times do |i|
   name = Faker::Coffee.blend_name
-  description = [Faker::Dessert.flavor, Faker::Dessert.flavor, Faker::Dessert.topping].join(' ')
-  Cocktail.create!(name: name, description: description)
+  description = Faker::Lovecraft.sentence
+  Cocktail.create!(name: name, description: description, user: i > 10 ? nil : User.find(rand(1...all_users.count)))
 end
 
 puts "Seeding complete."
