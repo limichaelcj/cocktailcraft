@@ -1,6 +1,34 @@
 <div class="ui container padding-top">
 
-  <div class="ui raised padded purple segment">
+  <div class="ui raised very padded purple segment">
+
+    <!-- header -->
+    <div class="flex-row-divide">
+
+      <!-- left -->
+      <div class="flex-grow">
+        <h2 class="ui block header">
+          Cocktail List
+        </h2>
+      </div>
+
+      <!-- right -->
+      <div class="ui right floated two column horizontal labeled icon menu">
+        <%= link_to '#', class: 'item' do %>
+          <i class="big filter icon"></i>
+          Filter
+        <% end %>
+
+        <%= link_to new_cocktail_path, class: 'item' do %>
+          <i class="big icons">
+            <i class="flask icon"></i>
+            <i class="top right corner inverted add icon"></i>
+          </i>
+          Create
+        <% end %>
+      </div>
+
+    </div>
 
     <%= render partial: 'shared/cocktail_list', locals: { cocktails: @cocktails } %>
 
