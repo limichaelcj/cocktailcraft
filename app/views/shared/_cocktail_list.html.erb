@@ -1,13 +1,13 @@
-<div class="ui relaxed middle aligned unstackable items cocktail-list">
+<div class="ui relaxed middle aligned unstackable items cocktail-list padding-x">
   <% cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail), class: 'item' do %>
-      <img src="<%= render partial: 'shared/image_tag', locals: { resource: cocktail } %>" alt="<%= cocktail.name %>" class="ui circular image cocktail-avatar-size">
+      <img src="<%= render partial: 'shared/data/image_tag', locals: { resource: cocktail } %>" alt="<%= cocktail.name %>" class="ui circular image cocktail-avatar-size">
       <div class="content">
         <h4 class="header">
           <%= cocktail.name %>
         </h4>
         <div class="meta">
-          <%= render partial: 'shared/creator_tag', locals: { resource: cocktail } %>
+          <%= render partial: 'shared/data/creator_tag', locals: { resource: cocktail } %>
         </div>
         <div class="description">
           <p><%= cocktail.description %></p>
