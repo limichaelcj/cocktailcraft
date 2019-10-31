@@ -1,4 +1,4 @@
-<div class="ui very padded basic segment" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= render partial: 'shared/image_tag', locals: { resource: @cocktail } %>); background-size: cover; background-position: center;">
+<div class="ui very padded basic segment" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= render partial: 'shared/data/image_tag', locals: { resource: @cocktail } %>); background-size: cover; background-position: center;">
   <h1 class="ui center aligned icon inverted header" style="opacity: 0.9">
     <i class="circular glass martini icon"></i>
     <%= @cocktail.name %>
@@ -9,7 +9,7 @@
     <h1 class="ui header">
       <%= @cocktail.name %>
       <div class="sub header">
-        <%= render partial: 'shared/creator_tag', locals: { resource: @cocktail } %>
+        <%= render partial: 'shared/data/creator_tag', locals: { resource: @cocktail } %>
       </div>
     </h1>
     <div class="ui divider"></div>
