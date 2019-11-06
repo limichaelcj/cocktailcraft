@@ -1,20 +1,42 @@
-<div class="ui very padded basic segment" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= render partial: 'shared/data/image_tag', locals: { resource: @cocktail } %>); background-size: cover; background-position: center;">
-  <h1 class="ui center aligned icon inverted header" style="opacity: 0.9">
-    <i class="circular glass martini icon"></i>
-    <%= @cocktail.name %>
-  </h1>
-</div>
 <div class="ui container">
-  <div class="ui very padded text segment">
-    <h1 class="ui header">
-      <%= @cocktail.name %>
-      <div class="sub header">
-        <%= render partial: 'shared/data/creator_tag', locals: { resource: @cocktail } %>
+
+  <div class="ui fluid basic clearing segment">
+
+    <!-- header -->
+
+    <div class="flex-row-head-end padding">
+      <div class="img-sq-md-circle margin-right">
+        <img src="<%= cl_image_path(@cocktail.photo || 'cocktail.jpg') %>" alt="<%= @cocktail.name %>">
       </div>
-    </h1>
-    <div class="ui divider"></div>
-    <p>
-      <%= @cocktail.description %>
-    </p>
+      <div class="ui basic segment">
+        <h2 class="ui huge header margin-left">
+          <%= @cocktail.name || 'Unnamed Cocktail' %>
+          <div class="sub header">
+            <%= @cocktail.user ? @cocktail.user.name : ''  %>
+          </div>
+        </h2>
+      </div>
+    </div>
+
+    <!-- content -->
+
+      <div class="ui divider"></div>
+      <div class="ui fluid basic segment">
+        <%= @cocktail.description %>
+      </div>
+      <div class="ui right floated segment">
+        <h3 class="ui header">Ingredients</h3>
+        <div class="ui placeholder">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+      <h3 class="ui horizontal divider header">Instructions</h3>
+      <div class="ui placeholder">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+
   </div>
+
 </div>

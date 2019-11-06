@@ -1,0 +1,27 @@
+$sizes-abbr: 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'mx';
+$sizes-px: 80px, 120px, 160px, 240px, 320px, 480px, 560px, 640px;
+
+[class*="img-sq"] {
+  overflow: hidden;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  @each $size in $sizes-abbr {
+    $i: index($sizes-abbr, $size);
+    $px: nth($sizes-px, $i);
+    &[class*="-#{$size}"] {
+      height: $px;
+      width: $px;
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  &[class*="-circle"] {
+    border-radius: 50%;
+  }
+}

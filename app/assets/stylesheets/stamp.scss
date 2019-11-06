@@ -1,0 +1,15 @@
+.stamp {
+  position: absolute;
+  &[class*="-top"] {
+    top: 0;
+  }
+  &[class*="-bottom"] {
+    bottom: 0;
+  }
+  &[class*="-left"] {
+    left: 0;
+  }
+  &[class*="-right"] {
+    right: 0;
+  }
+}

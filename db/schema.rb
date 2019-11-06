@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_195247) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "remote_image_path"
+    t.string "photo"
     t.index ["user_id"], name: "index_cocktails_on_user_id"
   end
 

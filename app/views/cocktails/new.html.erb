@@ -1,0 +1,42 @@
+<div class="ui container">
+
+  <div class="ui basic fluid segment">
+    <div class="flex-col-middle margin-top padding-top">
+      <i class="huge icons">
+        <i class="circular flask icon"></i>
+        <i class="top right corner inverted add icon"></i>
+      </i>
+      <h1 class="ui center aligned header">
+        <em>Create A Cocktail</em>
+      </h1>
+    </div>
+  </div>
+
+  <div class="ui very padded purple segment">
+
+    <%= simple_form_for @cocktail, html: { class: 'ui form' } do |f| %>
+      <%= f.input :name, wrapper_html: { class: 'sixteen wide field' } %>
+      <%= f.input :description, as: :text, wrapper_html: { class: 'field' } %>
+      <div class="field">
+        <label for="template">Template</label>
+        <div class="ui fluid search selection dropdown">
+          <input type="hidden" name="template">
+          <i class="dropdown icon"></i>
+          <div class="default text">[None]</div>
+          <% unless @templates.nil? %>
+            <div class="menu">
+              <% @templates.each do |t| %>
+                <div class="item" data-value="<%= t.id %>">
+                  <%= t.name %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= f.input :photo, as: :file, wrapper_html: { class: 'field' } %>
+      <%= f.submit class: 'ui primary button', style: 'margin-top:30px;' %>
+    <% end %>
+  </div>
+
+</div>

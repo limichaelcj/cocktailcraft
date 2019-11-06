@@ -25,6 +25,12 @@
 .margin-y {
   margin: 1rem 0;
 }
+.margin-right {
+  margin-right: 1rem;
+}
+.margin-left {
+  margin-left: 1rem;
+}
 .margin-top {
   margin-top: 1rem;
 }
@@ -46,12 +52,44 @@
 .padding-bot {
   padding-bottom: 1rem;
 }
+.padding {
+  padding: 1rem;
+}
 
-.flex-row-divide {
+[class*="flex-"] {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  &[class*="-row"] {
+    flex-direction: row;
+  }
+  &[class*="-col"] {
+    flex-direction: column;
+  }
+  &[class*="-head"] {
+    justify-content: flex-start;
+  }
+  &[class*="-center"] {
+    justify-content: center;
+  }
+  &[class*="-tail"] {
+    justify-content: flex-end;
+  }
+  &[class*="-spaced"] {
+    justify-content: space-around;
+  }
+  &[class*="-divide"] {
+    justify-content: space-between;
+  }
+  &[class*="-start"] {
+    align-items: flex-start;
+  }
+  &[class*="-middle"] {
+    align-items: center;
+  }
+  &[class*="-end"] {
+    align-items: flex-end;
+  }
 }
 
 .flex-grow {
