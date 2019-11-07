@@ -26,7 +26,7 @@ function imageUploadPreview(){
   $('.image-upload-preview').on('change', function(){
     if (this.files && this.files[0]){
       const target = $(`#${this.id}-preview`)[0]
-      target.classList.remove('hidden')
+      target.classList.remove('hide')
       target.innerHTML = `<div style="position:relative;height:100%;width:100%;"><div class="ui active loader"></div></div>`
       const reader = new FileReader();
       reader.readAsDataURL(this.files[0]);
