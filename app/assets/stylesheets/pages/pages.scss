@@ -9,10 +9,10 @@
   box-shadow: inset 0 0 100px black;
   height: 500px;
 
-  @media only screen and (min-width: map-get($breakpoints, 'tablet')){
+  @media only screen and (min-width: $breakpoint-tablet){
     height: 600px;
   }
-  @media only screen and (min-width: map-get($breakpoints, 'monitor')){
+  @media only screen and (min-width: $breakpoint-monitor){
     height: 700px;
   }
 }

@@ -17,11 +17,9 @@ $black          : #000000;
 $primaryColor   : $purple;
 $secondaryColor : $orange;
 
-$breakpoints: (
-  mobile: 320px,
-  tablet: 768px,
-  monitor: 992px,
-  widescreen: 1200px
-);
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-monitor: 992px;
+$breakpoint-widescreen: 1200px;
 
 $navbar-height: 54px;

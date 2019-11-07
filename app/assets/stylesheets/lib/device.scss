@@ -1,7 +1,7 @@
 .device-center {
   padding-left: 0;
   padding-right: 0;
-  @media only screen and (min-width: map-get($breakpoints, 'monitor')) {
+  @media only screen and (min-width: $breakpoint-monitor) {
     padding-left: 12%;
     padding-right: 12%;
   }

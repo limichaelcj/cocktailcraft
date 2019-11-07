@@ -1,6 +1,6 @@
 
 // prevent semantic ui container gutter margins on mobile devices
-@media only screen and (max-width: map-get($breakpoints, 'tablet')) {
+@media only screen and (max-width: $breakpoint-tablet) {
   *.ui.container {
     margin: 0 !important;
   }
