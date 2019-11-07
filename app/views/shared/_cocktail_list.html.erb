@@ -2,14 +2,14 @@
   <% cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail), class: 'item' do %>
       <div class="img-sq-xs-circle cocktail-avatar-size margin-right">
-        <img src="<%= render partial: 'shared/data/image_tag', locals: { resource: cocktail } %>" alt="<%= cocktail.name %>">
+        <img src="<%= cocktail_image_path(cocktail) %>" alt="<%= cocktail.name %>">
       </div>
       <div class="content">
         <h4 class="header">
           [<%= cocktail.id %>] <%= cocktail.name %>
         </h4>
         <div class="meta">
-          <%= render partial: 'shared/data/creator_tag', locals: { resource: cocktail } %>
+          <%= cocktail_creator(cocktail) %>
         </div>
         <div class="description">
           <p><%= cocktail.description %></p>

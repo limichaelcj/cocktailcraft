@@ -1,0 +1,19 @@
+<div class="ui padded basic segment">
+
+  <div class="ui four doubling stackable cards">
+
+    <% cocktails.each do |cocktail| %>
+      <a href="<%= cocktail_path(cocktail) %>" class="card">
+        <div class="image">
+          <img src="<%= cocktail_image_path(cocktail) %>" alt="<%= cocktail.name %>">
+        </div>
+        <div class="content">
+          <h3 class="ui header"><%= cocktail.name %></h3>
+          <p><%= cocktail.description %></p>
+        </div>
+      </a>
+    <% end %>
+
+  </div>
+
+</div>
