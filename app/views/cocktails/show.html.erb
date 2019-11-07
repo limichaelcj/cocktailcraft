@@ -5,16 +5,48 @@
     <!-- header -->
 
     <div class="flex-row-head-end padding">
-      <div class="img-sq-md-circle margin-right">
+      <!-- cocktail photo -->
+      <div class="img-sq-md-circle margin-right flex_static">
         <img src="<%= cl_image_path(@cocktail.photo || 'cocktail.jpg') %>" alt="<%= @cocktail.name %>">
       </div>
-      <div class="ui basic segment">
+      <!-- cocktail name, creator -->
+      <div class="ui basic segment flex_fluid">
         <h2 class="ui huge header margin-left">
           <%= @cocktail.name || 'Unnamed Cocktail' %>
           <div class="sub header">
             <%= @cocktail.user ? @cocktail.user.name : ''  %>
           </div>
         </h2>
+      </div>
+      <!-- actions -->
+      <div class="ui vertical labeled icon menu flex_static">
+        <!-- like -->
+        <%= link_to "/cocktails/#{@cocktail.id}/mark", class: 'item' do %>
+          <i class="grey bookmark outline icon"></i>
+          Save
+        <% end %>
+        <!-- remix cocktail -->
+        <%= link_to "/cocktails/#{@cocktail.id}/remix", class: 'item' do %>
+          <i class="purple icon">
+            <i class="icons">
+              <i class="flask icon"></i>
+              <i class="top right corner inverted random icon"></i>
+            </i>
+          </i>
+          Remix
+        <% end %>
+        <!-- edit cocktail -->
+        <% if current_user && current_user == @cocktail.user %>
+          <%= link_to edit_cocktail_path(@cocktail), class: 'item' do %>
+            <i class="orange icon">
+              <i class="icons">
+                <i class="flask icon"></i>
+                <i class="top right corner inverted edit icon"></i>
+              </i>
+            </i>
+            Lab
+          <% end %>
+        <% end %>
       </div>
     </div>
 
