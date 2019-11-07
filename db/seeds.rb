@@ -15,6 +15,25 @@ ingredients_data = JSON.parse(open(ingredients_url).read)
 
 puts "Seeding database..."
 
+puts "Seeding measurements..."
+[
+  { name: 'pinch', plural: 'es' },
+  { name: 'dash', plural: 'es' },
+  { name: 'splash', plural: 'es' },
+  { name: 'liter', plural: 's', abbrev: 'L'},
+  { name: 'milliliter', plural: 's', abbrev: 'mL'},
+  { name: 'ounce', plural: 's', abbrev: 'oz' },
+  { name: 'gram', plural: 's', abbrev: 'g' },
+  { name: 'kilogram', plural: 's', abbrev: 'kg' },
+  { name: 'pound', plural: 's', abbrev: 'lbs' },
+  { name: 'teaspoon', plural: 's', abbrev: 'tsp' },
+  { name: 'tablespoon', plural: 's', abbrev: 'Tbsp' },
+  { name: 'cup', plural: 's', abbrev: 'C' },
+  { name: 'pint', plural: 's', abbrev: 'pt' }
+].each do |m|
+  Measurement.create!(m)
+end
+
 puts "Seeding common ingredients..."
 ingredients_data['drinks'].each do |item|
   Ingredient.create(name: item['strIngredient1'])

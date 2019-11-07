@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_214939) do
   end
 
   create_table "doses", force: :cascade do |t|
-    t.decimal "amount"
+    t.string "amount"
     t.bigint "cocktail_id"
     t.bigint "ingredient_id"
     t.bigint "measurement_id"
