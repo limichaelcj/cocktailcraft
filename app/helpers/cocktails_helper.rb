@@ -1,5 +1,7 @@
 module CocktailsHelper
 
+  protected
+
   def cocktail_creator(instance)
     instance.user.nil? ? 'Classic Collection' : instance.user.name
   end
