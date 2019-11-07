@@ -7,6 +7,7 @@
     <%= render 'layouts/favicon' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="navbar-offset-margin">
@@ -15,6 +16,5 @@
     <%= yield %>
     <%= render "shared/notifications" %>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

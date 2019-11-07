@@ -10,10 +10,15 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+ * require_self
+ * require_tree .
  *
  */
 
+@import 'variables';
+
 @import 'semantic-ui';
-@import 'utilities';
+
+@import 'lib/**/*';
+@import 'pages/**/*';
+@import 'overrides';
