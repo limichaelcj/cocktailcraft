@@ -1,9 +1,7 @@
 <div class="ui container padding-top">
 
-  <div class="ui raised very padded purple segment">
-
     <!-- header -->
-    <div class="flex-row-divide">
+    <div class="flex-row-divide margin-top">
 
       <!-- headertext -->
       <div class="flex-grow">
@@ -40,7 +38,5 @@
       <div class="sub header">Custom Creations</div>
     </h2>
     <%= render partial: 'shared/cocktail_list', locals: { cocktails: @cocktails.select { |c| c.user != nil } } %>
-
-  </div>
 
 </div>
