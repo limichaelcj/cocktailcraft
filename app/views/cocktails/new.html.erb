@@ -14,7 +14,23 @@
 
   <div class="ui very padded purple segment">
 
-    <%= simple_form_for @cocktail, html: { class: 'ui form' } do |f| %>
+    <!-- flash messages -->
+
+    <% unless @cocktail.errors.empty? %>
+      <div class="ui error message">
+        <i class="close icon"></i>
+        <div class="header">There were some errors with your submission</div>
+        <ul class="list">
+          <% @cocktail.errors.full_messages.each do |err| %>
+            <li><%= err %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- form -->
+
+    <%= simple_form_for @cocktail, html: { id: 'new-cocktail-form', class: 'ui form' } do |f| %>
       <%= f.input :name, wrapper_html: { class: 'sixteen wide field' } %>
       <%= f.input :description, as: :text, wrapper_html: { class: 'field' } %>
       <div class="field">

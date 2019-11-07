@@ -4,7 +4,7 @@
       <img src="<%= render partial: 'shared/data/image_tag', locals: { resource: cocktail } %>" alt="<%= cocktail.name %>" class="ui circular image cocktail-avatar-size">
       <div class="content">
         <h4 class="header">
-          <%= cocktail.name %>
+          [<%= cocktail.id %>] <%= cocktail.name %>
         </h4>
         <div class="meta">
           <%= render partial: 'shared/data/creator_tag', locals: { resource: cocktail } %>
