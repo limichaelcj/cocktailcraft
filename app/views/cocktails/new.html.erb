@@ -50,7 +50,13 @@
           <% end %>
         </div>
       </div>
-      <%= f.input :photo, as: :file, wrapper_html: { class: 'field' } %>
+      <div class="two fields">
+        <%= f.input :photo, as: :file, wrapper_html: { class: 'field' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
+        <div class="field padding">
+          <div id="cocktail_photo-preview" class="img-sq-xs-circle hidden">
+          </div>
+        </div>
+      </div>
       <%= f.submit class: 'ui primary button', style: 'margin-top:30px;' %>
     <% end %>
   </div>
