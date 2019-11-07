@@ -1,8 +1,43 @@
+@import 'variables';
+
 .cover-image {
+  position: relative;
   background-size: cover;
   background-position-x: center;
   background-position-y: center;
   background-repeat: no-repeat;
+  z-index: 0;
+  overflow: hidden;
+
+  [class*="background-underlay"] {
+    z-index: -2;
+
+    &, img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    &[class*="-blur"] {
+      filter: blur(12px);
+    }
+  }
+
+  &:after, [class*="background-underlay"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:after {
+    content: '';
+    background: linear-gradient($alpha-dark, $alpha-dark);
+    z-index: -1;
+  }
+
 }
 
 $sizes-abbr: 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'mx';

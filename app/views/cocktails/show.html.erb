@@ -1,20 +1,21 @@
 <div class="ui container">
 
-  <div class="ui fluid basic clearing segment">
-
     <!-- header -->
 
-    <div class="flex-row-head-end padding">
+    <div class="flex-row-head-end padding cover-image">
+      <div class="background-underlay-blur">
+        <img src="<%= cocktail_image_path(@cocktail) %>" alt="">
+      </div>
       <!-- cocktail photo -->
       <div class="img-sq-md-circle margin-right flex_static">
-        <img src="<%= cl_image_path(@cocktail.photo || 'cocktail.jpg') %>" alt="<%= @cocktail.name %>">
+        <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
       </div>
       <!-- cocktail name, creator -->
       <div class="ui basic segment flex_fluid">
-        <h2 class="ui huge header margin-left">
+        <h2 class="ui huge inverted header margin-left">
           <%= @cocktail.name || 'Unnamed Cocktail' %>
           <div class="sub header">
-            <%= @cocktail.user ? @cocktail.user.name : ''  %>
+            <%= cocktail_creator(@cocktail) %>
           </div>
         </h2>
       </div>
@@ -52,7 +53,6 @@
 
     <!-- content -->
 
-      <div class="ui divider"></div>
       <div class="ui fluid basic segment">
         <%= @cocktail.description %>
       </div>
@@ -68,7 +68,5 @@
         <div class="line"></div>
         <div class="line"></div>
       </div>
-
-  </div>
 
 </div>

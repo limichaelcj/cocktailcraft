@@ -5,9 +5,7 @@
 @import 'variables';
 
 .home-banner {
-  background-image:
-    linear-gradient($alpha-dark, $alpha-dark),
-    url(homebanner.jpg);
+  background-image: url(homebanner.jpg);
   box-shadow: inset 0 0 100px black;
   height: 500px;
 
