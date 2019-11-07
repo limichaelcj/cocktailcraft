@@ -1,7 +1,9 @@
 <div id="navbar" class="ui top fixed menu">
   <div class="ui container">
     <div id="navbar-nav-actions" class="left menu">
-      <%= link_to raw('<i class="big fitted flask icon"></i>'), root_path, class: 'item' %>
+      <%= link_to root_path, class: 'item' do %>
+        <img src="<%= image_path('favicon/favicon.ico') %>" alt="Creative Cocktails">
+      <% end %>
       <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if current_page?(cocktails_path)}item" %>
       <%= link_to "Ingredients", '#', class: "item" %>
     </div>
