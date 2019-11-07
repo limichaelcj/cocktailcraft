@@ -1,3 +1,10 @@
+.cover-image {
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+}
+
 $sizes-abbr: 'xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'mx';
 $sizes-px: 80px, 120px, 160px, 240px, 320px, 480px, 560px, 640px;
 
