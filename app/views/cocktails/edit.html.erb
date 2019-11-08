@@ -38,7 +38,7 @@
       </div>
       <div class="content">
         <div class="ui basic segment">
-          <%= simple_form_for @cocktail, method: :patch, html: { id: 'update-cocktail-form', class: 'ui form' } do |f| %>
+          <%= simple_form_for @cocktail, method: :patch, html: { id: 'cocktail-form', class: 'ui form' } do |f| %>
           <div class="ui two column stackable grid">
             <div class="column">
               <%= f.input :name, wrapper_html: { class: 'field' } %>

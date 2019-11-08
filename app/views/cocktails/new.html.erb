@@ -30,7 +30,7 @@
       <% end %>
 
       <!-- form -->
-      <%= simple_form_for @cocktail, html: { id: 'new-cocktail-form', class: 'ui form' } do |f| %>
+      <%= simple_form_for @cocktail, html: { id: 'cocktail-form', class: 'ui form' } do |f| %>
       <%= f.input :name, wrapper_html: { class: 'sixteen wide field' } %>
       <%= f.input :description, as: :text, wrapper_html: { class: 'field' } %>
       <div class="field">
