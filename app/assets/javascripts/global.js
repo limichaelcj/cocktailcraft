@@ -1,9 +1,10 @@
-$(document).ready(ready)
+// use .on(turbolinks:load) instead of .ready
+$(document).on('turbolinks:load', ready)
 
 function ready(){
   handleNotificationsBox();
   imageUploadPreview();
-  initSemanticUiElements();
+  initSemantic();
 }
 
 function handleNotificationsBox(){
@@ -45,6 +46,6 @@ function imageUploadPreview(){
   })
 }
 
-function initSemanticUiElements(){
+function initSemantic(){
   $('.ui.accordion').accordion();
 }
