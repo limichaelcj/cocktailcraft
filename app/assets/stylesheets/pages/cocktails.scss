@@ -20,25 +20,30 @@ $avatar-size: 160px;
   }
 }
 
-.cocktail-avatar-overlap {
+.cocktail-overlapping-header {
   height: auto;
   width: 100%;
   display: flex;
   flex-direction: row;
   padding-top: 2rem;
   & > div:first-child {
-    margin-left: 2rem;
+    margin-left: 1rem;
     border: none;
   }
   & > div:nth-child(2) {
     align-self: center;
   }
+  .description {
+    max-height: $avatar-size * 0.35;
+    overflow: auto;
+  }
   @media only screen and (min-width: $breakpoint-tablet) {
     height: $avatar-size * 0.6;
     padding: 0;
     & > div:first-child {
+      margin-left: 2rem;
       transform: translate(0, -50%);
-      border: 4px solid rgba($white, 0.8);
+      border: 4px solid $white;
     }
   }
   @media only screen and (min-width: $breakpoint-monitor) {
