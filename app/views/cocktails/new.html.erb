@@ -52,6 +52,7 @@
       </div>
       <div class="flex-row">
         <%= f.input :photo, as: :file, wrapper_html: { class: 'field flex_fluid' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
+        <%= f.input :photo_cache, as: :hidden %>
         <div id="cocktail_photo-preview" class="img-sq-xs-circle flex_static margin-all hide"> </div>
       </div>
       <%= f.submit class: 'ui primary button', style: 'margin-top:30px;' %>
