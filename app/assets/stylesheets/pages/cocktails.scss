@@ -6,48 +6,70 @@
 // index
 
 $avatar-size: 160px;
+$avatar-size-tablet: $avatar-size * 1.2;
+$avatar-size-monitor: $avatar-size * 1.4;
+
 
 .cocktail-avatar {
   height: $avatar-size;
   width: $avatar-size;
   @media only screen and (min-width: $breakpoint-tablet){
-    height: $avatar-size * 1.2;
-    width: $avatar-size * 1.2;
+    height: $avatar-size-tablet;
+    width: $avatar-size-tablet;
   }
   @media only screen and (min-width: $breakpoint-monitor){
-    height: $avatar-size * 1.4;
-    width: $avatar-size * 1.4;
+    height: $avatar-size-monitor;
+    width: $avatar-size-monitor;
   }
 }
 
 .cocktail-overlapping-header {
+  position: relative;
   height: auto;
   width: 100%;
   display: flex;
   flex-direction: row;
   padding-top: 2rem;
+  padding-left: 2rem;
   & > div:first-child {
-    margin-left: 1rem;
+    position: relative;
     border: none;
   }
   & > div:nth-child(2) {
     align-self: center;
   }
   .description {
-    max-height: $avatar-size * 0.35;
+    max-height: $avatar-size * 0.7;
     overflow: auto;
   }
   @media only screen and (min-width: $breakpoint-tablet) {
-    height: $avatar-size * 0.6;
-    padding: 0;
+    min-height: $avatar-size-tablet * 0.5;
+    max-height: $avatar-size-tablet * 0.7;
+    padding: 0 0 0 3rem;
     & > div:first-child {
-      margin-left: 2rem;
+      position: absolute;
+      left: 2rem;
       transform: translate(0, -50%);
       border: 4px solid $white;
     }
+    & > div:nth-child(2) {
+      align-self: flex-start;
+      margin-top: 1rem;
+      margin-left: $avatar-size-tablet;
+    }
+    .description {
+      max-height: $avatar-size-tablet * 0.4;
+    }
   }
   @media only screen and (min-width: $breakpoint-monitor) {
-    height: $avatar-size * 0.7;
+    min-height: $avatar-size-monitor * 0.5;
+    max-height: $avatar-size-monitor * 0.7;
+    & > div:nth-child(2) {
+      margin-left: $avatar-size-monitor;
+    }
+    .description {
+      max-height: $avatar-size-monitor * 0.4;
+    }
   }
 }
 
