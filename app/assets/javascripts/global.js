@@ -3,6 +3,7 @@ $(document).ready(ready)
 function ready(){
   handleNotificationsBox();
   imageUploadPreview();
+  initSemanticUiElements();
 }
 
 function handleNotificationsBox(){
@@ -42,4 +43,8 @@ function imageUploadPreview(){
       }
     }
   })
+}
+
+function initSemanticUiElements(){
+  $('.ui.accordion').accordion();
 }

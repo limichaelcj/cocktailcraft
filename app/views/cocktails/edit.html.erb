@@ -21,6 +21,37 @@
     <div class="img-sq-circle cocktail-avatar flex_static">
       <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
     </div>
+    <div class="flex_fluid margin-left">
+      <div class="ui basic segment">
+        <h2 class="ui header">
+          <%= @cocktail.name %>
+          <div class="sub header">
+            <%= @cocktail.description %>
+          </div>
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- edit info -->
+
+  <div class="ui basic segment">
+
+    <div class="ui styled fluid accordion">
+      <div class="active title">
+        <i class="dropdown icon"></i>
+        <span class="ui medium header">Edit Info</span>
+      </div>
+      <div class="active content">
+        <form class="ui form">
+          <div class="field">
+            <label>Cocktail Name</label>
+            <input type="text">
+          </div>
+        </form>
+      </div>
+    </div>
+
   </div>
 
 </div>
