@@ -11,14 +11,36 @@ $avatar-size: 160px;
   height: $avatar-size;
   width: $avatar-size;
   @media only screen and (min-width: $breakpoint-tablet){
-    height: $avatar-size * 1.5;
-    width: $avatar-size * 1.5;
+    height: $avatar-size * 1.2;
+    width: $avatar-size * 1.2;
+  }
+  @media only screen and (min-width: $breakpoint-monitor){
+    height: $avatar-size * 1.4;
+    width: $avatar-size * 1.4;
+  }
+}
+
+.cocktail-avatar-overlap {
+  height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  div:first-child {
+    margin-left: 2rem;
+    position: absolute;
+    border: 4px solid rgba($white, 0.8);
+    transform: translate(0, -50%);
+  }
+  @media only screen and (max-width: $breakpoint-tablet - 1px){
+    display: none;
   }
 }
 
 .cocktail-banner-img {
-  @media only screen and (min-width: $breakpoint-tablet){
-    filter: blur(12px);
+  img {
+    @media only screen and (min-width: $breakpoint-tablet){
+      filter: blur(12px);
+    }
   }
 }
 
