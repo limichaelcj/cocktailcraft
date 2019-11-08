@@ -1,4 +1,5 @@
-.stamp {
+[class^="stamp-"],
+[class*=" stamp"] {
   position: absolute;
   &[class*="-top"] {
     top: 0;

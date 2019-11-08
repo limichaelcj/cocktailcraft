@@ -5,6 +5,23 @@
 
 // index
 
+$avatar-size: 160px;
+
+.cocktail-avatar {
+  height: $avatar-size;
+  width: $avatar-size;
+  @media only screen and (min-width: $breakpoint-tablet){
+    height: $avatar-size * 1.5;
+    width: $avatar-size * 1.5;
+  }
+}
+
+.cocktail-banner-img {
+  @media only screen and (min-width: $breakpoint-tablet){
+    filter: blur(12px);
+  }
+}
+
 .cocktail-list {
   .item {
     flex-direction: row;

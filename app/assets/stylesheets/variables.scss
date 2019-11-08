@@ -22,4 +22,8 @@ $breakpoint-tablet: 768px;
 $breakpoint-monitor: 992px;
 $breakpoint-widescreen: 1200px;
 
+$ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-bounce: cubic-bezier(.21, 1.11, .6, 1.15);
+
 $navbar-height: 54px;

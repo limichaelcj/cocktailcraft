@@ -1,36 +1,51 @@
-[class*="flex-"] {
-  display: flex;
-  &[class*="-row"] {
+@mixin flex-params($pre) {
+  &[class*="#{$pre}row"] {
     flex-direction: row;
   }
-  &[class*="-col"] {
+  &[class*="#{$pre}col"] {
     flex-direction: column;
   }
-  &[class*="-head"] {
+  &[class*="#{$pre}rowrev"] {
+    flex-direction: row-reverse;
+  }
+  &[class*="#{$pre}colrev"] {
+    flex-direction: column-reverse;
+  }
+  &[class*="#{$pre}head"] {
     justify-content: flex-start;
   }
-  &[class*="-center"] {
+  &[class*="#{$pre}center"] {
     justify-content: center;
   }
-  &[class*="-tail"] {
+  &[class*="#{$pre}tail"] {
     justify-content: flex-end;
   }
-  &[class*="-spaced"] {
+  &[class*="#{$pre}spaced"] {
     justify-content: space-around;
   }
-  &[class*="-divide"] {
+  &[class*="#{$pre}divide"] {
     justify-content: space-between;
   }
-  &[class*="-start"] {
+  &[class*="#{$pre}start"] {
     align-items: flex-start;
   }
-  &[class*="-middle"] {
+  &[class*="#{$pre}middle"] {
     align-items: center;
   }
-  &[class*="-end"] {
+  &[class*="#{$pre}end"] {
     align-items: flex-end;
   }
 }
+
+// basic flex layout
+
+[class^="flex-"],
+[class*=" flex-"] {
+  display: flex;
+  @include flex-params("-");
+}
+
+// flex growth
 
 .flex_grow {
   flex-grow: 1;
@@ -42,4 +57,24 @@
 .flex_static {
   flex-grow: 0;
   flex-shrink: 0;
+}
+
+// flex responsiveness
+
+[class^="flex-response"],
+[class*=" flex-response"] {
+
+  // device pathways
+  @media only screen and (min-width: $breakpoint-tablet){
+    &[class*="--tablet"] {
+      @include flex-params("_");
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-monitor){
+    &[class*="--monitor"] {
+      @include flex-params("_");
+    }
+  }
+
 }

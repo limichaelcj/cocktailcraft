@@ -1,72 +1,96 @@
 <div class="ui container">
 
-    <!-- header -->
+  <!-- header -->
 
-    <div class="flex-row-head-end padding cover-image">
-      <div class="background-underlay-blur">
-        <img src="<%= cocktail_image_path(@cocktail) %>" alt="">
-      </div>
-      <!-- cocktail photo -->
-      <div class="img-sq-md-circle margin-right flex_static">
-        <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
-      </div>
-      <!-- cocktail name, creator -->
-      <div class="ui basic segment flex_fluid">
-        <h2 class="ui huge inverted header margin-left">
-          <%= @cocktail.name || 'Unnamed Cocktail' %>
-          <div class="sub header">
-            <%= cocktail_creator(@cocktail) %>
-          </div>
-        </h2>
-      </div>
-      <!-- actions -->
-      <div class="ui vertical labeled icon menu flex_static">
-        <!-- like -->
-        <%= link_to '#', class: 'item' do %>
-          <i class="grey bookmark outline icon"></i>
-          Save
-        <% end %>
-        <!-- remix cocktail -->
-        <%= link_to '#', class: 'item' do %>
-          <i class="purple icon">
+  <div class="flex-row-divide-end padding cover-image">
+    <!-- underlay -->
+    <div class="background-underlay">
+      <img src="<%= cocktail_image_path(@cocktail) %>" class="cocktail-banner-img">
+    </div>
+
+    <!-- cocktail photo -->
+    <div class="img-sq-circle cocktail-avatar margin-right flex_static mobile hidden">
+      <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
+    </div>
+    <!-- cocktail name, creator -->
+    <div class="ui basic segment flex_fluid">
+      <h2 class="ui huge inverted header margin-left">
+        <%= @cocktail.name || 'Unnamed Cocktail' %>
+        <div class="sub header">
+          <%= cocktail_creator(@cocktail) %>
+        </div>
+      </h2>
+    </div>
+
+    <!-- actions -->
+    <div class="ui vertical labeled icon menu flex_static">
+      <!-- like -->
+      <%= link_to '#', class: 'item' do %>
+        <i class="grey bookmark outline icon"></i>
+        Save
+      <% end %>
+      <!-- remix cocktail -->
+      <%= link_to '#', class: 'item' do %>
+        <i class="purple icon">
+          <i class="icons">
+            <i class="flask icon"></i>
+            <i class="top right corner inverted random icon"></i>
+          </i>
+        </i>
+        Remix
+      <% end %>
+      <!-- edit cocktail -->
+      <% if current_user && current_user == @cocktail.user %>
+        <%= link_to edit_cocktail_path(@cocktail), class: 'item' do %>
+          <i class="orange icon">
             <i class="icons">
               <i class="flask icon"></i>
-              <i class="top right corner inverted random icon"></i>
+              <i class="top right corner inverted edit icon"></i>
             </i>
           </i>
-          Remix
+          Lab
         <% end %>
-        <!-- edit cocktail -->
-        <% if current_user && current_user == @cocktail.user %>
-          <%= link_to edit_cocktail_path(@cocktail), class: 'item' do %>
-            <i class="orange icon">
-              <i class="icons">
-                <i class="flask icon"></i>
-                <i class="top right corner inverted edit icon"></i>
-              </i>
-            </i>
-            Lab
-          <% end %>
-        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- content -->
+
+  <div class="margin-x">
+
+    <!-- description -->
+    <div class="ui basic segment">
+      <div class="ui raised purple segment">
+        <p><%= @cocktail.description %></p>
       </div>
     </div>
 
-    <!-- content -->
+    <!-- main content grid -->
+    <div class="ui tablet reversed computer reversed stackable grid">
 
-      <div class="ui fluid basic segment">
-        <%= @cocktail.description %>
-      </div>
-      <div class="ui right floated segment">
-        <h3 class="ui header">Ingredients</h3>
-        <div class="ui placeholder">
-          <div class="line"></div>
-          <div class="line"></div>
+      <div class="five wide column">
+        <div class="ui basic orange secondary segment">
+          <h3 class="ui header">Ingredients</h3>
+          <div class="ui placeholder segment">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
-      <h3 class="ui horizontal divider header">Instructions</h3>
-      <div class="ui placeholder">
-        <div class="line"></div>
-        <div class="line"></div>
+
+      <div class="eleven wide column">
+        <div class="ui basic segment">
+          <h3 class="ui horizontal divider header">Instructions</h3>
+          <div class="ui placeholder">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
       </div>
+
+    </div>
+    <!-- /main content grid -->
+
+  </div>
 
 </div>
