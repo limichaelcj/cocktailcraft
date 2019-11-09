@@ -17,6 +17,8 @@
     </div>
   </div>
 
+  <!-- header -->
+
   <div class="cocktail-overlapping-header padding-left">
     <div class="img-sq-circle cocktail-avatar flex_static">
       <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
@@ -29,72 +31,101 @@
     </div>
   </div>
 
-  <!-- edit info -->
-  <div class="ui basic red segment">
-    <div class="ui styled red fluid accordion">
+  <!-- edit content -->
+
+  <div class="ui raised segment">
+
+    <!-- info -->
+    <div class="ui fluid accordion">
+
       <div class="active title">
-        <i class="dropdown icon"></i>
-        <span class="ui large sub header">Edit Info</span>
+        <div class="ui red ribbon label">
+          <i class="dropdown icon"></i>
+          Cocktail Profile
+        </div>
       </div>
+
       <div class="content">
         <div class="ui basic segment">
           <%= simple_form_for @cocktail, method: :patch, html: { id: 'cocktail-form', class: 'ui form' } do |f| %>
-          <div class="ui two column stackable grid">
-            <div class="column">
-              <%= f.input :name, wrapper_html: { class: 'field' } %>
-              <%= f.input :description, as: :text, wrapper_html: { class: 'field' } %>
-            </div>
-            <div class="column">
-              <%= f.input :photo, as: :file, wrapper_html: { class: 'field flex_fluid' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
-              <%= f.input :photo_cache, as: :hidden %>
-              <div class="flex-col-middle">
-                <div id="cocktail_photo-preview" class="img-sq-sm-circle flex_static margin-all hide"> </div>
+            <div class="ui two column stackable grid">
+              <div class="column">
+                <%= f.input :name, wrapper_html: { class: 'field' } %>
+                <%= f.input :description, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 3, placeholder: 'Write a brief description...' } %>
+              </div>
+              <div class="column">
+                <%= f.input :photo, as: :file, wrapper_html: { class: 'field flex_fluid' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
+                <%= f.input :photo_cache, as: :hidden %>
+                <div class="flex-col-middle">
+                  <div id="cocktail_photo-preview" class="img-sq-sm-circle flex_static margin-all hide"> </div>
+                </div>
               </div>
             </div>
+            <div class="margin-top">
+              <%= f.submit "Update", class: 'ui primary button' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- mix doses -->
+    <div class="ui fluid accordion">
+
+      <div class="active title">
+        <div class="ui blue ribbon label">
+          <i class="dropdown icon"></i>
+          Mixology
+        </div>
+      </div>
+
+      <div class="active content">
+        <div class="ui basic segment">
+
+          <div id="dose-list" class="ui segment">
+            <div class="ui top attached label">Dosage</div>
+            <% @cocktail.doses.each do |dose| %>
+              <%= render 'shared/dose_chip', locals: { dose: dose } %>
+            <% end %>
           </div>
+          <!-- dose form -->
+
+          <!-- add dose button -->
+          <div class="flex-row-divide margin-top">
+            <button class="ui basic primary icon button">
+              <i class="add icon"></i>
+              Add Dose
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  <!-- edit instructions -->
+    <div class="ui fluid accordion">
+
+      <div class="active title">
+        <div class="ui green ribbon label">
+          <i class="dropdown icon"></i>
+          Mixing Instructions
+        </div>
+      </div>
+
+      <div class="active content">
+        <div class="ui basic segment">
+          <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
+          <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 8, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
           <div class="margin-top">
             <%= f.submit "Update", class: 'ui primary button' %>
           </div>
           <% end %>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- mix doses -->
-  <div class="ui basic blue segment">
-    <div class="ui styled fluid accordion">
-      <div class="active title">
-        <i class="dropdown icon"></i>
-        <span class="ui large sub header">Mix</span>
-      </div>
-      <div class="active content">
-        <form class="ui form">
-          <div class="field">
-            <label>Dose</label>
-            <input type="text">
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
 
-  <!-- edit instructions -->
-  <div class="ui basic green segment">
-    <div class="ui styled fluid accordion">
-      <div class="active title">
-        <i class="dropdown icon"></i>
-        <span class="ui large sub header">Instructions</span>
-      </div>
-      <div class="active content">
-        <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
-          <%= f.input :instructions, as: :text, wrapper_html: { class: 'field', rows: 5, placeholder: 'Write instructions here' }, label_html: { class: 'sr-only' } %>
-          <div class="margin-top">
-            <%= f.submit "Update", class: 'ui primary button' %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  </div>  <!-- /edit content segment -->
 
 </div>
