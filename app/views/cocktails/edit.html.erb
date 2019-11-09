@@ -52,8 +52,8 @@
               </div>
             </div>
           </div>
-          <div class="flex-row-center margin-top">
-            <%= f.submit class: 'ui center aligned primary button' %>
+          <div class="margin-top">
+            <%= f.submit "Update", class: 'ui primary button' %>
           </div>
           <% end %>
         </div>
@@ -87,12 +87,12 @@
         <span class="ui large sub header">Instructions</span>
       </div>
       <div class="active content">
-        <form class="ui form">
-          <div class="field">
-            <label for="instructions" class="sr-only">Instructions</label>
-            <textarea name="instructions" rows="5" placeholder="Write instructions here"><%= @cocktail.instructions || '' %></textarea>
+        <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
+          <%= f.input :instructions, as: :text, wrapper_html: { class: 'field', rows: 5, placeholder: 'Write instructions here' }, label_html: { class: 'sr-only' } %>
+          <div class="margin-top">
+            <%= f.submit "Update", class: 'ui primary button' %>
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>
