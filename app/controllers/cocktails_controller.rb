@@ -20,6 +20,11 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def edit
+    @dose = Dose.new
+    @measurements = Measurement.all
+  end
+
   private
 
   def find_cocktail

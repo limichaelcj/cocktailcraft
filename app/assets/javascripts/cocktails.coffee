@@ -21,3 +21,22 @@ $(document).on 'turbolinks:load', ->
 
   # run script
   validateCocktailForm()
+
+  if page.action() == 'edit'
+    $('#dose-form').form({
+      on: 'submit',
+      fields: {
+        ingredient: {
+          identifier: 'ingredient',
+          rules: [
+            { type: 'empty', prompt: 'Please enter an ingredient' }
+          ]
+        },
+        amount: {
+          identifier: 'dose[amount]',
+          rules: [
+            { type: 'empty', prompt: 'Please specify an amount' }
+          ]
+        }
+      }
+    })

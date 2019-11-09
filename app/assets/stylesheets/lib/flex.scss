@@ -43,6 +43,10 @@
 [class*=" flex-"] {
   display: flex;
   @include flex-params("-");
+
+  & > .flexchild-even {
+    flex: 1 1 auto;
+  }
 }
 
 // flex growth

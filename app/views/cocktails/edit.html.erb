@@ -31,6 +31,20 @@
     </div>
   </div>
 
+  <!-- errors -->
+
+  <% if flash[:errors] && !flash[:errors].empty? %>
+    <div class="ui error message">
+      <i class="close icon"></i>
+      <div class="header">There were some errors</div>
+      <ui class="list">
+        <% flash[:errors].full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ui>
+    </div>
+  <% end %>
+
   <!-- edit content -->
 
   <div class="ui raised segment">
@@ -85,21 +99,56 @@
 
           <div id="dose-list" class="ui segment">
             <div class="ui top attached label">Dosage</div>
-            <% @cocktail.doses.each do |dose| %>
-              <%= render 'shared/dose_chip', locals: { dose: dose } %>
+            <% if @cocktail.doses.empty? %>
+              <p>No doses yet. Add a dose below.</p>
+            <% else %>
+              <% @cocktail.doses.each do |dose| %>
+                <%= render partial: 'shared/dose_chip', locals: { dose: dose } %>
+              <% end %>
             <% end %>
           </div>
           <!-- dose form -->
-
-          <!-- add dose button -->
-          <div class="flex-row-divide margin-top">
-            <button class="ui basic primary icon button">
-              <i class="add icon"></i>
-              Add Dose
-            </button>
+          <div class="ui segment">
+            <div class="ui top attached label">New Dose</div>
+            <%= simple_form_for [@cocktail, @dose], html: { id: 'dose-form', class: 'ui form'} do |f| %>
+              <!-- form inputs -->
+              <div class="two fields">
+                <!-- ingredient input -->
+                <div class="field">
+                  <label for="ingredient">Ingredient</label>
+                  <input name="ingredient" type="text">
+                </div>
+                <!-- amount, measurement input -->
+                <div class="field">
+                  <div class="flex-row">
+                    <!-- amount -->
+                    <div class="flexchild-even">
+                      <%= f.input :amount, wrapper_html: { class: 'field' } %>
+                    </div>
+                    <!-- measurement -->
+                    <div class="flexchild-even margin-left">
+                      <div class="field">
+                        <label for="dose_measurement_id">Measurement</label>
+                        <select name="dose[measurement_id]" class="ui search dropdown">
+                          <% @measurements.each do |m|  %>
+                          <option value="<%= m.id %>"><%= m.name %></option>
+                          <% end %>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- form submit -->
+              <%= button_tag type: 'submit', class: 'ui basic primary compact icon button' do %>
+                <i class="add icon"></i>
+                Add Dose
+              <% end %>
+            <% end %> <!-- /simple_form -->
           </div>
+
         </div>
-      </div>
+      </div> <!-- /accordion content -->
 
     </div>
 
