@@ -1,4 +1,6 @@
-<a class="ui large blue label">
-  <%= dose.ingredient.name.capitalize %>
-  <div class="detail"><%= stringify_dose_amount(dose) %></div>
-</a>
+<div class="dose-chip inline">
+  <a class="ui large blue label">
+    <%= dose.ingredient.name.capitalize %>
+    <div class="detail"><%= stringify_dose_amount(dose) %></div>
+  </a>
+</div>
