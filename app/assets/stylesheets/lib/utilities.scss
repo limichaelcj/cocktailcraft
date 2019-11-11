@@ -30,3 +30,12 @@
 .bordered {
   border: 1px solid black;
 }
+
+.fill-height,
+.fill-parent {
+  height: 100%;
+}
+.fill-width,
+.fill-parent {
+  width: 100%;
+}

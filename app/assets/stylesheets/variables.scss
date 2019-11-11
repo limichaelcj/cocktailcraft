@@ -1,6 +1,9 @@
-// colors
-$alpha-dark: rgba(0,0,0,0.4);
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script&display=swap');
 
+// fonts
+$font-display: 'Oleo Script';
+
+// colors
 $red            : #B03060;
 $orange         : #FE9A76;
 $yellow         : #FFD700;
@@ -17,6 +20,10 @@ $black          : #000000;
 $white          : #ffffff;
 $primaryColor   : $purple;
 $secondaryColor : $orange;
+
+$alpha-dark: rgba($black,0.4);
+$alpha-light: rgba($white, 0.4);
+
 
 $breakpoint-mobile: 320px;
 $breakpoint-tablet: 768px;

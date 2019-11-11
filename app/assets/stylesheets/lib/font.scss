@@ -1,0 +1,9 @@
+[class^="font--"],
+[class*=" font--"] {
+  &[class*="--display"] {
+    font-family: $font-display;
+  }
+  &[class*="--white"] {
+    color: $white;
+  }
+}

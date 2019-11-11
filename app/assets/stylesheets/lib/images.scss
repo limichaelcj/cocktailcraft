@@ -68,3 +68,7 @@ $sizes-px: 80px, 120px, 160px, 240px, 320px, 480px, 560px, 640px;
     border-radius: 50%;
   }
 }
+
+.img-filter--invert {
+  filter: invert(100%);
+}

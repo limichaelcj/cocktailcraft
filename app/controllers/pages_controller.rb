@@ -20,7 +20,7 @@ class PagesController < ApplicationController
         text: "Tell us what's in your fridge and we'll put together a list of cocktails for you."
       }
     ]
-    render 'pages/home'
+    
   end
 
 end
