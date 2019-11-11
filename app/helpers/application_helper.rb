@@ -12,4 +12,8 @@ module ApplicationHelper
     "#{dose.amount} #{unit}"
   end
 
+  def random_dose_color
+    ['orange', 'yellow', 'olive', 'teal', 'violet', 'purple', 'pink', 'brown'].sample
+  end
+
 end

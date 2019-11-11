@@ -1,5 +1,5 @@
 <div class="dose-chip inline">
-  <a class="ui large blue label">
+  <a class="ui large <%= random_dose_color() %> label">
     <%= dose.ingredient.name.capitalize %>
     <div class="detail"><%= stringify_dose_amount(dose) %></div>
   </a>
