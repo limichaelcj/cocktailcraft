@@ -5,7 +5,7 @@ class DosesController < ApplicationController
     @dose = Dose.new(strong_params)
 
     # get ingredient
-    ingredient = identify_ingredient(params[:ingredient].strip.pluralize(1))
+    ingredient = identify_ingredient(params[:ingredient].strip.downcase.pluralize(1))
 
     if ingredient
       @dose.ingredient = ingredient
