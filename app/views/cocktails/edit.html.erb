@@ -131,7 +131,7 @@
                         <label for="dose_measurement_id">Measurement</label>
                         <select name="dose[measurement_id]" class="ui search dropdown">
                           <% @measurements.each do |m|  %>
-                          <option value="<%= m.id %>"><%= m.name %></option>
+                            <option value="<%= m.id %>"><%= m.name %><%= " (#{m.abbrev})" if m.abbrev %></option>
                           <% end %>
                         </select>
                       </div>

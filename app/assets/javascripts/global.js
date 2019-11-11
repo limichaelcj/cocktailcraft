@@ -48,4 +48,5 @@ function imageUploadPreview(){
 
 function initSemantic(){
   $('.ui.accordion').accordion();
+  $('select.dropdown').dropdown();
 }
