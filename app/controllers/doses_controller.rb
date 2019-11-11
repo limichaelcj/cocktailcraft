@@ -19,7 +19,16 @@ class DosesController < ApplicationController
       @errors = ingredient.errors
     end
 
-    redirect_to edit_cocktail_path(@cocktail), flash: { errors: @errors }
+    # response formatting routes
+    respond_to do |format|
+      format.html { redirect_to edit_cocktail_path(@cocktail), flash: { errors: @errors } }
+      format.js
+      if @errors
+        format.json { render json: @errors, status: :unprocessable_entity }
+      else
+        format.json { render json: @dose, status: :created }
+      end
+    end
   end
 
   private

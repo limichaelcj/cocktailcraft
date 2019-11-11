@@ -5,7 +5,7 @@
   width: 100%;
   position: fixed;
   top: $navbar-height;
-  opacity: 0.9;
+  z-index: 2;
 }
 
 .app-notice{}

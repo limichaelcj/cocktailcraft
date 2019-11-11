@@ -16,4 +16,7 @@
 //= require activestorage
 //= require turbolinks
 //= require semantic-ui
-//= require_tree .
+//= require cable.js
+//= require helper.js
+//= require global.js
+//= require_tree ./application

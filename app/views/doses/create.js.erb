@@ -1,0 +1,22 @@
+// AJAX response for doses/create
+console.log('doses/create response')
+
+
+// error handling
+<% if @errors.any? %>
+  var error_messages = "<%= @errors.full_messages.join('</li><li>') %>"
+
+  $('.ui.negative.message').remove()
+  $('#dose-form').before(`<div class='ui negative message'><div class='header'>There were some errors with your submission</div><ul class='list'><li>${error_messages}</li></ul></div>`)
+
+<% else %>
+  // remove no doses message
+  $('#no-doses-message').remove()
+
+  // add new dose elements
+  $('#dose-list').append("<%= escape_javascript(render partial: 'shared/dose_chip', locals: { dose: @dose }) %>")
+
+  // reset dose form
+  $('#dose-form-ingredient, #dose-form-amount').val('')
+
+<% end %>

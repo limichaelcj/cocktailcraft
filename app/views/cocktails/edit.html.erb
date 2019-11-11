@@ -100,7 +100,7 @@
           <div id="dose-list" class="ui segment">
             <div class="ui top attached label">Dosage</div>
             <% if @cocktail.doses.empty? %>
-              <p>No doses yet. Add a dose below.</p>
+              <p id='no-doses-message'>No doses yet. Add a dose below.</p>
             <% else %>
               <% @cocktail.doses.each do |dose| %>
                 <%= render partial: 'shared/dose_chip', locals: { dose: dose } %>
@@ -110,20 +110,20 @@
           <!-- dose form -->
           <div class="ui segment">
             <div class="ui top attached label">New Dose</div>
-            <%= simple_form_for [@cocktail, @dose], html: { id: 'dose-form', class: 'ui form'} do |f| %>
+            <%= simple_form_for [@cocktail, @dose], remote: true, html: { id: 'dose-form', class: 'ui form'} do |f| %>
               <!-- form inputs -->
               <div class="two fields">
                 <!-- ingredient input -->
                 <div class="field">
                   <label for="ingredient">Ingredient</label>
-                  <input name="ingredient" type="text">
+                  <input id="dose-form-ingredient" name="ingredient" type="text">
                 </div>
                 <!-- amount, measurement input -->
                 <div class="field">
                   <div class="flex-row">
                     <!-- amount -->
                     <div class="flexchild-even">
-                      <%= f.input :amount, wrapper_html: { class: 'field' } %>
+                      <%= f.input :amount, wrapper_html: { class: 'field' }, input_html: { id: "dose-form-amount" } %>
                     </div>
                     <!-- measurement -->
                     <div class="flexchild-even margin-left">

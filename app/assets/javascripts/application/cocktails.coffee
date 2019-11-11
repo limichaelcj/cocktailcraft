@@ -17,11 +17,12 @@ $(document).on 'turbolinks:load', ->
           ]
         }
       }
-      })
+    })
 
   # run script
   validateCocktailForm()
 
+  # only on cocktail/edit page
   if page.action() == 'edit'
     $('#dose-form').form({
       on: 'submit',
