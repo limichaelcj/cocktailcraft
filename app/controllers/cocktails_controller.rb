@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_cocktail, only: [:show, :edit]
+  before_action :find_cocktail, only: [:show, :edit, :update]
 
   def index
     @cocktails = Cocktail.all
@@ -25,6 +25,11 @@ class CocktailsController < ApplicationController
     @measurements = Measurement.all
   end
 
+  def update
+    flash = !strong_params.empty? && @cocktail.update(strong_params) ? { notice: 'Update success!' } : { alert: 'Update failed.' }
+    redirect_to edit_cocktail_path(@cocktail), flash
+  end
+
   private
 
   def find_cocktail
@@ -32,7 +37,7 @@ class CocktailsController < ApplicationController
   end
 
   def strong_params
-    params.require(:cocktail).permit(:name, :description, :photo)
+    params.require(:cocktail).permit(:name, :description, :photo, :instructions)
   end
 
 end

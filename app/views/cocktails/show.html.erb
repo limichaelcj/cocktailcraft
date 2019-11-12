@@ -70,10 +70,21 @@
 
       <div class="five wide column">
         <div class="ui basic orange secondary segment">
-          <h3 class="ui header">Ingredients</h3>
-          <div class="ui placeholder segment">
-            <div class="line"></div>
-            <div class="line"></div>
+          <h3 class="ui dividing header">Ingredients</h3>
+          <div class="margin-left margin-bot">
+            <% if @cocktail.doses.empty? %>
+            <div>Nothing here yet!</div>
+            <% else %>
+            <ul class="ui list">
+              <% @cocktail.doses.each do |dose| %>
+              <li class="item">
+                <%= stringify_dose_amount(dose, true) %>
+                <%= dose.measurement ? ' of ' : ' ' %>
+                <strong><%= dose.ingredient.name %></strong>
+              </li>
+              <% end %>
+            </ul>
+            <% end %>
           </div>
         </div>
       </div>
@@ -81,10 +92,7 @@
       <div class="eleven wide column">
         <div class="ui basic segment">
           <h3 class="ui horizontal divider header">Instructions</h3>
-          <div class="ui placeholder">
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
+          <pre><%= @cocktail.instructions || "No instructions yet." %></pre>
         </div>
       </div>
 

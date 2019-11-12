@@ -166,10 +166,10 @@
       <div class="active content">
         <div class="ui basic segment">
           <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
-          <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 8, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
-          <div class="margin-top">
-            <%= f.submit "Update", class: 'ui primary button' %>
-          </div>
+            <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 8, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
+            <div class="margin-top">
+              <%= f.submit "Update", class: 'ui primary button' %>
+            </div>
           <% end %>
         </div>
       </div>
