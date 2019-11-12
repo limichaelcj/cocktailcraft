@@ -13,14 +13,26 @@
       <!-- actions right floated -->
       <div class="ui right floated two column horizontal labeled icon menu">
         <%= link_to '#', class: 'item' do %>
-          <i class="big filter icon"></i>
+          <i class="brown filter icon"></i>
           Filter
         <% end %>
 
+        <%= link_to remix_cocktails_path, class: 'item' do %>
+          <i class="purple icon">
+            <i class="icons">
+              <i class="flask icon"></i>
+              <i class="top right corner shuffle icon"></i>
+            </i>
+          </i>
+          Remix
+        <% end %>
+
         <%= link_to new_cocktail_path, class: 'item' do %>
-          <i class="big icons" style="margin-bottom:3px">
-            <i class="flask icon"></i>
-            <i class="top right corner inverted add icon"></i>
+          <i class="yellow icon">
+            <i class="icons">
+              <i class="flask icon"></i>
+              <i class="top right corner add icon"></i>
+            </i>
           </i>
           Create
         <% end %>
