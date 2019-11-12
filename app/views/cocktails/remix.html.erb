@@ -1,0 +1,17 @@
+<div class="ui container">
+  <div class="ui basic segment">
+    <h1 class="ui center aligned header">Remix a Cocktail</h1>
+  </div>
+  <div class="ui middle aligned relaxed divided selection list">
+    <% Cocktail.all.each do |c| %>
+      <%= link_to remix_cocktail_path(c), method: :post, class: 'item' do %>
+        <img src="<%= cocktail_image_path(c) %>" alt="" class="ui avatar image">
+        <div class="content">
+          <div class="header"><%= c.name %></div>
+          <subtitle>@<%= cocktail_creator(c) %></subtitle>
+          <p><%= c.description %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

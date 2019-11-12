@@ -107,6 +107,10 @@ $avatar-size-monitor: $avatar-size * 1.4;
   }
 }
 
+.cocktail-lab-actions {
+  transform: translate(0, -50%);
+}
+
 .dose-chip {
   margin-top: 0.5rem;
   margin-right: 0.5rem;

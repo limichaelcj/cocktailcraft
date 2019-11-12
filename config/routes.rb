@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :cocktails do
+    collection do
+      get 'remix'
+    end
+    member do
+      post 'remix'
+    end
     resources :doses, only: [:create, :update, :destroy]
   end
 
