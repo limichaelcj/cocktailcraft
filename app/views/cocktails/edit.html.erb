@@ -1,7 +1,7 @@
 <div class="ui container">
 
   <!-- banner -->
-  <div class="cover-image padding" <%= render_bg_img(cocktail_image_path(@cocktail)) %>>
+  <div class="cover-image padding-all" <%= render_bg_img(cocktail_image_path(@cocktail)) %>>
     <!-- bg underlay -->
     <div class="background-underlay cocktail-banner-img">
       <img src="<%= cocktail_image_path(@cocktail) %>">
@@ -60,6 +60,37 @@
     </div>
   <% end %>
 
+  <div class="margin-all">
+    <div class="flex-center-middle">
+      <div class="ui center aligned basic segment">
+        <div class="ui compact labeled icon menu">
+          <%= link_to cocktail_path(@cocktail), class: 'item' do %>
+            <i class="teal icon">
+              <i class="icons">
+                <i class="file alternate icon"></i>
+                <i class="bottom right corner eye icon"></i>
+              </i>
+            </i>
+            View Page
+          <% end %>
+          <%= link_to "#{cocktail_path(@cocktail)}/remix", class: 'item' do %>
+            <i class="purple icon">
+              <i class="icons">
+                <i class="flask icon"></i>
+                <i class="top right corner shuffle icon"></i>
+              </i>
+            </i>
+            Remix
+          <% end %>
+          <%= link_to cocktail_path(@cocktail), method: 'delete', class: 'item', data: { confirm: "Delete #{@cocktail.name} recipe?" } do %>
+            <i class="red trash icon"></i>
+            Delete
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- edit content -->
 
   <div class="ui raised segment">
@@ -91,7 +122,7 @@
               </div>
             </div>
             <div class="margin-top">
-              <%= f.submit "Update", class: 'ui primary button' %>
+              <%= f.submit "Update", class: 'ui red button' %>
             </div>
           <% end %>
         </div>
@@ -156,7 +187,7 @@
                 </div>
               </div>
               <!-- form submit -->
-              <%= button_tag type: 'submit', class: 'ui primary icon button' do %>
+              <%= button_tag type: 'submit', class: 'ui blue icon button' do %>
                 <i class="add icon"></i>
                 Add Dose
               <% end %>
@@ -183,7 +214,7 @@
           <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
             <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 8, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
             <div class="margin-top">
-              <%= f.submit "Update", class: 'ui primary button' %>
+              <%= f.submit "Update", class: 'ui green button' %>
             </div>
           <% end %>
         </div>
@@ -193,13 +224,4 @@
 
   </div>  <!-- /edit content segment -->
 
-  <div class="ui center aligned basic segment">
-    <div class="ui compact labeled icon menu">
-      <%= link_to cocktail_path(@cocktail), method: 'delete', class: 'red item', data: { confirm: "Delete #{@cocktail.name} recipe?" } do %>
-        <i class="red trash icon"></i>
-        Delete
-      <% end %>
-    </div>
-  </div>
-
-</div>
+</div> <!-- /page ontainer -->

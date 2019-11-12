@@ -2,7 +2,7 @@
 
   <!-- header -->
 
-  <div class="flex-row-divide-end padding cover-image">
+  <div class="flex-row-divide-end padding-all cover-image">
     <!-- underlay -->
     <div class="background-underlay cocktail-banner-img">
       <img src="<%= cocktail_image_path(@cocktail) %>">
@@ -34,7 +34,7 @@
         <i class="purple icon">
           <i class="icons">
             <i class="flask icon"></i>
-            <i class="top right corner inverted random icon"></i>
+            <i class="top right corner random icon"></i>
           </i>
         </i>
         Remix
@@ -45,7 +45,7 @@
           <i class="orange icon">
             <i class="icons">
               <i class="flask icon"></i>
-              <i class="top right corner inverted edit icon"></i>
+              <i class="top right corner edit icon"></i>
             </i>
           </i>
           Lab
@@ -99,6 +99,26 @@
     </div>
     <!-- /main content grid -->
 
-  </div>
+    <!-- reviews -->
+    <div class="margin-top padding-all">
+      <div class="ui teal segment">
+        <h3 class="ui center aligned header">Reviews</h3>
+        <div class="ui relaxed divided list">
+          <% 4.times do %>
+          <div class="item">
+            <div class="ui basic segment">
+              <div class="ui placeholder">
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+  </div> <!-- content -->
 
 </div>
