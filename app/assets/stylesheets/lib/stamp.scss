@@ -1,16 +1,16 @@
-[class^="stamp-"],
+[class^="stamp--"],
 [class*=" stamp"] {
   position: absolute;
-  &[class*="-top"] {
+  &[class*="--top"] {
     top: 0;
   }
-  &[class*="-bottom"] {
+  &[class*="--bottom"] {
     bottom: 0;
   }
-  &[class*="-left"] {
+  &[class*="--left"] {
     left: 0;
   }
-  &[class*="-right"] {
+  &[class*="--right"] {
     right: 0;
   }
 }

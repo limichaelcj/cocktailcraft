@@ -1,6 +1,6 @@
 class Cocktail < ApplicationRecord
   belongs_to :user, optional: true
-  has_many :doses
+  has_many :doses, dependent: :delete_all
   has_many :ingredients, through: :doses
   has_many :reviews
 

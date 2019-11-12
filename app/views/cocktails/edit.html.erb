@@ -15,6 +15,21 @@
         </h1>
       </div>
     </div>
+    <!-- banner actions -->
+    <div class="stamp--bottom--right margin-right margin-bot">
+      <div class="ui vertical labeled icon menu">
+        <%= link_to cocktail_path(@cocktail), class: 'yellow item' do %>
+          <i class="teal icon">
+            <i class="icons">
+              <i class="file alternate icon"></i>
+              <i class="bottom right corner eye icon"></i>
+            </i>
+          </i>
+          View Page
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
   <!-- header -->
@@ -177,5 +192,14 @@
     </div>
 
   </div>  <!-- /edit content segment -->
+
+  <div class="ui center aligned basic segment">
+    <div class="ui compact labeled icon menu">
+      <%= link_to cocktail_path(@cocktail), method: 'delete', class: 'red item', data: { confirm: "Delete #{@cocktail.name} recipe?" } do %>
+        <i class="red trash icon"></i>
+        Delete
+      <% end %>
+    </div>
+  </div>
 
 </div>

@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_cocktail, only: [:show, :edit, :update]
+  before_action :find_cocktail, only: [:show, :edit, :update, :destroy]
 
   def index
     @cocktails = Cocktail.all
@@ -28,6 +28,14 @@ class CocktailsController < ApplicationController
   def update
     flash = !strong_params.empty? && @cocktail.update(strong_params) ? { notice: 'Update success!' } : { alert: 'Update failed.' }
     redirect_to edit_cocktail_path(@cocktail), flash
+  end
+
+  def destroy
+    if @cocktail.destroy
+      redirect_to cocktails_path, notice: "#{@cocktail.name} recipe successfully deleted."
+    else
+      redirect_to :edit, alert: "Unable to delete #{@cocktail.name}: #{@cocktail.errors.full_messages.join(' ')}"
+    end
   end
 
   private
