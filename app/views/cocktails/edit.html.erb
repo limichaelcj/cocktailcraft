@@ -130,6 +130,7 @@
                       <div class="field">
                         <label for="dose_measurement_id">Measurement</label>
                         <select name="dose[measurement_id]" class="ui search dropdown">
+                          <option value="none">- None -</option>
                           <% @measurements.each do |m|  %>
                             <option value="<%= m.id %>"><%= m.name %><%= " (#{m.abbrev})" if m.abbrev %></option>
                           <% end %>
@@ -140,7 +141,7 @@
                 </div>
               </div>
               <!-- form submit -->
-              <%= button_tag type: 'submit', class: 'ui basic primary compact icon button' do %>
+              <%= button_tag type: 'submit', class: 'ui primary icon button' do %>
                 <i class="add icon"></i>
                 Add Dose
               <% end %>

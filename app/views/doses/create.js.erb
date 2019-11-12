@@ -1,13 +1,11 @@
 // AJAX response for doses/create
-console.log('doses/create response')
-
 
 // error handling
 <% if @errors.any? %>
   var error_messages = "<%= @errors.full_messages.join('</li><li>') %>"
 
   $('.ui.negative.message').remove()
-  $('#dose-form').before(`<div class='ui negative message'><div class='header'>There were some errors with your submission</div><ul class='list'><li>${error_messages}</li></ul></div>`)
+  $('#dose-form').before(`<div class='ui negative message'><ul class='list'><li>${error_messages}</li></ul></div>`)
 
 <% else %>
   // remove no doses message

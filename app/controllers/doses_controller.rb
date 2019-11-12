@@ -5,7 +5,8 @@ class DosesController < ApplicationController
     @dose = Dose.new(strong_params)
 
     # get ingredient
-    ingredient = identify_ingredient(params[:ingredient].strip.downcase.pluralize(1))
+    ingredient_input = params[:ingredient].strip.downcase.singularize
+    ingredient = identify_ingredient(ingredient_input)
 
     if ingredient
       @dose.ingredient = ingredient
@@ -34,7 +35,11 @@ class DosesController < ApplicationController
   private
 
   def strong_params
-    params.require(:dose).permit(:amount, :measurement_id)
+    tmp = params.require(:dose).permit(:amount, :measurement_id)
+    if tmp[:measurement_id] == 'none'
+      tmp.delete(:measurement_id)
+    end
+    return tmp
   end
 
   def identify_ingredient(name)
