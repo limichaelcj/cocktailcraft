@@ -36,7 +36,7 @@ end
 
 puts "Seeding common ingredients..."
 ingredients_data['drinks'].each do |item|
-  Ingredient.create(name: item['strIngredient1'])
+  Ingredient.create(name: item['strIngredient1'].downcase)
 end
 
 puts "Seeding users..."

@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     resources :doses, only: [:create, :update, :destroy]
   end
 
+  resources :ingredients, only: [:index]
+
 end

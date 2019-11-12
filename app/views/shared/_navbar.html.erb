@@ -4,8 +4,8 @@
       <%= link_to root_path, class: 'item' do %>
         <img src="<%= image_path('favicon/favicon.ico') %>" alt="Creative Cocktails">
       <% end %>
-      <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if current_page?(cocktails_path)}item" %>
-      <%= link_to "Ingredients", '#', class: "item" %>
+      <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item" %>
+      <%= link_to "Ingredients", ingredients_path, class: "#{'active ' if controller_name == 'ingredients'}item" %>
     </div>
     <div id="navbar-auth-actions" class="right menu">
       <% if user_signed_in? %>
