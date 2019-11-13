@@ -61,8 +61,6 @@ class CocktailsController < ApplicationController
         # successful saves, redirect to
         redirect_to edit_cocktail_path(@remix), notice: "Successfully remixed! Here in the lab, you can customize your new recipe."
       rescue ActiveRecord::RecordInvalid => invalid
-        puts "\nSAVE ERROR\n"
-        puts invalid.record.errors
         redirect_to :back, alert: "Failed to remix."
       end
     end
