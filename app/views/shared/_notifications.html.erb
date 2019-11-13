@@ -3,25 +3,11 @@
     <div id="notifications-box" class="ui padded middle aligned basic container segment">
 
       <% if notice %>
-        <div class="ui info icon message app-notice">
-          <i class="info circle icon"></i>
-          <i class="close icon"></i>
-          <div class="content">
-            <div class="header">Notice</div>
-            <p><%= notice %></p>
-          </div>
-        </div>
+        <%= render partial: 'shared/notice', locals: { title: 'Notice', message: notice } %>
       <% end %>
 
       <% if alert %>
-        <div class="ui warning icon message app-alert">
-          <i class="exclamation triangle icon"></i>
-          <i class="close icon"></i>
-          <div class="content">
-            <div class="header">Alert</div>
-            <p><%= alert %></p>
-          </div>
-        </div>
+        <%= render partial: 'shared/alert', locals: { title: 'Alert', message: alert }  %>
       <% end %>
 
     </div>

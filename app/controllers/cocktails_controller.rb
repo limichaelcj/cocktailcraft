@@ -1,6 +1,6 @@
 class CocktailsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_cocktail, only: [:show, :edit, :update, :destroy]
+  before_action :find_cocktail, only: [:show, :edit, :update, :destroy, :mark]
 
   def index
     @cocktails = Cocktail.all
@@ -65,6 +65,30 @@ class CocktailsController < ApplicationController
         puts invalid.record.errors
         redirect_to :back, alert: "Failed to remix."
       end
+    end
+  end
+
+  def mark
+    if current_user.marked.include? @cocktail
+      # delete mark if exists
+      mark = Mark.where(user: current_user, cocktail: @cocktail)[0]
+      if !mark.destroy
+        @errors = mark.errors
+      end
+    else
+      mark = Mark.new(user: current_user, cocktail: @cocktail)
+      if !mark.save
+        @errors = mark.errors
+      end
+    end
+
+    respond_to do |format|
+      if @errors && @errors.any?
+        format.html { redirect_to request.referrer, alert: "Failed to mark with errors: #{@errors.full_messages.join(' ')}" }
+      else
+        format.html { redirect_to request.referrer }
+      end
+      format.js
     end
   end
 

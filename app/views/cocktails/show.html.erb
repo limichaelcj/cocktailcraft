@@ -25,9 +25,10 @@
     <!-- actions -->
     <div class="ui vertical labeled icon menu flex_static">
       <!-- like -->
-      <%= link_to '#', class: 'item' do %>
-        <i class="grey bookmark outline icon"></i>
-        Save
+      <%= link_to mark_cocktail_path, id: 'mark-link', class: 'item' do %>
+        <% saved = user_signed_in? && current_user.marked.include?(@cocktail) %>
+        <i class="<%= saved ? 'yellow bookmark' : 'grey bookmark outline' %> icon"></i>
+        <span>Save<%= saved ? 'd' : '' %></span>
       <% end %>
       <!-- remix cocktail -->
       <%= link_to remix_cocktail_path(@cocktail), method: :post, class: 'item' do %>

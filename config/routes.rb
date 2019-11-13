@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     member do
       post 'remix'
+      get 'mark'
     end
     resources :doses, only: [:create, :update, :destroy]
   end
