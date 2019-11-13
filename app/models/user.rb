@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cocktails
+  has_many :bookmarks
+  has_many :bookmarked, through: :bookmarks, source: :cocktail
   has_many :reviews
 
   # uniqueness validation
