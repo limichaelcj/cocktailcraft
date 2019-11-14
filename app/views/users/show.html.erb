@@ -3,8 +3,12 @@
 
 <div class="ui basic container segment">
 
-  <h1 class="ui center aligned header"><%= @user.name %></h1>
-  <div class="ui divider"></div>
+  <div class="ui basic segment">
+    <h1 class="ui center aligned icon header">
+      <i class="circular user icon"></i>
+      <%= @user.name %>
+    </h1>
+  </div>
 
   <div class="ui segment">
     <div class="ui top attached label"><%= display_name %> Cocktails (<%= @user.cocktails.count %>)</div>

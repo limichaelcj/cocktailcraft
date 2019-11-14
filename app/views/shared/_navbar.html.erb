@@ -9,7 +9,7 @@
     </div>
     <div id="navbar-auth-actions" class="right menu">
       <% if user_signed_in? %>
-        <%= link_to user_path(current_user), class: 'item' do %>
+        <%= link_to user_path(current_user), class: "#{'active ' if controller_name == 'users' && @user && @user == current_user}item" do %>
           <i class='user icon'></i>
           <%= current_user.name %>
         <% end %>
