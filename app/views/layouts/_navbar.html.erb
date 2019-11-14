@@ -1,4 +1,4 @@
-<div id="navbar" class="ui secondary pointing menu">
+<div id="navbar" class="ui menu">
   <div class="ui container">
     <div id="navbar-nav-actions" class="left menu">
       <%= link_to root_path, class: 'item' do %>
@@ -6,6 +6,12 @@
       <% end %>
       <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item" %>
       <%= link_to "Ingredients", ingredients_path, class: "#{'active ' if controller_name == 'ingredients'}item" %>
+      <div class="item">
+        <div class="ui transparent left icon input">
+          <input type="text" placeholder="Search cocktails">
+          <i class="search icon"></i>
+        </div>
+      </div>
     </div>
     <div id="navbar-auth-actions" class="right menu">
       <% if user_signed_in? %>
