@@ -2,10 +2,10 @@
   <div class="ui top left attached label"><%= title %></div>
   <%= simple_form_for [cocktail, review], method: method, remote: true, html: { id: 'review-form', class: 'ui form' } do |f| %>
     <div class="two fields">
-      <%= f.input :title, wrapper_html: { class: 'field' } %>
+      <%= f.input :title, label: 'Summary', wrapper_html: { class: 'field' } %>
       <%= f.input :rating, label: 'Rating (1-5)', wrapper_html: { class: 'field' }, input_html: { step: 1, min: 1, max: 5 } %>
     </div>
-    <%= f.input :text, as: :text, label: 'Review', wrapper_html: { class: 'field' }, input_html: { rows: 3 } %>
+    <%= f.input :text, as: :text, label: 'Detail', wrapper_html: { class: 'field' }, input_html: { rows: 3 } %>
     <%= f.submit "Post", class: 'ui yellow button' %>
   <% end %>
 </div>
