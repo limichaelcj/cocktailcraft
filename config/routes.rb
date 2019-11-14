@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'mark'
     end
     resources :doses, only: [:create, :update, :destroy]
+    resources :reviews, except: [:new, :show]
   end
 
   resources :ingredients, only: [:index]

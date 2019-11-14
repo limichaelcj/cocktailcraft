@@ -1,0 +1,28 @@
+<div class="ui basic container segment">
+
+  <!-- cocktail info -->
+  <div class="ui basic segment">
+    <div class="ui basic secondary yellow segment">
+      <div class="header">
+        <div class="ui sub header">Reviewing: </div>
+        <div class="ui basic segment">
+          <div class="ui items">
+            <%= render partial: 'shared/cocktail_item', locals: { cocktail: @review.cocktail } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- review form -->
+  <%= render partial: 'shared/review_form', locals: { title: 'Edit your review', method: :patch, cocktail: @review.cocktail, review: @review } %>
+
+  <!-- delete review -->
+  <div class="flex-center padding-all">
+    <%= link_to cocktail_review_path(@review.cocktail, @review), method: :delete, class: 'ui compact basic red icon button', data: { confirm: 'Are you sure you want to delete your review?' } do %>
+    <i class="trash icon"></i>
+    Delete your review
+    <% end %>
+  </div>
+
+</div>

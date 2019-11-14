@@ -1,9 +1,8 @@
 // AJAX handling for cocktail/bookmark
 
 <% if @errors.any? %>
-  var error_messages = "<ul class='list'><li><%= @errors.full_messages.join('</li><li>') %></li></ul>"
-  <% error_messages = "<ul class='list'><li>#{@errors.full_messages.join('</li><li>')}</li></ul>" %>
 
+  <% error_messages = "<ul class='list'><li>#{@errors.full_messages.join('</li><li>')}</li></ul>" %>
   $('#notifications-box').append("<%= render partial: 'shared/alert', locals: { title: 'Alert', message: error_messages } %>")
 
   jshelper.activateNotifications();

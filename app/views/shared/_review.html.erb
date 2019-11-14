@@ -1,0 +1,24 @@
+<div class="item">
+  <!-- header -->
+  <div class="header">
+    <!-- star rating -->
+    <span class="flex-row inline">
+      <% 5.times do |i| %>
+        <% nofill = i > review.rating %>
+        <i class="yellow star <%='outline ' if nofill %>icon"></i>
+      <% end %>
+      <!-- optional title -->
+      <span class="padding-x inline">
+        <%= review.title %> <%= review.id %>
+      </span>
+    </span>
+  </div>
+
+  <!-- content -->
+  <div class="description margin-top">
+    <span>@ <%= review.user.name %></span>
+    <% if review.text %>
+      <p class="font--black margin-top"><%= review.text %></p>
+    <% end %>
+  </div>
+</div>

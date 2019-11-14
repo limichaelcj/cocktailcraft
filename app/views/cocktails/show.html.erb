@@ -14,12 +14,12 @@
     </div>
     <!-- cocktail name, creator -->
     <div class="ui basic segment flex_fluid">
-      <h2 class="ui huge inverted header margin-left">
+      <h1 class="ui huge inverted header margin-left">
         <%= @cocktail.name || 'Unnamed Cocktail' %>
         <div class="sub header">
           <%= cocktail_creator(@cocktail) %>
         </div>
-      </h2>
+      </h1>
     </div>
 
     <!-- actions -->
@@ -101,24 +101,44 @@
     <!-- /main content grid -->
 
     <!-- reviews -->
-    <div class="margin-top padding-all">
-      <div class="ui teal segment">
-        <h3 class="ui center aligned header">Reviews</h3>
-        <div class="ui relaxed divided list">
-          <% 4.times do %>
-          <div class="item">
-            <div class="ui basic segment">
-              <div class="ui placeholder">
-                <div class="line"></div>
-                <div class="line"></div>
-              </div>
-            </div>
-          </div>
-          <% end %>
+    <div class="ui divider"></div>
+
+    <!-- review form -->
+    <% if user_signed_in? %>
+      <% if @cocktail.reviewers.include? current_user %>
+        <!-- do not allow new review if user already reviewed -->
+        <div class="ui yellow message">
+          <span class="flex-center-middle inline margin-right">
+            <i class="circular exclamation icon"></i>
+          </span>
+          <span>You have already reviewed this cocktail. <%= link_to "Click here", edit_cocktail_review_path(@cocktail, @review) %> to edit your review</span>
         </div>
+      <% else %>
+        <%= render partial: 'shared/review_form', locals: { title: 'Write a review', method: :post, cocktail: @cocktail, review: @review } %>
+      <% end %>
+    <% else %>
+      <!-- not logged in options -->
+      <div class="ui yellow message">
+        <span class="flex-center-middle inline margin-right">
+          <i class="circular exclamation icon"></i>
+        </span>
+        <span>
+          <%= link_to "Login", new_user_session_path %>
+          or
+          <%= link_to "Sign Up", new_user_registration_path %>
+          to post a review.
+        </span>
+      </div>
+    <% end %>
+
+    <!-- all reviews -->
+    <div class="ui basic segment">
+      <div id="review-list" class="ui very relaxed divided icon list">
+        <% @cocktail.reviews.each do |r| %>
+          <%= render partial: 'shared/review', locals: { review: r }  %>
+        <% end %>
       </div>
     </div>
-
 
   </div> <!-- content -->
 

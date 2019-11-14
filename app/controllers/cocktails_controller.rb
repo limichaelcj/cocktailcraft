@@ -6,6 +6,14 @@ class CocktailsController < ApplicationController
     @cocktails = Cocktail.all
   end
 
+  def show
+    if user_signed_in? && @cocktail.reviewers.include?(current_user)
+      @review = Review.where(cocktail: @cocktail, user: current_user)[0]
+    else
+      @review = Review.new
+    end
+  end
+
   def new
     @cocktail = Cocktail.new
   end
