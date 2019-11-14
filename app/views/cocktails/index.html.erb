@@ -3,15 +3,19 @@
     <!-- header -->
     <div class="flex-row-divide-middle margin-top">
 
-      <!-- headertext -->
+      <h1 class="sr-only">Cocktails</h1>
+
       <div class="flex_grow">
-        <h1 class="ui left aligned block header">
-          Cocktails
-        </h1>
-      </div> <!-- /headertext -->
+        <div class="ui fluid segment fill-width">
+          <div class="ui transparent left icon input">
+            <input type="text" placeholder="Search cocktails...">
+            <i class="search icon"></i>
+          </div>
+        </div>
+      </div>
 
       <!-- actions right floated -->
-      <div class="ui right floated two column horizontal labeled icon menu">
+      <div class="ui right floated horizontal labeled icon menu">
         <%= link_to '#', class: 'item' do %>
           <i class="grey filter icon"></i>
           Filter
