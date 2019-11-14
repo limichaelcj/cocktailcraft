@@ -13,7 +13,7 @@
       <!-- actions right floated -->
       <div class="ui right floated two column horizontal labeled icon menu">
         <%= link_to '#', class: 'item' do %>
-          <i class="brown filter icon"></i>
+          <i class="grey filter icon"></i>
           Filter
         <% end %>
 
@@ -47,10 +47,12 @@
 
     <% if user_signed_in? %>
       <!-- user's cocktail recipes -->
-      <h2 class="ui center aligned horizontal divider header">
-        <div class="sub header">Your Recipes</div>
-      </h2>
-      <%= render partial: 'shared/cocktail_list', locals: { cocktails: current_user.cocktails } %>
+      <% if current_user.cocktails.any? %>
+        <h2 class="ui center aligned horizontal divider header">
+          <div class="sub header">Your Recipes</div>
+        </h2>
+        <%= render partial: 'shared/cocktail_list', locals: { cocktails: current_user.cocktails } %>
+      <% end %>
 
       <!-- marked cocktails -->
       <% if current_user.marked.any? %>
