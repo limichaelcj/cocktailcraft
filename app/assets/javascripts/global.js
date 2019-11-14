@@ -10,19 +10,6 @@ function ready(){
 function handleNotificationsBox(){
   // destroy notices after timeout
   jshelper.activateNotifications();
-  // const timeout = setTimeout(() => {
-  //   $('.notifications-box .app-notice').transition('fade')
-  // }, 8000)
-  //
-  // // close notifications
-  // $('.message .close')
-  //   .on('click', function() {
-  //     clearTimeout(timeout)
-  //     $(this)
-  //     .closest('.message')
-  //     .transition('fade')
-  //   })
-  // ;
 }
 
 function imageUploadPreview(){

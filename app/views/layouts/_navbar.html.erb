@@ -7,9 +7,9 @@
       <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item" %>
       <%= link_to "Ingredients", ingredients_path, class: "#{'active ' if controller_name == 'ingredients'}item" %>
       <div class="item mobile hidden">
-        <div class="ui transparent left icon input">
-          <input type="text" placeholder="Search">
+        <div action="" method="get" id="navbar-search" class="ui transparent left icon input">
           <i class="search icon"></i>
+          <input type="text" placeholder="Search...">
         </div>
       </div>
     </div>
