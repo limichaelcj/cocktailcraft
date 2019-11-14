@@ -1,0 +1,46 @@
+<% owner = user_signed_in? && current_user == @user %>
+<% display_name = owner ? 'Your' : "#{@user.name}'s" %>
+
+<div class="ui basic container segment">
+
+  <h1 class="ui center aligned header"><%= @user.name %></h1>
+  <div class="ui divider"></div>
+
+  <div class="ui segment">
+    <div class="ui top attached label"><%= display_name %> Cocktails (<%= @user.cocktails.count %>)</div>
+    <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @user.cocktails } %>
+  </div>
+
+  <% if owner %>
+    <div class="ui segment">
+      <div class="ui top attached label">Saved Cocktails (<%= @user.marked.count %>)</div>
+      <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @user.marked } %>
+    </div>
+  <% end %>
+
+  <div class="ui segment">
+    <div class="ui top attached label"><%= display_name %> Reviews (<%= @user.reviews.count %>)</div>
+    <div class="ui relaxed divided list">
+      <% @user.reviews.each do |r| %>
+        <div class="item">
+          <div class="flex-row-middle margin-top">
+            <div class="ui sub header">Review for <%= link_to "#{r.cocktail.name}", cocktail_path(r.cocktail) %>: </div>
+            <em class="margin-left">"<%= r.title %>"</em>
+            <div class="meta margin-left">
+              <div class="ui yellow label">
+                <i class="star icon"></i> <%= r.rating %>
+              </div>
+              <div class="ui label">
+                <i>@</i> <%= cocktail_creator(r.cocktail) %>
+              </div>
+            </div>
+          </div>
+          <div class="description margin-bot">
+            <p><%= r.text %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
