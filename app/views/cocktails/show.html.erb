@@ -61,7 +61,7 @@
 
     <!-- description -->
     <div class="ui basic segment">
-      <div class="ui raised purple segment">
+      <div class="ui basic secondary padded purple segment">
         <p><%= @cocktail.description %></p>
       </div>
     </div>
@@ -70,8 +70,10 @@
     <div class="ui tablet reversed computer reversed stackable grid">
 
       <div class="five wide column">
-        <div class="ui basic orange secondary segment">
-          <h3 class="ui dividing header">Ingredients</h3>
+        <div class="ui orange raised segment">
+          <h3 class="ui center aligned dividing header">
+            <div class="ui sub header">Ingredients</div>
+          </h3>
           <div class="margin-left margin-bot">
             <% if @cocktail.doses.empty? %>
             <div>Nothing here yet!</div>
@@ -92,7 +94,9 @@
 
       <div class="eleven wide column">
         <div class="ui basic segment">
-          <h3 class="ui horizontal divider header">Instructions</h3>
+          <h3 class="ui horizontal divider header">
+            <div class="ui sub header">Instructions</div>
+          </h3>
           <pre><%= @cocktail.instructions || "No instructions yet." %></pre>
         </div>
       </div>
@@ -101,13 +105,28 @@
     <!-- /main content grid -->
 
     <!-- reviews -->
-    <div class="ui divider"></div>
+    <div class="ui horizontal divider sub header">
+      <div class="ui sub header">Reviews</div>
+    </div>
+
+    <!-- all reviews -->
+    <div class="ui basic segment">
+      <div id="review-list" class="ui very relaxed divided icon list">
+        <% if @cocktail.reviews.any? %>
+          <% @cocktail.reviews.each do |r| %>
+            <%= render partial: 'shared/review', locals: { review: r }  %>
+          <% end %>
+        <% else %>
+          <div class="ui basic segment">No reviews yet.</div>
+        <% end %>
+      </div>
+    </div>
 
     <!-- review form -->
     <% if user_signed_in? %>
       <% if @cocktail.reviewers.include? current_user %>
         <!-- do not allow new review if user already reviewed -->
-        <div class="ui yellow message">
+        <div class="ui message">
           <span class="flex-center-middle inline margin-right">
             <i class="circular exclamation icon"></i>
           </span>
@@ -130,15 +149,6 @@
         </span>
       </div>
     <% end %>
-
-    <!-- all reviews -->
-    <div class="ui basic segment">
-      <div id="review-list" class="ui very relaxed divided icon list">
-        <% @cocktail.reviews.each do |r| %>
-          <%= render partial: 'shared/review', locals: { review: r }  %>
-        <% end %>
-      </div>
-    </div>
 
   </div> <!-- content -->
 

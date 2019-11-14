@@ -1,24 +1,19 @@
 <div class="item">
   <!-- header -->
   <div class="header">
-    <!-- star rating -->
     <span class="flex-row inline">
-      <% 5.times do |i| %>
-        <% nofill = i > review.rating %>
-        <i class="yellow star <%='outline ' if nofill %>icon"></i>
-      <% end %>
-      <!-- optional title -->
-      <span class="padding-x inline">
-        <%= review.title %> <%= review.id %>
-      </span>
+      <!-- title -->
+      <em class="inline margin-right">"<%= review.title %>"</em>
+      <!-- tags -->
+      <div class="ui yellow label"><i class="star icon"></i> <%= review.rating %></div>
+      <div class="ui label"><i>@</i> <%= review.user.name %></div>
     </span>
   </div>
 
   <!-- content -->
+  <% if review.text %>
   <div class="description margin-top">
-    <span>@ <%= review.user.name %></span>
-    <% if review.text %>
-      <p class="font--black margin-top"><%= review.text %></p>
-    <% end %>
+    <p><%= review.text %></p>
   </div>
+  <% end %>
 </div>
