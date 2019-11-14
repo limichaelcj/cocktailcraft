@@ -1,0 +1,16 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#navbar img {
+  height: 28px;
+  width: 28px;
+}
+
+.footer {
+  padding-top: 5rem;
+  padding-bottom: 0.2rem;
+}

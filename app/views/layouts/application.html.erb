@@ -12,11 +12,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="navbar-offset-margin">
+  <body>
 
-    <%= render "shared/navbar" %>
-    <%= yield %>
-    <%= render "shared/notifications" %>
+    <main>
+      <%= render "layouts/navbar" %>
+      <%= yield %>
+      <%= render "shared/notifications" %>
+    </main>
+
+    <footer class="ui fluid container footer">
+      <div class="ui center aligned tiny grey sub header">
+        Created by <%= link_to "mcli830", 'https://github.com/mcli830' %>
+      </div>
+    </footer>
 
   </body>
 </html>

@@ -1,0 +1,2 @@
+1. Add publish attribute to cocktail
+2. More seeds!
