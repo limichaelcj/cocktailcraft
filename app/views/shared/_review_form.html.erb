@@ -1,29 +1,11 @@
 <div class="ui padded segment">
-  <div class="ui top left attached yellow label"><%= title %></div>
+  <div class="ui top left attached label"><%= title %></div>
   <%= simple_form_for [cocktail, review], method: method, remote: true, html: { id: 'review-form', class: 'ui form' } do |f| %>
-  <div class="two fields">
-    <!-- title -->
-    <%= f.input :title, wrapper_html: { class: 'field' } %>
-    <!-- rating -->
-    <div class="required field">
-      <label for="review_rating" class="text required">
-        <abbr title="required">*</abbr>
-        Rating
-      </label>
-      <div class="inline fields">
-        <% (1..5).each do |n| %>
-        <div class="field">
-          <div class="ui radio checkbox">
-            <input type="radio" name="review[rating" tabindex="0" class="hidden">
-            <label><%= n %></label>
-          </div>
-        </div>
-        <% end %>
-      </div>
+    <div class="two fields">
+      <%= f.input :title, wrapper_html: { class: 'field' } %>
+      <%= f.input :rating, label: 'Rating (1-5)', wrapper_html: { class: 'field' }, input_html: { step: 1, min: 1, max: 5 } %>
     </div>
-  </div>
-  <!-- review text -->
-  <%= f.input :text, as: :text, label: 'Review', wrapper_html: { class: 'field' }, input_html: { rows: 3 } %>
-  <%= f.submit "Post", class: 'ui yellow button' %>
+    <%= f.input :text, as: :text, label: 'Review', wrapper_html: { class: 'field' }, input_html: { rows: 3 } %>
+    <%= f.submit "Post", class: 'ui yellow button' %>
   <% end %>
 </div>
