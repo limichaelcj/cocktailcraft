@@ -1,0 +1,19 @@
+<div class="ui container">
+  <div class="ui segment">
+    <% @results.each do |r| %>
+      <% if r[:result] %>
+        <div class="ui basic secondary text segment">
+          Results by <%= r[:keyword] %>
+        </div>
+        <div class="ui relaxed divided list">
+          <% r[:result].each do |e| %>
+            <div class="item">
+              <div class="header"><%= e.name %></div>
+              <%= e.description %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

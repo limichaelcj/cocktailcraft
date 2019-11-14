@@ -22,4 +22,16 @@ class PagesController < ApplicationController
     ]
   end
 
+  def search
+    query = params[:query].downcase
+    by_name = Cocktail.where("lower(name) like ?", '%'+ query +'%')
+    by_ingr = Cocktail.joins(:ingredients).where("lower(ingredients.name) like ?", '%'+ query +'%')
+    by_desc = Cocktail.where("lower(description) like ?", '%'+ query +'%')
+    @results = [
+      { result: by_name, keyword: 'name' },
+      { result: by_ingr, keyword: 'ingredient' },
+      { result: by_desc, keyword: 'description' }
+    ]
+  end
+
 end
