@@ -31,20 +31,6 @@
     </div>
   </div>
 
-  <!-- errors -->
-
-  <% if flash[:errors] && !flash[:errors].empty? %>
-    <div class="ui error message">
-      <i class="close icon"></i>
-      <div class="header">There were some errors</div>
-      <ui class="list">
-        <% flash[:errors].full_messages.each do |m| %>
-          <li><%= m %></li>
-        <% end %>
-      </ui>
-    </div>
-  <% end %>
-
   <!-- edit content -->
   <div class="ui raised segment">
 

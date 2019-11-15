@@ -32,24 +32,24 @@ class CocktailsController < ApplicationController
   end
 
   def edit
+    authorize @cocktail
     @dose = Dose.new
     @measurements = Measurement.all
-    authorize @cocktail
   end
 
   def update
+    authorize @cocktail
     flash = !strong_params.empty? && @cocktail.update(strong_params) ? { notice: 'Update success!' } : { alert: 'Update failed.' }
     redirect_to edit_cocktail_path(@cocktail), flash
-    authorize @cocktail
   end
 
   def destroy
+    authorize @cocktail
     if @cocktail.destroy
       redirect_to cocktails_path, notice: "#{@cocktail.name} recipe successfully deleted."
     else
       redirect_to :edit, alert: "Unable to delete #{@cocktail.name}: #{@cocktail.errors.full_messages.join(' ')}"
     end
-    authorize @cocktail
   end
 
   def remix
