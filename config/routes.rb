@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   resources :ingredients, only: [:index]
 
+  match '*path' => 'errors#route_404', via: :all
+
 end
