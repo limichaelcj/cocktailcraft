@@ -56,9 +56,12 @@ puts "Seeding cocktails..."
 
 # seed random cocktails
 20.times do |i|
-  name = Faker::Coffee.blend_name
-  description = Faker::Lovecraft.sentence
-  cocktail = Cocktail.create!(name: name, description: description, user: i > 10 ? nil : User.find(rand(1...all_users.count)))
+  cocktail = Cocktail.create!(
+    name: Faker::Coffee.blend_name,
+    description: Faker::Lovecraft.sentence,
+    instructions: Array.new(rand(3...6)) { Faker::Lorem.paragraphs.join(' ') }.join(' '),
+    user: i > 10 ? nil : User.find(rand(1...all_users.count))
+  )
 
   (3...rand(4...8)).each do |n|
     Dose.create!(
