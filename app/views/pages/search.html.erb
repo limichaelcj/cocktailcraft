@@ -1,19 +1,19 @@
 <div class="ui container">
   <div class="ui segment">
-    <% @results.each do |r| %>
-      <% if r[:result] %>
-        <div class="ui basic secondary text segment">
-          Results by <%= r[:keyword] %>
-        </div>
-        <div class="ui relaxed divided list">
-          <% r[:result].each do |e| %>
-            <div class="item">
-              <div class="header"><%= e.name %></div>
-              <%= e.description %>
-            </div>
+    <% if @results.any? %>
+      <div class="ui very relaxed divided list">
+        <% @results.each do |cocktail| %>
+          <%= link_to cocktail_path(cocktail), class: 'item' do %>
+            <div class="header"><%= cocktail.name %></div>
+            <p><%= cocktail.description %></p>
+            <% cocktail.doses.select { |dose| dose.ingredient.name.include? @query }.each do |dose| %>
+              <div class="ui label"><%= dose.ingredient.name %></div>
+            <% end %>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      No results.
     <% end %>
   </div>
 </div>

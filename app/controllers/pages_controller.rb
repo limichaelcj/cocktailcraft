@@ -23,15 +23,27 @@ class PagesController < ApplicationController
   end
 
   def search
-    query = params[:query].downcase
-    by_name = Cocktail.where("lower(name) like ?", '%'+ query +'%')
-    by_ingr = Cocktail.joins(:ingredients).where("lower(ingredients.name) like ?", '%'+ query +'%')
-    by_desc = Cocktail.where("lower(description) like ?", '%'+ query +'%')
-    @results = [
-      { result: by_name, keyword: 'name' },
-      { result: by_ingr, keyword: 'ingredient' },
-      { result: by_desc, keyword: 'description' }
-    ]
+    @query = params[:query].downcase
+    @by_name = Cocktail.where("lower(name) like ?", '%'+ @query +'%').map do |x|
+      { id: x.id, weight: 3 }
+    end
+    @by_ingr = Cocktail.joins(:ingredients).where("lower(ingredients.name) like ?", '%'+ @query +'%').map do |x|
+      { id: x.id, weight: 2 }
+    end
+    @by_desc = Cocktail.where("lower(description) like ?", '%'+ @query +'%').map do |x|
+      { id: x.id, weight: 1 }
+    end
+    @aggregate = @by_name + @by_ingr + @by_desc
+    @results = sort_search_results(@aggregate)
+
+  end
+
+  private
+
+  def sort_search_results(arr)
+    arr.each_with_object(Hash.new(0)) do |tuple, h|
+      h[tuple[:id]] += tuple[:weight]
+    end.sort_by { |k,v| -v }.map { |tuple| Cocktail.find(tuple[0]) }
   end
 
 end
