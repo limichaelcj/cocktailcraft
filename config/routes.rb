@@ -8,9 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :cocktails do
-    collection do
-      get 'remix'
-    end
+    get 'remix', on: :collection
     member do
       post 'remix'
       get 'mark'

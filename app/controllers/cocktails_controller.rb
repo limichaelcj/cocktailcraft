@@ -53,23 +53,22 @@ class CocktailsController < ApplicationController
       @remix = Cocktail.new(@cocktail.attributes.slice('name', 'description', 'photo', 'instructions'))
       @remix.name = "Remix of #{@remix.name}"
       @remix.user = current_user
+
       @doses = @cocktail.doses.map do |d|
         copy = Dose.new(d.attributes.slice('amount', 'ingredient_id', 'measurement_id'))
         copy.cocktail = @remix
-        return copy
+        copy
       end
 
       begin
         Cocktail.transaction do
           @remix.save!
-          Dose.transaction do
-            @doses.each { |d| d.save! }
-          end
+          @doses.each { |d| d.save! }
         end
         # successful saves, redirect to
         redirect_to edit_cocktail_path(@remix), notice: "Successfully remixed! Here in the lab, you can customize your new recipe."
       rescue ActiveRecord::RecordInvalid => invalid
-        redirect_to :back, alert: "Failed to remix."
+        redirect_to :back, alert: "Failed to remix: #{invalid.record.errors.full_messages.join(' ')}"
       end
     end
   end

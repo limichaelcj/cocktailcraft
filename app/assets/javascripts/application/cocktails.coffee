@@ -41,3 +41,11 @@ $(document).on 'turbolinks:load', ->
         }
       }
     })
+
+  if page.action() == 'remix'
+    $('.remix-link').click (e) ->
+      e.preventDefault()
+      form = $('#remix-form')
+      alert($(this).attr('href'))
+      form.attr('action', $(this).attr('href'))
+      form.submit()
