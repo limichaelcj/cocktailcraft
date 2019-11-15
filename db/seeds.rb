@@ -17,19 +17,19 @@ puts "Seeding database..."
 
 puts "Seeding measurements..."
 [
-  { name: 'pinch', plural: 'es' },
   { name: 'dash', plural: 'es' },
+  { name: 'pinch', plural: 'es' },
   { name: 'splash', plural: 'es' },
-  { name: 'liter', plural: 's', abbrev: 'L'},
-  { name: 'milliliter', plural: 's', abbrev: 'mL'},
   { name: 'ounce', plural: 's', abbrev: 'oz' },
   { name: 'gram', plural: 's', abbrev: 'g' },
-  { name: 'kilogram', plural: 's', abbrev: 'kg' },
+  { name: 'milliliter', plural: 's', abbrev: 'mL'},
   { name: 'pound', plural: 's', abbrev: 'lbs' },
+  { name: 'kilogram', plural: 's', abbrev: 'kg' },
   { name: 'teaspoon', plural: 's', abbrev: 'tsp' },
   { name: 'tablespoon', plural: 's', abbrev: 'Tbsp' },
   { name: 'cup', plural: 's', abbrev: 'C' },
-  { name: 'pint', plural: 's', abbrev: 'pt' }
+  { name: 'pint', plural: 's', abbrev: 'pt' },
+  { name: 'liter', plural: 's', abbrev: 'L'}
 ].each do |m|
   Measurement.create!(m)
 end
@@ -54,11 +54,20 @@ all_users = User.all
 
 puts "Seeding cocktails..."
 
-# seed cocktails
+# seed random cocktails
 20.times do |i|
   name = Faker::Coffee.blend_name
   description = Faker::Lovecraft.sentence
-  Cocktail.create!(name: name, description: description, user: i > 10 ? nil : User.find(rand(1...all_users.count)))
+  cocktail = Cocktail.create!(name: name, description: description, user: i > 10 ? nil : User.find(rand(1...all_users.count)))
+
+  (3...rand(4...8)).each do |n|
+    Dose.create!(
+      cocktail: cocktail,
+      ingredient: Ingredient.find(rand(1...Ingredient.all.count)),
+      amount: rand(1...5),
+      measurement: Measurement.find(rand(1...Measurement.all.count))
+    )
+  end
 end
 
 puts "Seeding complete."
