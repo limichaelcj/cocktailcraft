@@ -46,4 +46,15 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def user_is_owner?
+    user == record.user
+  end
+
+  def user_is_cocktail_owner?
+    user == record.cocktail.user
+  end
+
 end

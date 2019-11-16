@@ -14,3 +14,6 @@
         clearTimeout(timeout)
         $(this).closest('.message').transition('fade')
     )
+
+  stringifyErrors: (errors) ->
+    return "<div class='ui negative message'><ul class='list'><li>#{errors.join('</li><li>')}</li></ul></div>"

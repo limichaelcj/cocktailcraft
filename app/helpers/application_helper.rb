@@ -6,6 +6,10 @@ module ApplicationHelper
     "style=background-image:url(#{url});"
   end
 
+  def add_css_class(cls)
+    " class=\"#{cls}\""
+  end
+
   def stringify_dose_amount(dose, full = false)
     no_unit = dose.measurement.nil?
     if no_unit
@@ -24,6 +28,10 @@ module ApplicationHelper
 
   def random_dose_color
     ['orange', 'yellow', 'olive', 'teal', 'violet', 'purple', 'pink', 'brown'].sample
+  end
+
+  def htmlify_errors(errors)
+    "<div class=\"ui negative message\"><ul class=\"list\"><li>#{errors.join('</li><li>')}</li></ul></div>"
   end
 
 end

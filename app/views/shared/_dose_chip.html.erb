@@ -1,6 +1,11 @@
-<div class="dose-chip inline">
-  <a class="ui large <%= random_dose_color() %> label">
+<div class="dose-chip inline" data-id="<%= dose.ingredient.name %>" data-fx="<%= fx ||= false %>">
+  <%= link_to cocktail_dose_path(dose.cocktail, dose), {
+      method: :delete,
+      class: "ui large #{random_dose_color} label",
+      remote: true,
+      data: { confirm: "Remove dose of \"#{dose.ingredient.name}\"?" }
+  } do %>
     <%= dose.ingredient.name.capitalize %>
     <div class="detail"><%= stringify_dose_amount(dose) %></div>
-  </a>
+  <% end %>
 </div>

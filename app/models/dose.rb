@@ -11,7 +11,7 @@ class Dose < ApplicationRecord
   # validator: a cocktail cannot have repeated doses of same ingredient
   def unique_cocktail_ingredient
     if cocktail.ingredients.map { |x| x.id }.include? ingredient.id
-      errors.add(:ingredient, ": #{ingredient.name} is already included in the cocktail")
+      errors.add(:ingredient, ": A dose of \"#{ingredient.name}\" is already included in the cocktail")
     end
   end
 end

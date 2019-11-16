@@ -101,7 +101,7 @@
       <div id="dose-list" class="ui segment">
         <div class="ui top attached label">Dosage</div>
         <% if @cocktail.doses.empty? %>
-          <p id='no-doses-message'>No doses yet. Add a dose below.</p>
+          <%= render partial: 'static/no_doses_message' %>
         <% else %>
           <% @cocktail.doses.each do |dose| %>
             <%= render partial: 'shared/dose_chip', locals: { dose: dose } %>
@@ -155,11 +155,11 @@
     <!-- edit instructions -->
     <div class="ui green ribbon label">
       <i class="dropdown icon"></i>
-      Mixing Instructions
+      Mixing Details
     </div>
     <div class="ui basic segment">
       <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
-        <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 8, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
+        <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 16, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
         <div class="margin-top">
           <%= f.submit "Update", class: 'ui green button' %>
         </div>

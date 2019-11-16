@@ -1,34 +1,48 @@
 class DosesController < ApplicationController
 
+  after_action :verify_authorized
+
   def create
     @cocktail = Cocktail.find(params[:cocktail_id])
     @dose = Dose.new(strong_params)
+    @dose.cocktail = @cocktail
+    authorize @dose
 
     # get ingredient
     ingredient_input = params[:ingredient].strip.downcase.singularize
     ingredient = identify_ingredient(ingredient_input)
 
-    if ingredient
+    if ingredient.errors.any?
+      errors = ingredient.errors
+    else
       @dose.ingredient = ingredient
-      @dose.cocktail = @cocktail
-
       @dose.save
       if @dose.errors
         @errors = @dose.errors
       end
-    else
-      @errors = ingredient.errors
     end
 
-    # response formatting routes
     respond_to do |format|
-      format.html { redirect_to edit_cocktail_path(@cocktail), flash: { errors: @errors } }
       format.js
-      if @errors
-        format.json { render json: @errors, status: :unprocessable_entity }
+      if errors
+        format.html { redirect_to edit_cocktail_path(@cocktail), notice: "Dose added to #{@cocktail.name}." }
       else
-        format.json { render json: @dose, status: :created }
+        format.html { redirect_to edit_cocktail_path(@cocktail), alert: "Dose could not be added: #{errors.join(' ')}" }
       end
+    end
+  end
+
+  def destroy
+    @dose = Dose.find(params[:id])
+    authorize @dose
+
+    respond_to do |format|
+      if @dose.destroy
+        format.html { redirect_to edit_cocktail_path(@dose.cocktail), notice: "Dose of \"#{@dose.ingredient.name}\" removed." }
+      else
+        format.html { redirect_to edit_cocktail_path(@dose.cocktail), alert: "Dose could not be removed: #{@dose.errors.full_messages.join(' ')}" }
+      end
+      format.js
     end
   end
 
@@ -44,16 +58,11 @@ class DosesController < ApplicationController
 
   def identify_ingredient(name)
     requested = Ingredient.find_by(name: name)
-
     return requested if requested
     # requested not found -> create new ingredient
-
     new_ingredient = Ingredient.new(name: name)
-    if new_ingredient.save
-      return new_ingredient
-    else
-      return nil
-    end
+    new_ingredient.save
+    return new_ingredient
   end
 
 end
