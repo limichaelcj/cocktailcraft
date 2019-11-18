@@ -122,13 +122,13 @@
 
     <!-- review form -->
     <% if user_signed_in? %>
-      <% if @cocktail.reviewers.include? current_user %>
+      <% if @user_has_reviewed %>
         <!-- do not allow new review if user already reviewed -->
         <div class="ui message">
           <span class="flex-center-middle inline margin-right">
             <i class="circular exclamation icon"></i>
           </span>
-          <span>You have already reviewed this cocktail. <%= link_to "Click here", edit_cocktail_review_path(@cocktail, @review) %> to edit your review</span>
+          <span>You have already reviewed this cocktail. <%= link_to "Click here", edit_cocktail_review_path(@cocktail, @user_review) %> to edit your review</span>
         </div>
       <% else %>
         <%= render partial: 'shared/review_form', locals: { title: 'Write a review', method: :post, cocktail: @cocktail, review: @review } %>

@@ -10,11 +10,11 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    if user_signed_in? && @cocktail.reviewers.include?(current_user)
-      @review = Review.where(cocktail: @cocktail, user: current_user)[0]
-    else
-      @review = Review.new
+    @user_has_reviewed = user_signed_in? && @cocktail.reviewers.include?(current_user)
+    if @user_has_reviewed
+      @user_review = Review.where(cocktail: @cocktail, user: current_user)[0]
     end
+    @review = Review.new
   end
 
   def new

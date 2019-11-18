@@ -1,6 +1,6 @@
 <div class="ui padded segment">
   <div class="ui top left attached label"><%= title %></div>
-  <%= simple_form_for [cocktail, review], method: method, remote: true, html: { id: 'review-form', class: 'ui form' } do |f| %>
+  <%= simple_form_for [cocktail, review], method: method, remote: false, html: { id: 'review-form', class: 'ui form' } do |f| %>
     <div class="two fields">
       <%= f.input :title, label: 'Summary', wrapper_html: { class: 'field' } %>
       <%= f.input :rating, label: 'Rating (1-5)', wrapper_html: { class: 'field' }, input_html: { step: 1, min: 1, max: 5 } %>
