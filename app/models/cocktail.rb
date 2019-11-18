@@ -8,6 +8,7 @@ class Cocktail < ApplicationRecord
   has_many :reviewers, through: :reviews, source: :user
 
   validates :name, presence: true, allow_blank: false
+  validates :description, :instructions, presence: true, allow_blank: true
 
   mount_uploader :photo, PhotoUploader
 end

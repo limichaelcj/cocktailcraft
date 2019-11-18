@@ -5,6 +5,7 @@ function ready(){
   handleNotificationsBox();
   imageUploadPreview();
   initSemantic();
+  formValidation();
 }
 
 function handleNotificationsBox(){
@@ -38,4 +39,8 @@ function initSemantic(){
   // $('.ui.accordion').accordion();
   $('.ui.radio.checkbox').checkbox();
   $('select.dropdown').dropdown();
+}
+
+function formValidation(){
+  jshelper.validateEmptyFormField()
 }

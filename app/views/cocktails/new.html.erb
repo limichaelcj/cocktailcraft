@@ -31,31 +31,31 @@
 
       <!-- form -->
       <%= simple_form_for @cocktail, html: { id: 'cocktail-form', class: 'ui form' } do |f| %>
-      <%= f.input :name, wrapper_html: { class: 'sixteen wide field' } %>
-      <%= f.input :description, as: :text, wrapper_html: { class: 'field' } %>
-      <div class="field">
-        <label for="template">Template</label>
-        <div class="ui fluid search selection dropdown">
-          <input type="hidden" name="template">
-          <i class="dropdown icon"></i>
-          <div class="default text">[None]</div>
-          <% unless @templates.nil? %>
-          <div class="menu">
-            <% @templates.each do |t| %>
-            <div class="item" data-value="<%= t.id %>">
-              <%= t.name %>
+        <%= f.input :name, wrapper_html: { class: 'sixteen wide field validate--empty' } %>
+        <%= f.input :description, as: :text, wrapper_html: { class: 'field' }, input_html: { placeholder: 'Introduce your cocktail with a brief description...'} %>
+        <div class="field">
+          <label for="template">Template</label>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="template">
+            <i class="dropdown icon"></i>
+            <div class="default text">[None]</div>
+            <% unless @templates.nil? %>
+            <div class="menu">
+              <% @templates.each do |t| %>
+              <div class="item" data-value="<%= t.id %>">
+                <%= t.name %>
+              </div>
+              <% end %>
             </div>
             <% end %>
           </div>
-          <% end %>
         </div>
-      </div>
-      <div class="flex-row">
-        <%= f.input :photo, as: :file, wrapper_html: { class: 'field flex_fluid' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <div id="cocktail_photo-preview" class="img-sq-xs-circle flex_static margin-all hide"> </div>
-      </div>
-      <%= f.submit class: 'ui primary button', style: 'margin-top:30px;' %>
+        <div class="flex-row">
+          <%= f.input :photo, as: :file, wrapper_html: { class: 'field flex_fluid' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <div id="cocktail_photo-preview" class="img-sq-xs-circle flex_static margin-all hide"> </div>
+        </div>
+        <%= f.submit class: 'ui primary button', style: 'margin-top:30px;' %>
       <% end %>
     </div>
 

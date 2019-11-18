@@ -72,8 +72,8 @@
       <%= simple_form_for @cocktail, method: :patch, html: { id: 'cocktail-form', class: 'ui form' } do |f| %>
         <div class="ui two column stackable grid">
           <div class="column">
-            <%= f.input :name, wrapper_html: { class: 'field' } %>
-            <%= f.input :description, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 3, placeholder: 'Write a brief description...' } %>
+            <%= f.input :name, wrapper_html: { class: 'field validate--empty' } %>
+            <%= f.input :description, as: :text, wrapper_html: { class: 'field validate--empty' }, input_html: { rows: 3, placeholder: 'Write a brief description...' } %>
           </div>
           <div class="column">
             <%= f.input :photo, as: :file, wrapper_html: { class: 'field flex_fluid' }, input_html: { id: 'cocktail_photo', class: 'image-upload-preview' } %>
@@ -115,37 +115,33 @@
           <!-- form inputs -->
           <div class="two fields">
             <!-- ingredient input -->
-            <div class="field">
-              <label for="ingredient">Ingredient</label>
-              <input id="dose-form-ingredient" name="ingredient" type="text">
-            </div>
-            <!-- amount, measurement input -->
-            <div class="field">
-              <div class="flex-row">
-                <!-- amount -->
-                <div class="flexchild-even">
-                  <%= f.input :amount, wrapper_html: { class: 'field' }, input_html: { id: "dose-form-amount" } %>
-                </div>
-                <!-- measurement -->
-                <div class="flexchild-even margin-left">
-                  <div class="field">
-                    <label for="dose_measurement_id">Measurement</label>
-                    <select name="dose[measurement_id]" class="ui search dropdown">
-                      <option value="none">- None -</option>
-                      <% @measurements.each do |m|  %>
-                        <option value="<%= m.id %>"><%= m.name %><%= " (#{m.abbrev})" if m.abbrev %></option>
-                      <% end %>
-                    </select>
-                  </div>
-                </div>
+            <%= f.input :ingredient, wrapper_html: { class: 'field validate--empty' }, input_html: { id: "dose-form-ingredient" } %>
+
+            <div class="field flex-row">
+              <!-- amount -->
+              <div class="flex_fluid field">
+                <%= f.input :amount, wrapper_html: { class: 'field validate--empty' }, input_html: { id: "dose-form-amount" } %>
               </div>
+              <!-- measurement -->
+              <div class="flex_fluid field">
+                  <label for="dose_measurement_id">Measurement</label>
+                  <select name="dose[measurement_id]" class="ui search dropdown">
+                    <option value="none">- None -</option>
+                    <% @measurements.each do |m|  %>
+                    <option value="<%= m.id %>"><%= m.name %><%= " (#{m.abbrev})" if m.abbrev %></option>
+                    <% end %>
+                  </select>
+                </div>
             </div>
+
           </div>
           <!-- form submit -->
-          <%= button_tag type: 'submit', class: 'ui blue icon button' do %>
+          <div class="margin-top">
+            <%= button_tag type: 'submit', class: 'ui blue icon button' do %>
             <i class="add icon"></i>
             Add Dose
-          <% end %>
+            <% end %>
+          </div>
         <% end %> <!-- /simple_form -->
       </div>
     </div>
@@ -159,7 +155,7 @@
     </div>
     <div class="ui basic segment">
       <%= simple_form_for @cocktail, method: :patch, html: { class: 'ui form' } do |f| %>
-        <%= f.input :instructions, as: :text, wrapper_html: { class: 'field' }, input_html: { rows: 16, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
+        <%= f.input :instructions, as: :text, wrapper_html: { class: 'field validate--empty' }, input_html: { rows: 16, placeholder: 'How do you mix the cocktail?' }, label_html: { class: 'sr-only' } %>
         <div class="margin-top">
           <%= f.submit "Update", class: 'ui green button' %>
         </div>

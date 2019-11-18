@@ -8,8 +8,11 @@ class DosesController < ApplicationController
     @dose.cocktail = @cocktail
     authorize @dose
 
+    puts params
+    puts params[:ingredient]
+
     # get ingredient
-    ingredient_input = params[:ingredient].strip.downcase.singularize
+    ingredient_input = params.require(:dose)[:ingredient].strip.downcase.singularize
     ingredient = identify_ingredient(ingredient_input)
 
     if ingredient.errors.any?
