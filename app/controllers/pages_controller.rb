@@ -24,18 +24,18 @@ class PagesController < ApplicationController
 
   def search
     @query = params[:query].downcase
-    @by_name = Cocktail.where("lower(name) like ?", '%'+ @query +'%').map do |x|
-      { id: x.id, weight: 3 }
-    end
-    @by_ingr = Cocktail.joins(:ingredients).where("lower(ingredients.name) like ?", '%'+ @query +'%').map do |x|
-      { id: x.id, weight: 2 }
-    end
-    @by_desc = Cocktail.where("lower(description) like ?", '%'+ @query +'%').map do |x|
-      { id: x.id, weight: 1 }
-    end
-    @aggregate = @by_name + @by_ingr + @by_desc
-    @results = sort_search_results(@aggregate)
-
+    # @by_name = Cocktail.where("lower(name) like ?", '%'+ @query +'%').map do |x|
+    #   { id: x.id, weight: 3 }
+    # end
+    # @by_ingr = Cocktail.joins(:ingredients).where("lower(ingredients.name) like ?", '%'+ @query +'%').map do |x|
+    #   { id: x.id, weight: 2 }
+    # end
+    # @by_desc = Cocktail.where("lower(description) like ?", '%'+ @query +'%').map do |x|
+    #   { id: x.id, weight: 1 }
+    # end
+    # @aggregate = @by_name + @by_ingr + @by_desc
+    # @results = sort_search_results(@aggregate)
+    @results = Cocktail.search_keyword(@query)
   end
 
   private

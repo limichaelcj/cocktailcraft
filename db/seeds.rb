@@ -58,7 +58,7 @@ puts "Seeding cocktails..."
 20.times do |i|
   cocktail = Cocktail.create!(
     name: Faker::Coffee.blend_name,
-    description: Faker::Lovecraft.sentence,
+    description: Faker::Books::Lovecraft.sentence,
     instructions: Array.new(rand(3...6)) { Faker::Lorem.paragraphs.join(' ') }.join(' '),
     user: i > 10 ? nil : User.find(rand(1...all_users.count)),
     published: true

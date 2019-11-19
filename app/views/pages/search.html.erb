@@ -6,8 +6,8 @@
           <%= link_to cocktail_path(cocktail), class: 'item' do %>
             <div class="header"><%= cocktail.name %></div>
             <p><%= cocktail.description %></p>
-            <% cocktail.doses.select { |dose| dose.ingredient.name.include? @query }.each do |dose| %>
-              <div class="ui label"><%= dose.ingredient.name %></div>
+            <% cocktail.ingredients.select { |ingr| ingr.name.include? @query }.each do |ingr| %>
+              <div class="ui label"><%= ingr.name %></div>
             <% end %>
           <% end %>
         <% end %>

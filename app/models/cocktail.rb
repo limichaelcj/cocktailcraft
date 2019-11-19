@@ -1,4 +1,6 @@
 class Cocktail < ApplicationRecord
+  include PgSearch::Model
+
   belongs_to :user, optional: true
   has_many :doses, dependent: :destroy
   has_many :ingredients, through: :doses
@@ -11,4 +13,19 @@ class Cocktail < ApplicationRecord
   validates :description, :instructions, presence: true, allow_blank: true
 
   mount_uploader :photo, PhotoUploader
+
+  pg_search_scope :search_keyword, {
+    using: { tsearch: {
+      any_word: true,
+      prefix: true,
+      dictionary: 'english'
+    } },
+    against: {
+      name: 'A',
+      description: 'C'
+    },
+    associated_against: {
+      ingredients: { name: 'B' }
+    }
+  }
 end

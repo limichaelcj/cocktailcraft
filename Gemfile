@@ -70,6 +70,7 @@ gem "jquery-rails", "~> 4.3"
 gem 'simple_form'
 gem 'faker'
 gem 'pundit'
+gem 'pg_search'
 
 # remote image hosting via cloudinary and dependencies
 gem 'dotenv-rails', groups: [:development, :test]
