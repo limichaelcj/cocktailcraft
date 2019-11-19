@@ -1,7 +1,14 @@
+// remove semantic ui default navbar margin
 #navbar.ui.menu {
   margin-bottom: 0;
 }
 
+// remove white-space wrap on ui card meta elements
+.ui .card .meta span {
+  white-space: nowrap;
+}
+
+// add zoom on hover to semantic ui card
 .ui .card a.image.hover--zoom {
   overflow: hidden;
 
