@@ -21,6 +21,10 @@ $white          : #ffffff;
 $primaryColor   : $purple;
 $secondaryColor : $orange;
 
+$soft-degree: 15%;
+$black-soft: lighten($black, $soft-degree);
+$white-soft: darken($white, $soft-degree);
+
 $alpha-dark: rgba($black,0.4);
 $alpha-light: rgba($white, 0.4);
 

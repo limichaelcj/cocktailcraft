@@ -8,10 +8,26 @@
           <img src="<%= cocktail_image_path(cocktail) %>" alt="<%= cocktail.name %>">
         </div>
         <div class="content">
-          <h3 class="ui header"><%= cocktail.name %></h3>
-          <p class="color-reset">
-            <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
-          </p>
+          <div class="header"><%= cocktail.name %></div>
+          <div class="meta">
+            <% if cocktail.reviews.any? %>
+              <span>
+                <%= (cocktail.reviews.map { |r| r.rating }.reduce(:+) * 10).round / 10.0 %>
+                <i class="star icon"></i>
+              </span>
+            <% end %>
+            <span>
+              @<%= cocktail.user.name %>
+            </span>
+            <span>
+              <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
+            </span>
+          </div>
+          <div class="margin-top">
+            <p class="color-reset margin-top">
+              <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
+            </p>
+          </div>
         </div>
       </a>
     <% end %>
