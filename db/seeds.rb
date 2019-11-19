@@ -62,32 +62,36 @@ end
 puts "Seeding cocktails..."
 
 # get cocktail names from seventhsanctum
-# print "- Requesting names from seventhsanctum.com..."
-# doc = Nokogiri::HTML(open("https://www.seventhsanctum.com/generate.php?Genname=mixeddrink"))
-# cnames = doc.css('div.Generator.Results > div > div').map { |div| div.inner_html }
-# puts "OK"
-cnames = [
-  "Abundance Mix",
-  "Angelic White Imagining",
-  "Brown Abyss",
-  "Chop Float",
-  "Devilish Magical Moonrise",
-  "Elemental Angelic Soldier",
-  "Famous Low Greatness",
-  "Forest Paradise",
-  "High Western Cut",
-  "Holy Demonic Sailor",
-  "Insane Passionate Scarlet",
-  "Kiwi Lime Mix",
-  "Modest Orange Walnut",
-  "Raging Cocoa",
-  "Royal Squirt",
-  "Tea Peach Martini",
-  "Unholy King's Rain",
-  "Unholy Nasty Garnet",
-  "Valorous Sea",
-  "Wonderful Annihilation Shandy",
-]
+print "- Requesting names from seventhsanctum.com..."
+doc = Nokogiri::HTML(open("https://www.seventhsanctum.com/generate.php?Genname=mixeddrink"))
+cnames = doc.css('div.Generator.Results > div > div').map { |div| div.inner_html }
+if cnames.empty?
+  puts "scrape failed, reverting to precompiled names."
+  cnames = [
+    "Abundance Mix",
+    "Angelic White Imagining",
+    "Brown Abyss",
+    "Chop Float",
+    "Devilish Magical Moonrise",
+    "Elemental Angelic Soldier",
+    "Famous Low Greatness",
+    "Forest Paradise",
+    "High Western Cut",
+    "Holy Demonic Sailor",
+    "Insane Passionate Scarlet",
+    "Kiwi Lime Mix",
+    "Modest Orange Walnut",
+    "Raging Cocoa",
+    "Royal Squirt",
+    "Tea Peach Martini",
+    "Unholy King's Rain",
+    "Unholy Nasty Garnet",
+    "Valorous Sea",
+    "Wonderful Annihilation Shandy",
+  ]
+else
+  puts "OK"
+end
 
 # seed random cocktails
 puts "- Creating cocktails with doses..."
