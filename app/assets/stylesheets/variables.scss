@@ -38,4 +38,10 @@ $ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
 $ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 $ease-bounce: cubic-bezier(.21, 1.11, .6, 1.15);
 
+$transition-xfast: 200ms;
+$transition-fast: 250ms;
+$transition-med: 300ms;
+$transition-slow: 400ms;
+$transition-xslow: 500ms;
+
 $navbar-height: 54px;

@@ -3,12 +3,14 @@
   <div class="ui four doubling stackable cards">
 
     <% cocktails.each do |cocktail| %>
-      <a href="<%= cocktail_path(cocktail) %>" class="card">
-        <div class="image">
+      <div class="card">
+        <a class="image hover--zoom" href="<%= cocktail_path(cocktail) %>">
           <img src="<%= cocktail_image_path(cocktail) %>" alt="<%= cocktail.name %>">
-        </div>
+        </a>
         <div class="content">
-          <div class="header"><%= cocktail.name %></div>
+          <a href="<%= cocktail_path(cocktail) %>"class="header">
+            <%= cocktail.name %>
+          </a>
           <div class="meta">
             <% if cocktail.reviews.any? %>
               <span>
@@ -16,20 +18,20 @@
                 <i class="star icon"></i>
               </span>
             <% end %>
-            <span>
+            <a href="<%= user_path(cocktail.user) %>">
               @<%= cocktail.user.name %>
-            </span>
+            </a>
             <span>
               <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
             </span>
           </div>
           <div class="margin-top">
-            <p class="color-reset margin-top">
+            <p class="color-reset">
               <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
             </p>
           </div>
         </div>
-      </a>
+      </div>
     <% end %>
 
   </div>

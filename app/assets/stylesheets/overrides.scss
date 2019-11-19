@@ -2,6 +2,20 @@
   margin-bottom: 0;
 }
 
+.ui .card a.image.hover--zoom {
+  overflow: hidden;
+
+  img {
+    transition: transform $transition-med ease-out;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+}
+
 // prevent semantic ui container gutter margins on mobile devices
 @media only screen and (max-width: $breakpoint-tablet) {
   *.ui.container {
