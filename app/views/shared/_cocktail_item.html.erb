@@ -1,11 +1,11 @@
 <div class="item">
   <div class="ui small image">
-    <img src="<%= cocktail_image_path(cocktail) %>">
+    <img src="<%= cocktail.image_path %>">
   </div>
   <div class="content padding-all">
     <div class="header"><%= cocktail.name %></div>
     <div class="meta">
-      <span>@ <%= cocktail_creator(cocktail) %></span>
+      <span>@ <%= cocktail.creator %></span>
     </div>
     <div class="description">
       <p><%= @review.cocktail.description %></p>

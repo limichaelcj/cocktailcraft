@@ -1,7 +1,7 @@
 <%= link_to cocktail_path(cocktail), class: 'item cocktail-badge' do %>
   <div class="cocktail-badge-content flex-col-middle">
     <div class="img-sq-xxs-circle cocktail-avatar-size margin-bot">
-      <img src="<%= cocktail_image_path(cocktail) %>" alt="<%= cocktail.name %>">
+      <img src="<%= cocktail.image_path %>" alt="<%= cocktail.name %>">
     </div>
     <h4 class="ui center aligned header">
       <div class="sub header">

@@ -6,10 +6,10 @@
     <form action="" method="post" class="hide"></form>
     <% Cocktail.all.each do |c| %>
       <%= link_to remix_cocktail_path(c), method: :post, class: 'item remix-link' do %>
-        <img src="<%= cocktail_image_path(c) %>" alt="" class="ui avatar image">
+        <img src="<%= c.image_path %>" alt="" class="ui avatar image">
         <div class="content">
           <div class="header"><%= c.name %></div>
-          <subtitle>@<%= cocktail_creator(c) %></subtitle>
+          <subtitle>@<%= c.creator %></subtitle>
           <p><%= c.description %></p>
         </div>
       <% end %>

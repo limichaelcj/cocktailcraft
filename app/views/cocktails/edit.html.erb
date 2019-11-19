@@ -1,10 +1,10 @@
 <div class="ui container">
 
   <!-- banner -->
-  <div class="cover-image padding-all" <%= render_bg_img(cocktail_image_path(@cocktail)) %>>
+  <div class="cover-image padding-all" <%= render_bg_img(@cocktail.image_path) %>>
     <!-- bg underlay -->
     <div class="background-underlay cocktail-banner-img">
-      <img src="<%= cocktail_image_path(@cocktail) %>">
+      <img src="<%= @cocktail.image_path %>">
     </div>
     <!-- banner content -->
     <div class="ui basic fluid segment">
@@ -21,7 +21,7 @@
 
   <div class="cocktail-overlapping-header padding-left">
     <div class="img-sq-circle cocktail-avatar flex_static">
-      <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
+      <img src="<%= @cocktail.image_path %>" alt="<%= @cocktail.name %>">
     </div>
     <div class="flex_fluid margin-left">
       <div class="ui basic secondary segment">

@@ -28,4 +28,18 @@ class Cocktail < ApplicationRecord
       ingredients: { name: 'B' }
     }
   }
+
+  def creator
+    user.nil? ? 'Classic Collection' : user.name
+  end
+
+  def image_path
+    ApplicationController.helpers.cl_image_path(photo.url.nil? ? 'cocktail.jpg' : photo.url)
+  end
+
+  def rating
+    avg = reviews.map { |r| r.rating }.reduce(:+) / reviews.count.to_f
+    (avg * 10).round / 10.0
+  end
+
 end

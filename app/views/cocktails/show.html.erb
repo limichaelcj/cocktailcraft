@@ -5,19 +5,19 @@
   <div class="flex-row-divide-end padding-all cover-image">
     <!-- underlay -->
     <div class="background-underlay cocktail-banner-img">
-      <img src="<%= cocktail_image_path(@cocktail) %>">
+      <img src="<%= @cocktail.image_path %>">
     </div>
 
     <!-- cocktail photo -->
     <div class="img-sq-circle cocktail-avatar margin-right flex_static mobile hidden">
-      <img src="<%= cocktail_image_path(@cocktail) %>" alt="<%= @cocktail.name %>">
+      <img src="<%= @cocktail.image_path %>" alt="<%= @cocktail.name %>">
     </div>
     <!-- cocktail name, creator -->
     <div class="ui basic segment flex_fluid">
       <h1 class="ui huge inverted header margin-left">
         <%= @cocktail.name || 'Unnamed Cocktail' %>
         <div class="sub header">
-          <%= cocktail_creator(@cocktail) %>
+          <%= @cocktail.creator %>
         </div>
       </h1>
     </div>
