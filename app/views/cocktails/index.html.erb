@@ -6,12 +6,7 @@
       <h1 class="sr-only">Cocktails</h1>
 
       <div class="flex_grow">
-        <div class="ui fluid segment fill-width">
-          <div class="ui transparent left icon input">
-            <input type="text" placeholder="Search cocktails...">
-            <i class="search icon"></i>
-          </div>
-        </div>
+        <%= render partial: 'shared/search_bar', locals: { action: search_path, classes: 'fill-width', placeholder: 'Search cocktails...' } %>
       </div>
 
       <!-- actions right floated -->

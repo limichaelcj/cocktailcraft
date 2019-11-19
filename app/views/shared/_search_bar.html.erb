@@ -1,4 +1,4 @@
-<%= form_with url: action, method: :get, local: true, class: 'ui transparent left icon input' do |f| %>
+<%= form_with url: action, method: method ||= :get, local: true, class: "ui #{'transparent' if local_assigns[:transparent]} left icon input #{classes if local_assigns[:classes]}" do |f| %>
   <i class="search icon"></i>
-  <%= f.text_field :query, placeholder: 'Search' %>
+  <%= f.text_field :query, placeholder: placeholder ||= 'Search' %>
 <% end %>
