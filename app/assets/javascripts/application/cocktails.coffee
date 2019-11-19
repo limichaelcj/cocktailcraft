@@ -13,3 +13,9 @@ $(document).on 'turbolinks:load', ->
       form = $('#remix-form')
       form.attr('action', $(this).attr('href'))
       form.submit()
+
+  # on cocktail/edit -> submit hidden patch form from publish button
+  if page.action() == 'edit'
+    $('#publish-link').click (e) ->
+      e.preventDefault()
+      $('#publish-form').submit()

@@ -1,12 +1,17 @@
 class CocktailsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_cocktail, only: [:show, :edit, :update, :destroy, :mark]
+  before_action :find_cocktail, only: [:show, :edit, :update, :publish, :destroy, :mark]
 
-  after_action :verify_authorized, only: [:edit, :update, :destroy]
+  after_action :verify_authorized, only: [:edit, :update, :publish, :destroy]
   after_action :verify_policy_scoped, only: :index
 
   def index
     @cocktails = policy_scope(Cocktail)
+    @classic, @custom = @cocktails.partition { |c| c.user == nil }
+    if current_user
+      @user_cocktails = current_user.cocktails if current_user.cocktails.any?
+      @marked_cocktails = current_user.marked if current_user.marked.any?
+    end
   end
 
   def show
@@ -79,6 +84,18 @@ class CocktailsController < ApplicationController
     end
   end
 
+  # ajax
+  def publish
+    authorize @cocktail
+    @cocktail.update(published: !@cocktail.published)
+    redirect_options = { alert: "Failed to update: #{@errors.full_messages.join(' ')}" } if @cocktail.errors.any?
+    respond_to do |format|
+      format.html { redirect_to request.referrer, redirect_options || {} }
+      format.js
+    end
+  end
+
+  # ajax
   def mark
     if current_user.marked.include? @cocktail
       # delete mark if exists
@@ -93,12 +110,10 @@ class CocktailsController < ApplicationController
       end
     end
 
+    redirect_options = { alert: "Failed to update: #{@errors.full_messages.join(' ')}" } if @errors.any?
+
     respond_to do |format|
-      if @errors && @errors.any?
-        format.html { redirect_to request.referrer, alert: "Failed to mark with errors: #{@errors.full_messages.join(' ')}" }
-      else
-        format.html { redirect_to request.referrer }
-      end
+      format.html { redirect_to request.referrer, redirect_options || {} }
       format.js
     end
   end
@@ -110,7 +125,7 @@ class CocktailsController < ApplicationController
   end
 
   def strong_params
-    params.require(:cocktail).permit(:name, :description, :photo, :instructions)
+    params.require(:cocktail).permit(:name, :description, :photo, :instructions, :published)
   end
 
 end

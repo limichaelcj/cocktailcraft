@@ -1,0 +1,13 @@
+<% if @cocktail.errors.any? %>
+
+  <% error_messages = "<ul class='list'><li>#{@cocktail.errors.full_messages.join('</li><li>')}</li></ul>" %>
+  $('#notifications-box').append("<%= render partial: 'shared/alert', locals: { title: 'Alert', message: error_messages } %>")
+
+  jshelper.activateNotifications();
+
+<% else %>
+
+  $('#publish-link i').toggleClass('green grey')
+  $('#publish-link span').html("<%= @cocktail.published ? 'Published' : 'Publish' %>")
+
+<% end %>

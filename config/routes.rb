@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       post 'remix'
       get 'mark'
+      patch 'publish'
     end
     resources :doses, only: [:create, :destroy]
     resources :reviews, except: [:new, :show]

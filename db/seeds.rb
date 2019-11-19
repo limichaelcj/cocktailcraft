@@ -60,7 +60,8 @@ puts "Seeding cocktails..."
     name: Faker::Coffee.blend_name,
     description: Faker::Lovecraft.sentence,
     instructions: Array.new(rand(3...6)) { Faker::Lorem.paragraphs.join(' ') }.join(' '),
-    user: i > 10 ? nil : User.find(rand(1...all_users.count))
+    user: i > 10 ? nil : User.find(rand(1...all_users.count)),
+    published: true
   )
 
   (3...rand(4...8)).each do |n|

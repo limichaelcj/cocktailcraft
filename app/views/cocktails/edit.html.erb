@@ -34,9 +34,17 @@
   <!-- edit content -->
   <div class="ui raised segment">
 
-    <!-- actions -->
+    <!-- actions container -->
     <div class="stamp--top--right margin-right cocktail-lab-actions">
+      <!-- hidden form for cocktail/publish -->
+      <%= form_with url: publish_cocktail_path(@cocktail), method: :patch, remote: true, id: 'publish-form', class: 'hide' do %><% end %>
+      <!-- actions -->
       <div class="ui compact labeled icon menu">
+        <%= link_to '#', id: 'publish-link', class: 'item' do %>
+          <% published = @cocktail.published %>
+          <i class="<%= published ? 'green book' : 'grey book' %> icon"></i>
+          <span>Publish<%= published ? 'ed' : '' %></span>
+        <% end %>
         <%= link_to cocktail_path(@cocktail), class: 'item' do %>
           <i class="teal icon">
             <i class="icons">
