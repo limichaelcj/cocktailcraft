@@ -2,7 +2,6 @@
 #navbar.ui.menu {
   margin-bottom: 0;
 }
-
 // remove white-space wrap on ui card meta elements
 .ui .card .meta span {
   white-space: nowrap;
@@ -23,9 +22,15 @@
   }
 }
 
-// prevent semantic ui container gutter margins on mobile devices
+// mobile devices
 @media only screen and (max-width: $breakpoint-tablet) {
+  // prevent semantic ui container gutter margins
   *.ui.container {
     margin: 0 !important;
+  }
+  // single column cards on mobile only
+  .cocktail-cards .card {
+    max-width: 420px !important;
+    margin:  1rem auto !important;
   }
 }
