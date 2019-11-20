@@ -26,4 +26,7 @@ class ApplicationController < ActionController::Base
     redirect_back fallback_location: root_path, alert: "You are not authorized to perform this action."
   end
 
+  def items_pp ; 8 ; end
+  def cards_pp ; 12 ; end
+
 end

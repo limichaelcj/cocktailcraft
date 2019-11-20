@@ -71,6 +71,7 @@ gem 'simple_form'
 gem 'faker'
 gem 'pundit'
 gem 'pg_search'
+gem 'will_paginate'
 
 # remote image hosting via cloudinary and dependencies
 gem 'dotenv-rails', groups: [:development, :test]

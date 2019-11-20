@@ -7,14 +7,15 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = policy_scope(Cocktail)
-    @classic, @custom = @cocktails.partition { |c| c.user == nil }
+    @classic = @cocktails.where(user: nil)
+    @custom = @cocktails.where('user_id IS NOT NULL').paginate(page: params[:custom_page] || 1, per_page: cards_pp)
     if current_user
-      @user_cocktails = current_user.cocktails if current_user.cocktails.any?
-      @marked_cocktails = current_user.marked if current_user.marked.any?
+      @user_cocktails = current_user.cocktails[0,4] if current_user.cocktails.any?
+      @marked_cocktails = current_user.marked[0,4] if current_user.marked.any?
     end
     if params[:search]
       @search_query = params[:search].downcase
-      @search_results = Cocktail.search_keyword(@search_query)
+      @search_results = Cocktail.search_keyword(@search_query).paginate(page: params[:search_page] || 1, per_page: items_pp)
     end
   end
 

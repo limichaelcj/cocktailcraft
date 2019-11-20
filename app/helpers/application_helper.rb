@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include RemoteLinkPagination
 
   protected
 

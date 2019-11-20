@@ -57,6 +57,7 @@
           </div>
         <% end %>
       </div>
+      <%= render partial: 'shared/pagination_menu', locals: { items: @search_results, param_name: :search_page } %>
     <% end %>
 
 
@@ -106,6 +107,7 @@
     <div class="ui basic orange segment">
       <%= render partial: 'shared/section_header', locals: { text: 'Community Creations', as: 'h2', attached: true } %>
       <%= render partial: 'shared/cocktail_cards', locals: { cocktails: @custom } %>
+      <%= render partial: 'shared/pagination_menu', locals: { items: @custom, param_name: :custom_page } %>
     </div>
 
 </div>
