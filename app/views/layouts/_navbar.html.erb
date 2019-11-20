@@ -7,7 +7,7 @@
       <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item" %>
       <%= link_to "Ingredients", ingredients_path, class: "#{'active ' if controller_name == 'ingredients'}item" %>
       <div class="item mobile hidden">
-        <%= render partial: 'shared/search_bar', locals: { action: search_path, transparent: true } %>
+        <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, transparent: true } %>
       </div>
     </div>
     <div id="navbar-auth-actions" class="right menu">

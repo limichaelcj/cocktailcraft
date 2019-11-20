@@ -1,0 +1,10 @@
+
+<% if attached ||= false %>
+  <div class="ui top attached <%= color ||= '' %> label">
+    <%= text %>
+  </div>
+<% else %>
+  <<%= as ||= 'h2' %> class="ui center aligned large <%= color ||=  '' %> <%= local_assigns[:dividing] ? 'dividing' : '' %> sub header">
+  <%= text %>
+  </<%= as ||= 'h2' %>>
+<% end %>

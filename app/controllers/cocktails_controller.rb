@@ -12,6 +12,10 @@ class CocktailsController < ApplicationController
       @user_cocktails = current_user.cocktails if current_user.cocktails.any?
       @marked_cocktails = current_user.marked if current_user.marked.any?
     end
+    if params[:search]
+      @search_query = params[:search].downcase
+      @search_results = Cocktail.search_keyword(@search_query)
+    end
   end
 
   def show
@@ -110,7 +114,7 @@ class CocktailsController < ApplicationController
       end
     end
 
-    redirect_options = { alert: "Failed to update: #{@errors.full_messages.join(' ')}" } if @errors.any?
+    redirect_options = { alert: "Failed to update: #{@errors.full_messages.join(' ')}" } if @errors && @errors.any?
 
     respond_to do |format|
       format.html { redirect_to request.referrer, redirect_options || {} }

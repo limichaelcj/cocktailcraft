@@ -1,4 +1,4 @@
-<div class="ui relaxed middle aligned unstackable items cocktail-list padding-x">
+<div class="ui relaxed middle aligned unstackable selection items list cocktail-list">
   <% cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail), class: 'item' do %>
       <%= render partial: 'shared/cocktail_avatar', locals: { cocktail: cocktail } %>

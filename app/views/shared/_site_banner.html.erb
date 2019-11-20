@@ -1,0 +1,11 @@
+<div class="ui fluid site-banner--<%= local_assigns[:home] ? 'home' : 'page' %> cover-image">
+  <!-- Banner image contents -->
+  <div class="flex-<%= local_assigns[:vertical] ? 'col' : 'row' %>-center-middle fill-parent">
+    <% if local_assigns[:logo] %>
+      <div class="img-sq-<%= size ||= 'xxs' %> img-filter--invert site-banner-logo">
+        <img src="<%= image_path('favicon/android-chrome-512x512.png') %>" alt="Creative Cocktails">
+      </div>
+    <% end %>
+    <h1 class="font--display--white site-banner-header"><%= header ||= 'Creative Cocktails' %></h1>
+  </div>
+</div>

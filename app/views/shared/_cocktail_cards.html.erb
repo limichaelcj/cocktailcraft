@@ -1,39 +1,35 @@
-<div class="ui padded basic segment">
+<div class="ui four doubling stackable cards">
 
-  <div class="ui four doubling stackable cards">
-
-    <% cocktails.each do |cocktail| %>
-      <div class="card">
-        <a class="image hover--zoom" href="<%= cocktail_path(cocktail) %>">
-          <img src="<%= cocktail.image_path %>" alt="<%= cocktail.name %>">
+  <% cocktails.each do |cocktail| %>
+    <div class="card">
+      <a class="image hover--zoom" href="<%= cocktail_path(cocktail) %>">
+        <img src="<%= cocktail.image_path %>" alt="<%= cocktail.name %>">
+      </a>
+      <div class="content">
+        <a href="<%= cocktail_path(cocktail) %>"class="header">
+          <%= cocktail.name %>
         </a>
-        <div class="content">
-          <a href="<%= cocktail_path(cocktail) %>"class="header">
-            <%= cocktail.name %>
-          </a>
-          <div class="meta">
-            <% if cocktail.reviews.any? %>
-              <span>
-                <%= cocktail.rating %>
-                <i class="star icon"></i>
-              </span>
-            <% end %>
-            <a href="<%= user_path(cocktail.user) %>">
-              @<%= cocktail.user.name %>
-            </a>
+        <div class="meta">
+          <% if cocktail.reviews.any? %>
             <span>
-              <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
+              <%= cocktail.rating %>
+              <i class="star icon"></i>
             </span>
-          </div>
-          <div class="margin-top">
-            <p class="color-reset">
-              <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
-            </p>
-          </div>
+          <% end %>
+          <a href="<%= cocktail.user ? user_path(cocktail.user) : classics_path %>">
+            @<%= cocktail.creator %>
+          </a>
+          <span>
+            <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
+          </span>
+        </div>
+        <div class="margin-top">
+          <p class="color-reset">
+            <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
+          </p>
         </div>
       </div>
-    <% end %>
-
-  </div>
+    </div>
+  <% end %>
 
 </div>
