@@ -1,22 +1,22 @@
-<div class="ui four doubling stackable cards">
+<div class="ui four doubling stackable cards padding-x">
 
   <% cocktails.each do |cocktail| %>
-    <div class="card">
-      <a class="image hover--zoom" href="<%= cocktail_path(cocktail) %>">
-        <img src="<%= cocktail.image_path %>" alt="<%= cocktail.name %>">
+  <div class="card">
+    <a class="image hover--zoom" href="<%= cocktail_path(cocktail) %>">
+      <img src="<%= cocktail.image_path %>" alt="<%= cocktail.name %>">
+    </a>
+    <div class="content">
+      <a href="<%= cocktail_path(cocktail) %>"class="header">
+        <%= cocktail.name %>
       </a>
-      <div class="content">
-        <a href="<%= cocktail_path(cocktail) %>"class="header">
-          <%= cocktail.name %>
-        </a>
-        <%= render partial: 'shared/cocktail_meta', locals: { cocktail: cocktail, anchors: true, show_reviews: true } %>
-        <div class="margin-top">
-          <p class="color-reset">
-            <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
-          </p>
-        </div>
+      <%= render partial: 'shared/cocktail_meta', locals: { cocktail: cocktail, anchors: true, show_reviews: true } %>
+      <div class="margin-top">
+        <p class="color-reset">
+          <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
+        </p>
       </div>
     </div>
+  </div>
   <% end %>
 
 </div>

@@ -6,3 +6,12 @@
     padding-right: 12%;
   }
 }
+
+.device-center-reverse {
+  padding-left: 10%;
+  padding-right: 10%;
+  @media only screen and (min-width: $breakpoint-monitor) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
