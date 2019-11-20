@@ -1,15 +1,15 @@
 <div id="navbar" class="ui menu">
   <div class="ui container">
-    <div id="navbar-nav-actions" class="left menu">
-      <%= link_to root_path, class: 'item' do %>
+      <div id="navbar-nav-actions" class="left menu">
+        <%= link_to root_path, class: 'item' do %>
         <img src="<%= image_path('favicon/favicon.ico') %>" alt="Creative Cocktails">
-      <% end %>
-      <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item" %>
-      <%= link_to "Ingredients", ingredients_path, class: "#{'active ' if controller_name == 'ingredients'}item" %>
-      <div class="item mobile hidden">
-        <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, transparent: true } %>
+        <% end %>
+        <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item mobile hidden" %>
+        <%= link_to "Ingredients", ingredients_path, class: "#{'active ' if controller_name == 'ingredients'}item mobile hidden" %>
+        <div class="item mobile hidden">
+          <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, transparent: true } %>
+        </div>
       </div>
-    </div>
     <div id="navbar-auth-actions" class="right menu">
       <% if user_signed_in? %>
         <%= link_to user_path(current_user), class: "#{'active ' if controller_name == 'users' && @user && @user == current_user}item" do %>

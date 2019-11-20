@@ -1,0 +1,36 @@
+[class^="font--"],
+[class*=" font--"] {
+  &[class*="--display"] {
+    font-family: $font-display;
+  }
+  &[class*="--white"] {
+    color: $white;
+  }
+  &[class*="--black"] {
+    color: $black;
+  }
+}
+
+*.text-briefline
+*[class^="text-briefline--"],
+*[class*=" text-briefline--"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70vw;
+
+  @media only screen and (min-width: $breakpoint-tablet) {
+    &[class*="--sm"] {
+      max-width: 160px;
+    }
+
+    &[class*="--md"] {
+      max-width: 320px;
+    }
+
+    &[class*="--lg"] {
+      max-width: 600px;
+    }
+  }
+
+}

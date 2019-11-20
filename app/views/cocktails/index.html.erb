@@ -2,29 +2,22 @@
 <%= render partial: 'shared/site_banner', locals: { header: 'Cocktails' } %>
 <div class="ui container">
 
-    <!-- classic -->
-    <div class="margin-y">
-      <div class="ui basic secondary segment">
-        <%= render partial: 'shared/section_header', locals: { text: 'Classic Collection', as: 'h2' } %>
-        <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @classic } %>
-      </div>
-    </div>
-
     <!-- header -->
-    <div class="flex-row-divide-middle margin-top">
+    <div class="flex-colrev-divide-middle margin-top margin-x flex-response--tablet_row">
 
       <div class="flex_grow">
         <%= render partial: 'shared/search_bar', locals: { action: cocktails_path, classes: 'fill-width', placeholder: 'Search cocktails...' } %>
       </div>
 
       <!-- actions right floated -->
-      <div class="ui right floated horizontal labeled icon menu">
-        <%= link_to '#', class: 'item' do %>
+      <div class="cocktail-index-actions">
+        <div class="ui horizontal labeled icon menu">
+          <%= link_to '#', class: 'item' do %>
           <i class="grey filter icon"></i>
           Filter
-        <% end %>
+          <% end %>
 
-        <%= link_to remix_cocktails_path, class: 'item' do %>
+          <%= link_to remix_cocktails_path, class: 'item' do %>
           <i class="purple icon">
             <i class="icons">
               <i class="flask icon"></i>
@@ -32,9 +25,9 @@
             </i>
           </i>
           Remix
-        <% end %>
+          <% end %>
 
-        <%= link_to new_cocktail_path, class: 'item' do %>
+          <%= link_to new_cocktail_path, class: 'item' do %>
           <i class="yellow icon">
             <i class="icons">
               <i class="flask icon"></i>
@@ -42,7 +35,8 @@
             </i>
           </i>
           Create
-        <% end %>
+          <% end %>
+        </div> <!-- /menu -->
       </div> <!-- /actions -->
     </div> <!-- /header -->
 
@@ -51,39 +45,66 @@
       <h2 class="ui center aligned horizontal divider header">
         <div class="sub header">Search results for "<strong><em><%= @search_query %></em></strong>"</div>
       </h2>
-      <% if @search_results.any? %>
-        <%= render partial: 'shared/cocktail_cards', locals: { cocktails: @search_results } %>
-      <% else %>
-        <div class="ui basic segment">
+      <div class="margin-x margin-bot padding-bot">
+        <% if @search_results.any? %>
+          <%= render partial: 'shared/cocktail_list', locals: { cocktails: @search_results } %>
+        <% else %>
           <div class="ui warning message">
             <span class="flex-center-middle inline margin-right">
               <i class="circular exclamation icon"></i>
             </span>
             <span>No results found for "<em><%= @search_query %></em>"</span>
           </div>
+        <% end %>
+      </div>
+    <% end %>
+
+
+    <!-- user associated cocktails -->
+    <% if @marked_cocktails && @user_cocktails %>
+    <div class="margin-y">
+      <div class="ui stackable grid">
+        <div class="ten wide column margin-none">
+    <% end %>
+
+      <!-- marked cocktails -->
+      <% if @marked_cocktails %>
+        <div class="ui basic yellow segment">
+          <%= render partial: 'shared/section_header', locals: { text: 'Saved Cocktails', as: 'h2', attached: true } %>
         </div>
+        <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
       <% end %>
+
+      <% if @marked_cocktails && @user_cocktails %>
+        </div>
+        <div class="six wide column margin-none">
+      <% end %>
+
+      <!-- user's cocktail recipes -->
+      <% if @user_cocktails %>
+        <div class="ui basic purple segment">
+          <%= render partial: 'shared/section_header', locals: { text: 'Your Recipes', as: 'h2', attached: true } %>
+        </div>
+        <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
+      <% end %>
+
+    <% if @marked_cocktails && @user_cocktails %>
+        </div>
+      </div>
+    </div>
     <% end %>
 
-    <!-- user's cocktail recipes -->
-    <% if @user_cocktails %>
-      <div class="ui basic purple segment">
-        <%= render partial: 'shared/section_header', locals: { text: 'Your Recipes', as: 'h2', attached: true } %>
-        <%= render partial: 'shared/cocktail_list', locals: { cocktails: @user_cocktails } %>
+    <!-- classic -->
+    <div class="margin-y">
+      <div class="ui basic secondary segment">
+        <%= render partial: 'shared/section_header', locals: { text: 'Classic Collection', as: 'h2', dividing: true } %>
+        <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @classic } %>
       </div>
-    <% end %>
-
-    <!-- marked cocktails -->
-    <% if @marked_cocktails %>
-      <div class="ui basic yellow segment">
-        <%= render partial: 'shared/section_header', locals: { text: 'Saved Cocktails', as: 'h2', attached: true } %>
-        <%= render partial: 'shared/cocktail_list', locals: { cocktails: @marked_cocktails } %>
-      </div>
-    <% end %>
+    </div>
 
     <!-- custom -->
     <div class="ui basic orange segment">
-        <%= render partial: 'shared/section_header', locals: { text: 'Community Creations', as: 'h2', attached: true } %>
+      <%= render partial: 'shared/section_header', locals: { text: 'Community Creations', as: 'h2', attached: true } %>
       <%= render partial: 'shared/cocktail_cards', locals: { cocktails: @custom } %>
     </div>
 

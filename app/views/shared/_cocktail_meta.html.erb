@@ -1,0 +1,18 @@
+<% anchor_tag = local_assigns[:anchors] ? 'a' : 'span' %>
+
+<div class="meta">
+  <% if cocktail.reviews.any? %>
+    <span>
+      <%= cocktail.rating %>
+      <i class="star icon"></i>
+    </span>
+  <% end %>
+  <<%= anchor_tag %> href="<%= cocktail.user ? user_path(cocktail.user) : classics_path %>">
+    @<%= cocktail.creator %>
+  </<%= anchor_tag %>>
+  <% if local_assigns[:show_reviews] %>
+    <span>
+      <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
+    </span>
+  <% end %>
+</div>

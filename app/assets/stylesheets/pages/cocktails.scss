@@ -9,6 +9,20 @@ $avatar-size: 160px;
 $avatar-size-tablet: $avatar-size * 1.2;
 $avatar-size-monitor: $avatar-size * 1.4;
 
+.cocktail-banner-img {
+  img {
+    @media only screen and (min-width: $breakpoint-tablet){
+      filter: blur(12px);
+    }
+  }
+}
+
+.cocktail-index-actions {
+  margin-bottom: 1rem;
+  @media only screen and (min-width: $breakpoint-tablet) {
+    margin: none;
+  }
+}
 
 .cocktail-avatar {
   height: $avatar-size;
@@ -69,14 +83,6 @@ $avatar-size-monitor: $avatar-size * 1.4;
     }
     .description {
       max-height: $avatar-size-monitor * 0.4;
-    }
-  }
-}
-
-.cocktail-banner-img {
-  img {
-    @media only screen and (min-width: $breakpoint-tablet){
-      filter: blur(12px);
     }
   }
 }

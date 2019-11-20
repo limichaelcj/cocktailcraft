@@ -10,9 +10,9 @@
   background-image: url(homebanner.jpg);
   box-shadow: inset 0 0 100px black;
   &[class*="--home"] {
-    height: 500px;
+    height: 400px;
     @media only screen and (min-width: $breakpoint-tablet){
-      height: 600px;
+      height: 560px;
     }
     @media only screen and (min-width: $breakpoint-monitor){
       height: 700px;
@@ -34,6 +34,7 @@
 }
 
 .site-banner-header {
+  text-align: center;
   font-size: 48px;
   letter-spacing: 2px;
 }
