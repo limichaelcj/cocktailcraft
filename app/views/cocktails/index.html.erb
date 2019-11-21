@@ -47,7 +47,8 @@
       </h2>
       <div class="margin-x margin-bot padding-bot">
         <% if @search_results.any? %>
-          <%= render partial: 'shared/cocktail_list', locals: { cocktails: @search_results } %>
+          <%= render partial: 'shared/cocktail_list', locals: { id: @search_id, cocktails: @search_results } %>
+          <%= render partial: 'shared/pagination_menu', locals: { id: @search_id + "-pagination", items: @search_results, param_name: :search_page } %>
         <% else %>
           <div class="ui warning message">
             <span class="flex-center-middle inline margin-right">
@@ -57,7 +58,6 @@
           </div>
         <% end %>
       </div>
-      <%= render partial: 'shared/pagination_menu', locals: { items: @search_results, param_name: :search_page } %>
     <% end %>
 
 
@@ -106,8 +106,8 @@
     <!-- custom -->
     <div class="ui basic orange segment">
       <%= render partial: 'shared/section_header', locals: { text: 'Community Creations', as: 'h2', attached: true } %>
-      <%= render partial: 'shared/cocktail_cards', locals: { cocktails: @custom } %>
-      <%= render partial: 'shared/pagination_menu', locals: { items: @custom, param_name: :custom_page } %>
+      <%= render partial: 'shared/cocktail_cards', locals: { id: @custom_id, cocktails: @custom } %>
+      <%= render partial: 'shared/pagination_menu', locals: { id: @custom_id + "-pagination", items: @custom, param_name: :custom_page } %>
     </div>
 
 </div>

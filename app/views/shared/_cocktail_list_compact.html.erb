@@ -1,4 +1,4 @@
-<div class="ui relaxed middle aligned unstackable selection list">
+<div <%= "id=#{id}" if local_assigns[:id] %> class="ui relaxed middle aligned unstackable selection list">
   <% cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail), class: 'item' do %>
       <img src="<%= cocktail.image_path %>" class="ui avatar image">

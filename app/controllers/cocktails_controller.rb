@@ -6,16 +6,24 @@ class CocktailsController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def index
+    @search_page, @custom_page = params[:search_page], params[:custom_page]
+    @search_id, @custom_id = 'cocktail-search', 'cocktail-custom'
+
     @cocktails = policy_scope(Cocktail)
     @classic = @cocktails.where(user: nil)
-    @custom = @cocktails.where('user_id IS NOT NULL').paginate(page: params[:custom_page] || 1, per_page: cards_pp)
+    @custom = @cocktails.where('user_id IS NOT NULL').paginate(page: @custom_page, per_page: cards_pp)
     if current_user
       @user_cocktails = current_user.cocktails[0,4] if current_user.cocktails.any?
       @marked_cocktails = current_user.marked[0,4] if current_user.marked.any?
     end
     if params[:search]
       @search_query = params[:search].downcase
-      @search_results = Cocktail.search_keyword(@search_query).paginate(page: params[:search_page] || 1, per_page: items_pp)
+      @search_results = Cocktail.search_keyword(@search_query).paginate(page: @search_page, per_page: items_pp)
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

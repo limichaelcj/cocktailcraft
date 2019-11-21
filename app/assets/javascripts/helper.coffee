@@ -28,3 +28,7 @@
       fields[id] = 'empty'
     # execut semantic ui form validation fn
     $('.ui.form').form({ on: 'submit', fields })
+
+  clickLoaderFor: (selector, triggerSelector) ->
+    $(triggerSelector).click ->
+      $(selector).append '<div class="ui active inverted dimmer"><div class="ui loader"></div></div>'

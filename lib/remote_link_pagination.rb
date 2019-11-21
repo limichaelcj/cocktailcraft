@@ -7,11 +7,6 @@ module RemoteLinkPagination
       super
     end
 
-    def html_container(html)
-      container_attributes[:class] = "ui pagination menu"
-      tag(:div, html, container_attributes)
-    end
-
     def page_number(page)
       aria_label = @template.will_paginate_translate(:page_aria_label, :page => page.to_i) { "Page #{page}" }
       if page == current_page
@@ -28,10 +23,6 @@ module RemoteLinkPagination
         tag(:span, text, :class => classname + ' disabled item')
       end
     end
-
-    private
-
-
 
   end
 end

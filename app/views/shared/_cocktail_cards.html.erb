@@ -1,4 +1,4 @@
-<div class="ui doubling stackable center aligned four cards padding-x cocktail-cards">
+<div <%= "id=#{id}" if local_assigns[:id] %> class="ui doubling stackable center aligned four cards padding-x cocktail-cards">
 
   <% cocktails.each do |cocktail| %>
   <div class="card">

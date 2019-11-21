@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
   def items_pp ; 8 ; end
   def cards_pp ; 12 ; end
 
+  def determine_page(param, max)
+    param && param.between?(1, max) ? param : 1
+  end
+
 end

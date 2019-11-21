@@ -1,0 +1,10 @@
+// pagination ajax response
+<% if @search_page %>
+  $('#<%= @search_id %>').replaceWith("<%= j render(partial: 'shared/cocktail_list', locals: { id: @search_id, cocktails: @search_results }) %>")
+  $('#<%= @search_id %>-pagination').replaceWith("<%= j render(partial: 'shared/pagination_menu', locals: { id: @search_id + '-pagination', items: @search_results, param_name: :search_page }) %>")
+<% end %>
+
+<% if @custom_page %>
+  $('#<%= @custom_id %>').replaceWith("<%= j render(partial: 'shared/cocktail_cards', locals: { id: @custom_id, cocktails: @custom }) %>")
+  $('#<%= @custom_id %>-pagination').replaceWith("<%= j render(partial: 'shared/pagination_menu', locals: { id: @custom_id + '-pagination', items: @custom, param_name: :custom_page }) %>")
+<% end %>

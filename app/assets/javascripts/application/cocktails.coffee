@@ -6,6 +6,10 @@
 $(document).on 'turbolinks:load', ->
   return unless page.controller() == 'cocktails'
 
+  # pagination on click loader init
+  jshelper.clickLoaderFor('#cocktail-search', '#cocktail-search-pagination a.item')
+  jshelper.clickLoaderFor('#cocktail-custom', '#cocktail-custom-pagination a.item')
+
   # on cocktail/remix -> submit hidden post form on anchor click
   if page.action() == 'remix'
     $('.remix-link').click (e) ->
