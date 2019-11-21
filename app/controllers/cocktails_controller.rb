@@ -20,6 +20,11 @@ class CocktailsController < ApplicationController
 
     # on ajax requests only
     if request.xhr?
+      # determine change in search params
+      prev_uri = URI.parse(request.referrer)
+      @prev_params = CGI.parse(prev_uri.query)
+      @change_search = @search_page != @prev_params['search_page'][0]
+      @change_custom = @custom_page != @prev_params['custom_page'][0]
       # update window url state
       @url = request.original_fullpath.html_safe
 

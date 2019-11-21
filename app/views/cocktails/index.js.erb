@@ -3,13 +3,14 @@
 // update url
 window.history.pushState({ path: '<%= @url %>'}, '', '<%= @url %>')
 
-<% if @search_page %>
+<% if @change_search %>
   $('#<%= @search_id %>').replaceWith("<%= j render(partial: 'shared/cocktail_list', locals: { id: @search_id, cocktails: @search_results }) %>")
   $('#<%= @search_id %>-pagination').replaceWith("<%= j render(partial: 'shared/pagination_menu', locals: { id: @search_id + '-pagination', items: @search_results, param_name: :search_page }) %>")
-  // update url
+  window.scrollTo(0, $('#<%= @search_id %>-top').offset().top - 10)
 <% end %>
 
-<% if @custom_page %>
+<% if @change_custom %>
   $('#<%= @custom_id %>').replaceWith("<%= j render(partial: 'shared/cocktail_cards', locals: { id: @custom_id, cocktails: @custom }) %>")
   $('#<%= @custom_id %>-pagination').replaceWith("<%= j render(partial: 'shared/pagination_menu', locals: { id: @custom_id + '-pagination', items: @custom, param_name: :custom_page }) %>")
+  window.scrollTo(0, $('#<%= @custom_id %>-top').offset().top - 10)
 <% end %>

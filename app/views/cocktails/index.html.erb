@@ -42,7 +42,7 @@
 
     <!-- search results -->
     <% if @search_results %>
-      <h2 class="ui center aligned horizontal divider header">
+      <h2 id="<%= @search_id %>-top" class="ui center aligned horizontal divider header">
         <div class="sub header">Search results for "<strong><em><%= @search_query %></em></strong>"</div>
       </h2>
       <div class="margin-x margin-bot padding-bot">
@@ -104,7 +104,7 @@
     </div>
 
     <!-- custom -->
-    <div class="ui basic orange segment">
+    <div id="<%= @custom_id %>-top" class="ui basic orange segment">
       <%= render partial: 'shared/section_header', locals: { text: 'Community Creations', as: 'h2', attached: true } %>
       <%= render partial: 'shared/cocktail_cards', locals: { id: @custom_id, cocktails: @custom } %>
       <%= render partial: 'shared/pagination_menu', locals: { id: @custom_id + "-pagination", items: @custom, param_name: :custom_page } %>
