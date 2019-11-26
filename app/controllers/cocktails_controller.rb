@@ -58,7 +58,7 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.new(strong_params)
     @cocktail.user = current_user
     if @cocktail.save
-      redirect_to cocktail_path(@cocktail)
+      redirect_to edit_cocktail_path(@cocktail), { notice: "Created #{@cocktail.name}! Here in the cocktail lab, you can add ingredient doses and write fancy mixing instructions. When you're finished, you can publish your recipe to show it off to the community."}
     else
       render :new
     end
