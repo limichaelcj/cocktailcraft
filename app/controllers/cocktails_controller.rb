@@ -6,7 +6,7 @@ class CocktailsController < ApplicationController
   after_action :verify_policy_scoped, only: :index
 
   def index
-    @search_page, @custom_page = params[:search_page], params[:custom_page]
+    @search_page, @custom_page = params[:search_page] || 1, params[:custom_page] || 1
     @search_id, @custom_id = 'cocktail-search', 'cocktail-custom'
 
     # on html or ajax requests
@@ -22,9 +22,9 @@ class CocktailsController < ApplicationController
     if request.xhr?
       # determine change in search params
       prev_uri = URI.parse(request.referrer)
-      @prev_params = CGI.parse(prev_uri.query)
-      @change_search = @search_page != @prev_params['search_page'][0]
-      @change_custom = @custom_page != @prev_params['custom_page'][0]
+      @prev_params = prev_uri.query ? CGI.parse(prev_uri.query) : nil
+      @change_search = @search_query && (@search_page != (@prev_params && @prev_params.key?('search_page') ? @prev_params['search_page'][0] : 1))
+      @change_custom = @custom_page != (@prev_params && @prev_params.key?('custom_page') ? @prev_params['custom_page'][0] : 1)
       # update window url state
       @url = request.original_fullpath.html_safe
 

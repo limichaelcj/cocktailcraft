@@ -15,4 +15,7 @@
       <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
     </span>
   <% end %>
+  <% if current_user == cocktail.user && !cocktail.published %>
+    <span>(Private)</span>
+  <% end %>
 </div>

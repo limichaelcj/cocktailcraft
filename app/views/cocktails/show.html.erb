@@ -17,7 +17,7 @@
       <h1 class="ui huge inverted header margin-left">
         <%= @cocktail.name || 'Unnamed Cocktail' %>
         <div class="sub header">
-          <%= @cocktail.creator %>
+          <%= render partial: 'shared/cocktail_meta', locals: { cocktail: @cocktail } %>
         </div>
       </h1>
     </div>
@@ -95,7 +95,7 @@
       <div class="eleven wide column">
         <div class="ui basic segment">
           <h3 class="sr-only">Instructions</h3>
-          <%= @cocktail.instructions ? simple_format(@cocktail.instructions) : "<p>No instructions yet.</p>" %>
+          <%= @cocktail.instructions ? simple_format(@cocktail.instructions) : "No instructions yet." %>
         </div>
       </div>
 
