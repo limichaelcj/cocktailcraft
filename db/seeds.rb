@@ -15,9 +15,11 @@ puts "Seeding database..."
 
 puts "Seeding measurements..."
 [
+  { name: 'part', plural: 's' },
   { name: 'dash', plural: 'es' },
   { name: 'pinch', plural: 'es' },
   { name: 'splash', plural: 'es' },
+  { name: 'cube', plural: 's' },
   { name: 'ounce', plural: 's', abbrev: 'oz' },
   { name: 'gram', plural: 's', abbrev: 'g' },
   { name: 'milliliter', plural: 's', abbrev: 'mL'},
@@ -37,7 +39,7 @@ print "- Requesting ingredients from thecocktaildb.com/api..."
 ingredients_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 ingredients_data = JSON.parse(open(ingredients_url).read)
 ingredients_data['drinks'].each do |item|
-  Ingredient.create(name: item['strIngredient1'].downcase)
+  Ingredient.create!(name: item['strIngredient1'].downcase)
 end
 puts "OK"
 
@@ -60,6 +62,53 @@ unames.each do |name|
 end
 
 puts "Seeding cocktails..."
+
+# classics
+[
+  {
+    name: 'Old Fashioned',
+    desc: "The Old Fashioned is timeless. This simple classic made with rye or bourbon, a sugar cube, Angostura bitters, a thick cube of ice, and an orange twist delivers every time. That’s it — the most popular cocktail in the world.",
+    inst: "1) Fill a mixing glass with ice, and add all of the ingredients.\nStir until chilled and diluted, and strain into a glass with fresh ice.\nGarnish with an expressed orange peel and two cherries.",
+    doses: [
+      ['whiskey', '2', 'ounce'],
+      ['simple syrup', '1/4', 'ounce'],
+      ['angostura bitters', '2', 'dash'],
+      ['orange peel'],
+      ['cherry', '2']
+    ]
+  },
+  {
+    name: 'Negroni',
+    desc: "Easy to make and refreshingly bitter, the Negroni is said to have been invented in Florence by a dauntless Italian count who demanded that the bartender replace the club soda in his Americano with gin. (via Liquor.com)",
+    inst: "Add all the ingredients into a mixing glass with ice, and stir until well-chilled.\nStrain into a rocks glass filled with large ice cubes.\nGarnish with an orange peel.",
+    doses: [
+      ['gin', '1', 'ounce'],
+      ['campari', '1', 'ounce'],
+      ['sweet vermouth', '1', 'ounce'],
+      ['orange peel']
+    ]
+  }
+].each do |c|
+  cocktail = Cocktail.create!(
+    name: c[:name],
+    description: c[:desc],
+    instructions: c[:inst],
+    published: true
+  )
+
+  c[:doses].each do |d|
+    ingr = Ingredient.find_by(name: d[0])
+    unless ingr
+      ingr = Ingredient.create!(name: d[0])
+    end
+    Dose.create!(
+      cocktail: cocktail,
+      ingredient: ingr,
+      amount: d[1] || '',
+      measurement: d[2] ? Measurement.find_by(name: d[2]) : nil
+    )
+  end
+end
 
 # get cocktail names from seventhsanctum
 print "- Requesting names from seventhsanctum.com..."
@@ -100,7 +149,7 @@ cnames.each_with_index do |name, i|
     name: name,
     description: Faker::Food.description,
     instructions: Array.new(rand(3...6)) { Faker::Lorem.paragraphs.join(' ') }.join(' '),
-    user: i > 10 ? nil : User.find(rand(1...User.all.count)),
+    user: User.find(rand(1...User.all.count)),
     published: true
   )
 

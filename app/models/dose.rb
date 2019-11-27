@@ -3,7 +3,8 @@ class Dose < ApplicationRecord
   belongs_to :ingredient
   belongs_to :measurement, optional: true
 
-  validates :amount, :ingredient_id, presence: true
+  validates :ingredient_id, presence: true
+  validates :amount, presence: true, allow_blank: true
   validate :unique_cocktail_ingredient
 
   private
