@@ -63,12 +63,24 @@ end
 
 puts "Seeding cocktails..."
 
+# cloudinary save config
+def cl_photo(public_id, ext)
+  version = 1574817501
+  signature = Cloudinary::Utils.api_sign_request({
+    public_id: public_id,
+    version: version
+  }, Cloudinary.config.api_secret)
+  return "image/upload/v#{version}/#{public_id}.#{ext}##{signature}"
+end
+
 # classics
 [
   {
     name: 'Old Fashioned',
     desc: "The Old Fashioned is timeless. This simple classic made with rye or bourbon, a sugar cube, Angostura bitters, a thick cube of ice, and an orange twist delivers every time. That’s it — the most popular cocktail in the world.",
     inst: "1) Fill a mixing glass with ice, and add all of the ingredients.\nStir until chilled and diluted, and strain into a glass with fresh ice.\nGarnish with an expressed orange peel and two cherries.",
+    photo: 'old-fashioned',
+    ext: 'jpg',
     doses: [
       ['whiskey', '2', 'ounce'],
       ['simple syrup', '1/4', 'ounce'],
@@ -81,6 +93,8 @@ puts "Seeding cocktails..."
     name: 'Negroni',
     desc: "Easy to make and refreshingly bitter, the Negroni is said to have been invented in Florence by a dauntless Italian count who demanded that the bartender replace the club soda in his Americano with gin. (via Liquor.com)",
     inst: "Add all the ingredients into a mixing glass with ice, and stir until well-chilled.\nStrain into a rocks glass filled with large ice cubes.\nGarnish with an orange peel.",
+    photo: 'negroni',
+    ext: 'jpg',
     doses: [
       ['gin', '1', 'ounce'],
       ['campari', '1', 'ounce'],
@@ -93,6 +107,7 @@ puts "Seeding cocktails..."
     name: c[:name],
     description: c[:desc],
     instructions: c[:inst],
+    photo: cl_photo(c[:photo], c[:ext]),
     published: true
   )
 

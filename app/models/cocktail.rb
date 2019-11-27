@@ -34,7 +34,9 @@ class Cocktail < ApplicationRecord
   end
 
   def image_path
-    ApplicationController.helpers.cl_image_path(photo.url.nil? ? 'cocktail.jpg' : photo.url)
+    puts "\nDEBUG\n"
+    puts photo.url
+    photo.url ? ApplicationController.helpers.cl_image_path(photo.url) : ApplicationController.helpers.image_path('default_cocktail.png')
   end
 
   def rating
