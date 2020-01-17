@@ -19,12 +19,12 @@
     }
   }
   &[class*="--page"] {
-    height: 100px;
+    height: 140px;
     @media only screen and (min-width: $breakpoint-tablet){
-      height: 120px;
+      height: 160px;
     }
     @media only screen and (min-width: $breakpoint-monitor){
-      height: 140px;
+      height: 180px;
     }
   }
 }

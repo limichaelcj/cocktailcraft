@@ -3,7 +3,7 @@
 <div class="ui container">
 
     <!-- header -->
-    <div class="flex-colrev-divide-middle margin-top margin-x flex-response--tablet_row">
+    <div class="ui secondary segment force--up flex-colrev-divide-middle margin-top margin-x flex-response--tablet_row">
 
       <div class="fill-width flex_grow margin-x margin-bot">
         <%= render partial: 'shared/search_bar', locals: { action: cocktails_path, classes: 'fill-width', placeholder: 'Search cocktails...' } %>
@@ -12,10 +12,12 @@
       <!-- actions right floated -->
       <div class="cocktail-index-actions">
         <div class="ui horizontal labeled icon menu">
+          <!--
           <%= link_to '#', class: 'item' do %>
           <i class="grey filter icon"></i>
           Filter
           <% end %>
+          -->
 
           <%= link_to remix_cocktails_path, class: 'item' do %>
           <i class="purple icon">
