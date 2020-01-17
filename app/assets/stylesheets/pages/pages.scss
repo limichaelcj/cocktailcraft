@@ -50,3 +50,9 @@
 .home-user-action {
   height: 160px;
 }
+
+.homepage-container {
+  @media only screen and (min-width: $breakpoint-monitor) {
+    transform: translate(0, -6rem);
+  }
+}
