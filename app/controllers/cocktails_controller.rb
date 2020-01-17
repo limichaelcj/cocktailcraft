@@ -109,6 +109,8 @@ class CocktailsController < ApplicationController
       rescue ActiveRecord::RecordInvalid => invalid
         redirect_to :back, alert: "Failed to remix: #{invalid.record.errors.full_messages.join(' ')}"
       end
+    else
+      record_not_found
     end
   end
 

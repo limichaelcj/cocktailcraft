@@ -19,8 +19,6 @@ Rails.application.routes.draw do
     resources :reviews, except: [:new, :show]
   end
 
-  resources :ingredients, only: [:index]
-
   match '*path' => 'errors#route_404', via: :all
 
 end
