@@ -7,6 +7,20 @@ module ApplicationHelper
     "style=background-image:url(#{url});"
   end
 
+  def body_bg_img
+    case controller_name
+      when "cocktails"
+        case action_name
+          when "new"
+            asset_path("bar.jpeg")
+          else
+            ""
+        end
+      else
+        ""
+    end
+  end
+
   def add_css_class(cls)
     " class=\"#{cls}\""
   end

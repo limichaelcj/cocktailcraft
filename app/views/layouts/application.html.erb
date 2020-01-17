@@ -12,7 +12,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body <%= render_bg_img(body_bg_img) %>>
 
     <main>
       <%= render "layouts/navbar" %>
