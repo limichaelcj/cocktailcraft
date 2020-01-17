@@ -17,6 +17,11 @@
               <div class="header"><%= action[:name] %></div>
               <p><%= action[:text] %></p>
             </div>
+            <% if action[:wip] == true %>
+              <div class="floating ui yellow label no-wrap" style="transform:translate(-70%, 0)">
+                Coming soon!
+              </div>
+            <% end %>
           </div>
         </div>
         <% end %>

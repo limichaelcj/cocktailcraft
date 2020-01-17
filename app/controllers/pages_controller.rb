@@ -17,7 +17,8 @@ class PagesController < ApplicationController
       {
         name: 'What can I make?',
         icon: 'puzzle piece',
-        text: "Tell us what's in your fridge and we'll put together a list of cocktails for you."
+        text: "Tell us what's in your fridge and we'll put together a list of cocktails for you.",
+        wip: true,
       }
     ]
   end

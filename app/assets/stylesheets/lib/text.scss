@@ -11,6 +11,10 @@
   }
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 *.text-briefline
 *[class^="text-briefline--"],
 *[class*=" text-briefline--"] {
