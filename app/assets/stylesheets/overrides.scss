@@ -22,6 +22,11 @@
   }
 }
 
+.ui.avatar.image {
+  width: 60px;
+  height: 60px;
+}
+
 // mobile devices
 @media only screen and (max-width: $breakpoint-tablet) {
   // prevent semantic ui container gutter margins

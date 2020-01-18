@@ -54,46 +54,48 @@
 
 
     <!-- user associated cocktails -->
-    <div class="margin-y">
-      <div class="ui stackable grid">
-        <div class="ten wide column margin-none">
+    <% if user_signed_in? %>
+      <div class="margin-y">
+        <div class="ui stackable grid">
+          <div class="ten wide column margin-none">
 
-          <!-- marked cocktails -->
-          <div class="ui basic yellow segment">
-            <%= render partial: 'shared/section_header', locals: { text: 'Saved Cocktails', as: 'h2', attached: true } %>
+            <!-- marked cocktails -->
+            <div class="ui basic yellow segment">
+              <%= render partial: 'shared/section_header', locals: { text: 'Saved Cocktails', as: 'h2', attached: true } %>
+            </div>
+            <% if @marked_cocktails %>
+              <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
+              <div style="text-transform: uppercase; text-align: center">
+                <%= link_to 'View all', user_path(current_user), class: 'ui yellow button' %>
+              </div>
+            <% else %>
+              <div class='ui yellow message'>
+                No saved cocktails. <%= link_to 'Find a random one.', random_cocktails_path %>
+              </div>
+            <% end %>
+
           </div>
-          <% if @marked_cocktails %>
-            <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
-            <div style="text-transform: uppercase; text-align: center">
-              <%= link_to 'View all', user_path(current_user), class: 'ui yellow button' %>
-            </div>
-          <% else %>
-            <div class='ui yellow message'>
-              No saved cocktails. <%= link_to 'Find a random one.', random_cocktails_path %>
-            </div>
-          <% end %>
+          <div class="six wide column margin-none">
 
-        </div>
-        <div class="six wide column margin-none">
+            <!-- user's cocktail recipes -->
+            <div class="ui basic purple segment">
+              <%= render partial: 'shared/section_header', locals: { text: 'Your Recipes', as: 'h2', attached: true } %>
+            </div>
+            <% if @user_cocktails %>
+              <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
+              <div style="text-transform: uppercase; text-align: center">
+                <%= link_to 'View all', user_path(current_user), class: 'ui purple button' %>
+              </div>
+            <% else %>
+              <div class='ui purple message'>
+                You have no recipes. <%= link_to 'Create a cocktail.', new_cocktail_path %>
+              </div>
+            <% end %>
 
-          <!-- user's cocktail recipes -->
-          <div class="ui basic purple segment">
-            <%= render partial: 'shared/section_header', locals: { text: 'Your Recipes', as: 'h2', attached: true } %>
           </div>
-          <% if @user_cocktails %>
-            <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
-            <div style="text-transform: uppercase; text-align: center">
-              <%= link_to 'View all', user_path(current_user), class: 'ui purple button' %>
-            </div>
-          <% else %>
-            <div class='ui purple message'>
-              You have no recipes. <%= link_to 'Create a cocktail.', new_cocktail_path %>
-            </div>
-          <% end %>
-
         </div>
       </div>
-    </div>
+    <% end %>
 
     <!-- classic -->
     <div class="margin-y">

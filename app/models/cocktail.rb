@@ -38,8 +38,12 @@ class Cocktail < ApplicationRecord
   end
 
   def rating
-    avg = reviews.map { |r| r.rating }.reduce(:+) / reviews.count.to_f
-    (avg * 10).round / 10.0
+    if reviews.any?
+      avg = reviews.map { |r| r.rating }.reduce(:+) / reviews.count.to_f
+      (avg * 10).round / 10.0
+    else
+      0
+    end
   end
 
 end
