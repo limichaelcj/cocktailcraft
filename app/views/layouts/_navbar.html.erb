@@ -12,7 +12,7 @@
       <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails' && action_name == 'index'}item mobile hidden" %>
       <%= link_to "Create", new_cocktail_path, class: "#{'active ' if controller_name == 'cocktails' && action_name == 'new'}item mobile hidden" %>
       <div class='item' style="flex-grow:1">
-        <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, transparent: true } %>
+        <%= render partial: 'shared/search_bar', locals: { id: 'navbar_search', action: search_path, param: :query, transparent: true } %>
       </div>
     </div>
 

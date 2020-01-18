@@ -12,7 +12,7 @@ module ApplicationHelper
       when "cocktails"
         case action_name
           when "new"
-            asset_path("bar.jpeg")
+            cl_image_path('bar.jpg')
           else
             ""
         end

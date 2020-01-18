@@ -3,7 +3,7 @@
     <div class="ui secondary segment flex_grow margin-bot attach-relative" style="margin:auto;max-width:600px;z-index:1">
       <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, classes: 'fill-width', placeholder: 'Search keywords e.g. martini, rum, sour, etc...' } %>
     </div>
-    <h2 id="<%= @search_id %>-top" class="ui center aligned horizontal divider header">
+    <h2 class="ui center aligned horizontal divider header">
       <div class="sub header">Search results for "<strong><em><%= @query %></em></strong>"</div>
     </h2>
   </div>

@@ -34,7 +34,7 @@ class Cocktail < ApplicationRecord
   end
 
   def image_path
-    photo.url ? ApplicationController.helpers.cl_image_path(photo.url) : ApplicationController.helpers.image_path('default_cocktail.png')
+    photo.url ? ApplicationController.helpers.cl_image_path(photo.url) : ApplicationController.helpers.cl_image_path('default_cocktail.png')
   end
 
   def rating

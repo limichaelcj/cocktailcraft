@@ -1,7 +1,7 @@
 <% owner = user_signed_in? && current_user == @user %>
 <% display_name = owner ? 'Your' : "#{@user.name}'s" %>
 
-<div class='cover-image padding-y' <%= render_bg_img(asset_path('bar.jpeg')) %>>
+<div class='cover-image padding-y' <%= render_bg_img(cl_image_path('bar.jpg')) %>>
   <div class="ui basic segment margin-y" >
     <h1 class="ui center aligned inverted icon header">
       <i class="circular user icon"></i>
