@@ -21,6 +21,12 @@ class PagesController < ApplicationController
         wip: true,
       }
     ]
+    @top_rated = Cocktail.all.sort_by do |c|
+      -c.rating
+    end[0, 8]
+    @popular = Cocktail.all.sort_by do |c|
+      -(c.marks.count + c.reviews.count)
+    end[0, 8]
   end
 
   def search

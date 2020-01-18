@@ -1,5 +1,3 @@
-
-
 <%= render partial: 'shared/site_banner', locals: { home: true, logo: true, size: 'sm', vertical: true } %>
 
 <div class="ui fluid home-content">
@@ -32,22 +30,8 @@
 
     <section>
       <h3 class="ui horizontal divider header">Featured Cocktails</h3>
-      <div class="ui four column middle aligned doubling stackable grid">
-        <% 8.times do %>
-          <div class="column">
-            <div class="ui segment">
-              <div class="ui placeholder">
-                <div class="header">
-                  <div class="very short line"></div>
-                  <div class="medium line"></div>
-                </div>
-                <div class="paragraph">
-                  <div class="short line"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div class="ui basic segment">
+        <%= render partial: 'shared/cocktail_cards', locals: { cocktails: @top_rated } %>
       </div>
     </section>
 
@@ -55,22 +39,8 @@
 
     <section>
       <h3 class="ui horizontal divider header">Popular Drinks</h3>
-      <div class="ui four column middle aligned doubling stackable grid">
-        <% 8.times do %>
-          <div class="column">
-            <div class="ui segment">
-              <div class="ui placeholder">
-                <div class="header">
-                  <div class="very short line"></div>
-                  <div class="medium line"></div>
-                </div>
-                <div class="paragraph">
-                  <div class="short line"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div class="ui basic segment">
+        <%= render partial: 'shared/cocktail_cards', locals: { cocktails: @popular } %>
       </div>
     </section>
 
