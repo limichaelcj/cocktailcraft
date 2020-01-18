@@ -5,12 +5,12 @@
     <!-- header -->
     <div class="ui secondary segment force--up flex-colrev-divide-middle margin-top margin-x flex-response--tablet_row">
 
-      <div class="fill-width flex_grow margin-x margin-bot">
+      <div class="fill-width flex_grow margin-x">
         <%= render partial: 'shared/search_bar', locals: { action: cocktails_path, classes: 'fill-width', placeholder: 'Search cocktails...' } %>
       </div>
 
       <!-- actions right floated -->
-      <div class="cocktail-index-actions">
+      <div class="cocktail-index-actions mobile hidden">
         <div class="ui horizontal labeled icon menu">
           <!--
           <%= link_to '#', class: 'item' do %>

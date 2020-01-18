@@ -38,7 +38,11 @@ function imageUploadPreview(){
 function initSemantic(){
   // $('.ui.accordion').accordion();
   $('.ui.radio.checkbox').checkbox();
-  $('select.dropdown').dropdown();
+  $('.ui.dropdown').dropdown();
+  $('.popup-trigger').popup({
+    inline: true,
+    on: 'click'
+  })
 }
 
 function formValidation(){

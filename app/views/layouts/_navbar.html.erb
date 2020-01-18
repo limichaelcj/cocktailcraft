@@ -1,25 +1,38 @@
 <div id="navbar" class="ui menu">
   <div class="ui container">
-      <div id="navbar-nav-actions" class="left menu">
-        <%= link_to root_path, class: 'item' do %>
+
+    <div id="navbar-nav-actions" class="left menu" style="flex-grow: 1">
+
+      <!-- brand -->
+      <%= link_to root_path, class: 'item' do %>
         <img src="<%= image_path('favicon/favicon.ico') %>" alt="Cocktail Craft">
-        <% end %>
-        <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item mobile hidden" %>
-        <div class="item mobile hidden">
-          <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, transparent: true } %>
+      <% end %>
+
+      <!-- left menu -->
+      <%= link_to "Cocktails", cocktails_path, class: "#{'active ' if controller_name == 'cocktails'}item mobile hidden" %>
+      <div class='item' style="flex-grow:1">
+        <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, transparent: true } %>
+      </div>
+    </div>
+
+    <!-- right menu options -->
+    <!-- mobile only -->
+    <div id="navbar-auth-actions" class="right menu mobile only">
+      <div class='ui dropdown item'>
+        <i class='bars icon'></i>
+        <!-- dropdown content -->
+        <div class='menu' style="right:0;left:auto">
+          <%= link_to 'Cocktails', cocktails_path, class: 'item' %>
+          <%= link_to 'Create', new_cocktail_path, class: 'item' %>
+          <div class='ui divider'></div>
+          <%= render partial: 'shared/user_menu' %>
         </div>
       </div>
-    <div id="navbar-auth-actions" class="right menu">
-      <% if user_signed_in? %>
-        <%= link_to user_path(current_user), class: "#{'active ' if controller_name == 'users' && @user && @user == current_user}item" do %>
-          <i class='user icon'></i>
-          <%= current_user.name %>
-        <% end %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'item' %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path, class: 'item' %>
-        <%= link_to "Sign Up", new_user_registration_path, class: 'item' %>
-      <% end %>
     </div>
+    <!-- not mobile -->
+    <div id="navbar-auth-actions" class="right menu mobile hidden">
+      <%= render partial: 'shared/user_menu' %>
+    </div>
+
   </div>
 </div>
