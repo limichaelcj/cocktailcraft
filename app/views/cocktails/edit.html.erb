@@ -1,21 +1,17 @@
-<div class="ui container">
-
-  <!-- banner -->
-  <div class="cover-image padding-all" <%= render_bg_img(@cocktail.image_path) %>>
-    <!-- bg underlay -->
-    <div class="background-underlay cocktail-banner-img">
-      <img src="<%= @cocktail.image_path %>">
-    </div>
-    <!-- banner content -->
-    <div class="ui basic fluid segment">
-      <div class="margin-top">
-        <h1 class="ui center aligned inverted icon header">
-          <i class="tiny circular inverted flask icon transform-sm"></i>
-          <em>The Cocktail Lab</em>
-        </h1>
-      </div>
+<!-- banner -->
+<div class="cover-image padding-all" <%= render_bg_img(asset_path('cocktail_lab.png')) %>>
+  <!-- banner content -->
+  <div class="ui basic fluid segment">
+    <div class="margin-top">
+      <h1 class="ui center aligned inverted icon header">
+        <i class="tiny circular inverted flask icon transform-sm"></i>
+        <em>The Cocktail Lab</em>
+      </h1>
     </div>
   </div>
+</div>
+
+<div class="ui container">
 
   <!-- header -->
 
