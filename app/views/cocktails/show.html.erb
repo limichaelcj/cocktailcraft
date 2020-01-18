@@ -17,7 +17,7 @@
       <h1 class="ui huge inverted header margin-left">
         <%= @cocktail.name || 'Unnamed Cocktail' %>
         <div class="sub header">
-          <%= render partial: 'shared/cocktail_meta', locals: { cocktail: @cocktail } %>
+          <%= render partial: 'shared/cocktail_meta', locals: { cocktail: @cocktail, anchors: true} %>
         </div>
       </h1>
     </div>

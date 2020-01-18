@@ -1,14 +1,16 @@
-<% anchor_tag = local_assigns[:anchors] ? 'a' : 'span' %>
+<% anchor_tag = local_assigns[:anchors] && anchors == true && cocktail.user != nil ? 'a' : 'span' %>
 
-<div class="meta">
+<div class="meta" style="padding-top: .5rem">
   <% if cocktail.reviews.any? %>
     <span>
       <%= cocktail.rating %>
       <i class="star icon"></i>
     </span>
   <% end %>
-  <<%= anchor_tag %> href="<%= cocktail.user ? user_path(cocktail.user) : classics_path %>">
-    @<%= cocktail.creator %>
+  <<%= anchor_tag %> href="<%= cocktail.user ? user_path(cocktail.user) : '#' %>">
+    <div class='ui label'>
+      @<%= cocktail.creator %>
+    </div>
   </<%= anchor_tag %>>
   <% if local_assigns[:show_reviews] %>
     <span>
