@@ -15,7 +15,7 @@
 
           <!-- random -->
           <%= link_to random_cocktails_path, class: 'item' do %>
-            <i class="purple question icon"></i>
+            <i class="violet question icon"></i>
             Random
           <% end %>
 
@@ -65,7 +65,7 @@
           <% if @marked_cocktails %>
             <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
             <div style="text-transform: uppercase; text-align: center">
-              <%= link_to 'View all', user_path(current_user), class: 'ui button' %>
+              <%= link_to 'View all', user_path(current_user), class: 'ui yellow button' %>
             </div>
           <% else %>
             <div class='ui yellow message'>
@@ -83,7 +83,7 @@
           <% if @user_cocktails %>
             <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
             <div style="text-transform: uppercase; text-align: center">
-              <%= link_to 'View all', user_path(current_user), class: 'ui button' %>
+              <%= link_to 'View all', user_path(current_user), class: 'ui purple button' %>
             </div>
           <% else %>
             <div class='ui purple message'>
