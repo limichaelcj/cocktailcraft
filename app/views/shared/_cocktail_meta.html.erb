@@ -12,9 +12,14 @@
       @<%= cocktail.creator %>
     </div>
   </<%= anchor_tag %>>
-  <% if local_assigns[:show_reviews] %>
+  <% if local_assigns[:show_reviews] && show_reviews == true %>
     <span>
       <%= cocktail.reviews.any? ? cocktail.reviews.count : '0' %> review<%= 's' if cocktail.reviews.count != 1 %>
+    </span>
+  <% end %>
+  <% if local_assigns[:show_marks] && show_marks == true && cocktail.marks.any? %>
+    <span>
+      <%= cocktail.marks.count %> like<%= 's' if cocktail.marks.count != 1 %>
     </span>
   <% end %>
   <% if current_user == cocktail.user && !cocktail.published %>

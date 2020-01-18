@@ -378,4 +378,15 @@ Cocktail.all.each do |c|
   end
 end
 
+# seed marks
+puts "Seeding marks..."
+User.all.each do |user|
+  Cocktail.all.shuffle[0, rand(1..(Cocktail.all.count / 3))].each do |cocktail|
+    Mark.create!({
+      user: user,
+      cocktail: cocktail
+    })
+  end
+end
+
 puts "Seeding complete."

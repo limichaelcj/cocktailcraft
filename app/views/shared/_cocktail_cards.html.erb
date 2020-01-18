@@ -9,7 +9,7 @@
       <a href="<%= cocktail_path(cocktail) %>"class="header">
         <%= cocktail.name %>
       </a>
-      <%= render partial: 'shared/cocktail_meta', locals: { cocktail: cocktail, anchors: true, show_reviews: true } %>
+      <%= render partial: 'shared/cocktail_meta', locals: { cocktail: cocktail, anchors: true, show_reviews: true, show_marks: true } %>
       <div class="margin-top">
         <p class="color-reset">
           <%= cocktail.description.length > 99 ? cocktail.description[0...99] + '...' : cocktail.description %>
