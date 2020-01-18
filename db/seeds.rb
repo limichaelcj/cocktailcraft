@@ -168,6 +168,7 @@ end
     doses: [
       ['lime wedge', '1'],
       ['jalapeño coins', '2', 'ounce'],
+      ['blanco tequila', '2', 'ounce'],
       ['lime juice', '1', 'ounce'],
       ['orange liquer', '1/2', 'ounce'],
       ['agave syrup', '1/2', 'ounce']

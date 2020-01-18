@@ -1,8 +1,19 @@
 <div class="ui container">
-  <div class="ui segment">
+  <div class='margin-top padding-top padding-x attach-relative'>
+    <div class="ui secondary segment flex_grow margin-bot attach-relative" style="margin:auto;max-width:600px;z-index:1">
+      <%= render partial: 'shared/search_bar', locals: { action: search_path, param: :query, classes: 'fill-width', placeholder: 'Search keywords e.g. martini, rum, sour, etc...' } %>
+    </div>
+    <h2 id="<%= @search_id %>-top" class="ui center aligned horizontal divider header">
+      <div class="sub header">Search results for "<strong><em><%= @query %></em></strong>"</div>
+    </h2>
+  </div>
+  <div id="search-results" class='margin-bot padding-all'>
     <% if @results.any? %>
+      <%= render partial: 'shared/cocktail_list', locals: { cocktails: @results, query: @query, with_tags: true } %>
+      <!--
       <div class="ui very relaxed divided list">
         <% @results.each do |cocktail| %>
+
           <%= link_to cocktail_path(cocktail), class: 'item' do %>
             <div class="header"><%= cocktail.name %></div>
             <p><%= cocktail.description %></p>
@@ -12,8 +23,14 @@
           <% end %>
         <% end %>
       </div>
+    -->
     <% else %>
-      No results.
+        <div class='ui yellow message'>
+          <span class="flex-center-middle inline margin-right">
+            <i class="circular exclamation icon"></i>
+          </span>
+          <span>No results for "<%= @query %>"</span>
+        </div>
     <% end %>
   </div>
 </div>

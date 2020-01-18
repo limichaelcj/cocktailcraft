@@ -8,6 +8,13 @@
         <div class="description">
           <p><%= cocktail.description %></p>
         </div>
+        <% if local_assigns[:query] && local_assigns[:with_tags] && with_tags == true %>
+          <p>
+            <% cocktail.ingredients.select { |ingr| ingr.name.include? query }.each do |ingr| %>
+              <div class="ui label"><%= ingr.name %></div>
+            <% end %>
+          </p>
+        <% end %>
       </div>
     <% end %>
   <% end %>
