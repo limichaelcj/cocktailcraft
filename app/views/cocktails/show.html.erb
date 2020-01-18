@@ -1,66 +1,70 @@
-<div class="ui container">
+<div class="cover-image">
+  <!-- underlay -->
+  <div class="background-underlay cocktail-banner-img">
+    <img src="<%= @cocktail.image_path %>">
+  </div>
 
   <!-- header -->
 
-  <div class="flex-row-divide-end padding-all cover-image">
-    <!-- underlay -->
-    <div class="background-underlay cocktail-banner-img">
-      <img src="<%= @cocktail.image_path %>">
-    </div>
+  <div class='ui container padding-y'>
+    <div class="flex-row-divide-end padding-all">
+      <!-- cocktail photo -->
+      <div class="img-sq-circle cocktail-avatar margin-right flex_static mobile hidden">
+        <img src="<%= @cocktail.image_path %>" alt="<%= @cocktail.name %>">
+      </div>
+      <!-- cocktail name, creator -->
+      <div class="ui basic segment flex_fluid">
+        <h1 class="ui huge inverted header margin-left">
+          <%= @cocktail.name || 'Unnamed Cocktail' %>
+          <div class="sub header">
+            <%= render partial: 'shared/cocktail_meta', locals: { cocktail: @cocktail, anchors: true} %>
+          </div>
+        </h1>
+      </div>
 
-    <!-- cocktail photo -->
-    <div class="img-sq-circle cocktail-avatar margin-right flex_static mobile hidden">
-      <img src="<%= @cocktail.image_path %>" alt="<%= @cocktail.name %>">
-    </div>
-    <!-- cocktail name, creator -->
-    <div class="ui basic segment flex_fluid">
-      <h1 class="ui huge inverted header margin-left">
-        <%= @cocktail.name || 'Unnamed Cocktail' %>
-        <div class="sub header">
-          <%= render partial: 'shared/cocktail_meta', locals: { cocktail: @cocktail, anchors: true} %>
-        </div>
-      </h1>
-    </div>
-
-    <!-- actions -->
-    <div class="ui vertical labeled icon menu flex_static">
-      <!-- like -->
-      <%= link_to mark_cocktail_path, id: 'mark-link', class: 'item' do %>
-        <% saved = user_signed_in? && current_user.marked.include?(@cocktail) %>
-        <i class="<%= saved ? 'yellow bookmark' : 'grey bookmark outline' %> icon"></i>
-        <span>Save<%= saved ? 'd' : '' %></span>
-      <% end %>
-      <!-- remix cocktail -->
-      <%= link_to remix_cocktail_path(@cocktail), method: :post, class: 'item' do %>
-        <i class="purple icon">
-          <i class="icons">
-            <i class="flask icon"></i>
-            <i class="top right corner random icon"></i>
-          </i>
-        </i>
-        Remix
-      <% end %>
-      <!-- edit cocktail -->
-      <% if current_user && current_user == @cocktail.user %>
-        <%= link_to edit_cocktail_path(@cocktail), class: 'item' do %>
-          <i class="orange icon">
+      <!-- actions -->
+      <div class="ui vertical labeled icon menu flex_static">
+        <!-- like -->
+        <%= link_to mark_cocktail_path, id: 'mark-link', class: 'item' do %>
+          <% saved = user_signed_in? && current_user.marked.include?(@cocktail) %>
+          <i class="<%= saved ? 'yellow bookmark' : 'grey bookmark outline' %> icon"></i>
+          <span>Save<%= saved ? 'd' : '' %></span>
+        <% end %>
+        <!-- remix cocktail -->
+        <%= link_to remix_cocktail_path(@cocktail), method: :post, class: 'item' do %>
+          <i class="purple icon">
             <i class="icons">
               <i class="flask icon"></i>
-              <i class="top right corner edit icon"></i>
+              <i class="top right corner random icon"></i>
             </i>
           </i>
-          Lab
+          Remix
         <% end %>
-      <% end %>
+        <!-- edit cocktail -->
+        <% if current_user && current_user == @cocktail.user %>
+          <%= link_to edit_cocktail_path(@cocktail), class: 'item' do %>
+            <i class="orange icon">
+              <i class="icons">
+                <i class="flask icon"></i>
+                <i class="top right corner edit icon"></i>
+              </i>
+            </i>
+            Lab
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="ui container">
 
   <!-- content -->
 
   <div class="margin-x padding-bot">
 
     <!-- description -->
-    <div class="ui basic segment">
+    <div class="padding-y margin-y">
       <div class="ui basic secondary padded purple segment">
         <p><%= @cocktail.description %></p>
       </div>
