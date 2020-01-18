@@ -1,48 +1,73 @@
 <% owner = user_signed_in? && current_user == @user %>
 <% display_name = owner ? 'Your' : "#{@user.name}'s" %>
 
-<div class="ui basic container segment">
-
-  <div class="ui basic segment">
-    <h1 class="ui center aligned icon header">
+<div class='cover-image padding-y' <%= render_bg_img(asset_path('bar.jpeg')) %>>
+  <div class="ui basic segment margin-y" >
+    <h1 class="ui center aligned inverted icon header">
       <i class="circular user icon"></i>
       <%= @user.name %>
     </h1>
   </div>
+</div>
+
+<div class="ui basic container segment">
 
   <div class="ui segment">
-    <div class="ui top attached label"><%= display_name %> Cocktails (<%= @user.cocktails.count %>)</div>
-    <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @user.cocktails } %>
+    <div class="ui top attached purple label"><%= display_name %> Cocktails (<%= @user.cocktails.count %>)</div>
+    <% if @user.cocktails.any? %>
+      <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @user.cocktails } %>
+    <% else %>
+      <p>No recipes.
+        <% if @user == current_user %>
+          <%= link_to 'Create a cocktail.', new_cocktail_path %>
+        <% end %>
+      </p>
+    <% end %>
   </div>
 
   <% if owner %>
     <div class="ui segment">
-      <div class="ui top attached label">Saved Cocktails (<%= @user.marked.count %>)</div>
-      <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @user.marked } %>
+      <div class="ui top attached yellow label">Saved Cocktails (<%= @user.marked.count %>)</div>
+      <% if @user.marked.any? %>
+        <%= render partial: 'shared/cocktail_badge_list', locals: { cocktails: @user.marked } %>
+      <% else %>
+      <p>No saved cocktails.
+        <% if @user == current_user %>
+          <%= link_to 'Find a random one.', random_cocktails_path %>
+        <% end %>
+      </p>
+      <% end %>
     </div>
   <% end %>
 
   <div class="ui segment">
-    <div class="ui top attached label"><%= display_name %> Reviews (<%= @user.reviews.count %>)</div>
+    <div class="ui top attached orange label"><%= display_name %> Reviews (<%= @user.reviews.count %>)</div>
     <div class="ui relaxed divided list">
-      <% @user.reviews.each do |r| %>
-        <div class="item">
-          <div class="flex-row-middle flex_wrap margin-top">
-            <div class="ui sub header">Review for <%= link_to "#{r.cocktail.name}", cocktail_path(r.cocktail) %>: </div>
-            <em class="margin-left">"<%= r.title %>"</em>
-            <div class="meta margin-left">
-              <div class="ui yellow label">
-                <i class="star icon"></i> <%= r.rating %>
-              </div>
-              <div class="ui label">
-                <i>@</i> <%= r.cocktail.creator %>
+      <% if @user.reviews.any? %>
+        <% @user.reviews.each do |r| %>
+          <div class="item">
+            <div class="flex-row-middle flex_wrap margin-top">
+              <div class="ui sub header">Review for <%= link_to "#{r.cocktail.name}", cocktail_path(r.cocktail) %>: </div>
+              <em class="margin-left">"<%= r.title %>"</em>
+              <div class="meta margin-left">
+                <div class="ui yellow label">
+                  <i class="star icon"></i> <%= r.rating %>
+                </div>
+                <div class="ui label">
+                  <i>@</i> <%= r.cocktail.creator %>
+                </div>
               </div>
             </div>
+            <div class="description margin-bot">
+              <p><%= r.text %></p>
+            </div>
           </div>
-          <div class="description margin-bot">
-            <p><%= r.text %></p>
-          </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>
+          <%= @user == current_user ? 'You have ' : 'This user has ' %>
+          not reviewed any cocktails.
+        </p>
       <% end %>
     </div>
   </div>

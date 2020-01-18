@@ -64,6 +64,9 @@
           </div>
           <% if @marked_cocktails %>
             <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
+            <div style="text-transform: uppercase; text-align: center">
+              <%= link_to 'View all', user_path(current_user), class: 'ui button' %>
+            </div>
           <% else %>
             <div class='ui yellow message'>
               No saved cocktails. <%= link_to 'Find a random one.', random_cocktails_path %>
@@ -79,6 +82,9 @@
           </div>
           <% if @user_cocktails %>
             <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
+            <div style="text-transform: uppercase; text-align: center">
+              <%= link_to 'View all', user_path(current_user), class: 'ui button' %>
+            </div>
           <% else %>
             <div class='ui purple message'>
               You have no recipes. <%= link_to 'Create a cocktail.', new_cocktail_path %>
