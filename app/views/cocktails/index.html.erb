@@ -12,24 +12,12 @@
       <!-- actions right floated -->
       <div class="cocktail-index-actions mobile hidden">
         <div class="ui horizontal labeled icon menu">
-          <!--
-          <%= link_to '#', class: 'item' do %>
-          <i class="grey filter icon"></i>
-          Filter
-          <% end %>
-          -->
 
-          <!--
-          <%= link_to remix_cocktails_path, class: 'item' do %>
-          <i class="purple icon">
-            <i class="icons">
-              <i class="flask icon"></i>
-              <i class="top right corner shuffle icon"></i>
-            </i>
-          </i>
-          Remix
+          <!-- random -->
+          <%= link_to random_cocktails_path, class: 'item' do %>
+            <i class="purple question icon"></i>
+            Random
           <% end %>
-          -->
 
           <%= link_to new_cocktail_path, class: 'item' do %>
           <i class="yellow icon">
@@ -66,38 +54,40 @@
 
 
     <!-- user associated cocktails -->
-    <% if @marked_cocktails && @user_cocktails %>
     <div class="margin-y">
       <div class="ui stackable grid">
         <div class="ten wide column margin-none">
-    <% end %>
 
-      <!-- marked cocktails -->
-      <% if @marked_cocktails %>
-        <div class="ui basic yellow segment">
-          <%= render partial: 'shared/section_header', locals: { text: 'Saved Cocktails', as: 'h2', attached: true } %>
-        </div>
-        <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
-      <% end %>
+          <!-- marked cocktails -->
+          <div class="ui basic yellow segment">
+            <%= render partial: 'shared/section_header', locals: { text: 'Saved Cocktails', as: 'h2', attached: true } %>
+          </div>
+          <% if @marked_cocktails %>
+            <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @marked_cocktails, header_size: 'md', description: true, description_size: 'md' } %>
+          <% else %>
+            <div class='ui yellow message'>
+              No saved cocktails. <%= link_to 'Find a random one.', random_cocktails_path %>
+            </div>
+          <% end %>
 
-      <% if @marked_cocktails && @user_cocktails %>
         </div>
         <div class="six wide column margin-none">
-      <% end %>
 
-      <!-- user's cocktail recipes -->
-      <% if @user_cocktails %>
-        <div class="ui basic purple segment">
-          <%= render partial: 'shared/section_header', locals: { text: 'Your Recipes', as: 'h2', attached: true } %>
-        </div>
-        <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
-      <% end %>
+          <!-- user's cocktail recipes -->
+          <div class="ui basic purple segment">
+            <%= render partial: 'shared/section_header', locals: { text: 'Your Recipes', as: 'h2', attached: true } %>
+          </div>
+          <% if @user_cocktails %>
+            <%= render partial: 'shared/cocktail_list_compact', locals: { cocktails: @user_cocktails, header_size: 'sm', description: true, description_size: 'sm' } %>
+          <% else %>
+            <div class='ui purple message'>
+              You have no recipes. <%= link_to 'Create a cocktail.', new_cocktail_path %>
+            </div>
+          <% end %>
 
-    <% if @marked_cocktails && @user_cocktails %>
         </div>
       </div>
     </div>
-    <% end %>
 
     <!-- classic -->
     <div class="margin-y">

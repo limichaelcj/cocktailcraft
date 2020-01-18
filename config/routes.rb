@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :cocktails do
-    get 'remix', on: :collection
+    get 'random', on: :collection
     member do
       post 'remix'
       get 'mark'

@@ -50,6 +50,10 @@ class CocktailsController < ApplicationController
     @review = Review.new
   end
 
+  def random
+    redirect_to cocktail_path(Cocktail.all.sample)
+  end
+
   def new
     @cocktail = Cocktail.new
   end
