@@ -20,7 +20,18 @@
       <%= render "shared/notifications" %>
     </main>
 
-    <footer class="ui fluid container footer">
+    <footer class="ui fluid container basic secondary segment footer">
+      <div class='ui basic center aligned segment'>
+        <p>
+          <br>Classic cocktail descriptions by Cat Wolinski via <%= link_to 'Vinepair', "https://vinepair.com/articles/50-most-popular-cocktails-world-2017/" %>
+          <br>Classic recipes and images by <%= link_to 'Liquor.com', 'https://www.liquor.com/' %>
+          <br>Stock photos from <%= link_to 'Unsplash', 'https://unsplash.com/' %>
+        </p>
+      </div>
+      <div class='ui divider' style="max-width:360px;margin:auto"></div>
+      <p class="ui center aligned tiny grey sub header" style="opacity: 0.7">
+        Ruby on Rails — Semantic UI — PostGreSQL — Heroku
+      </p>
       <div class="ui center aligned tiny grey sub header">
         Created by <%= link_to "mcli830", 'https://github.com/mcli830' %>
       </div>
