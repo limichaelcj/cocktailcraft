@@ -97,8 +97,11 @@ $avatar-size-monitor: $avatar-size * 1.4;
 }
 
 .cocktail-badge-list {
+  position: relative;
   &::-webkit-scrollbar {
-    display: none;
+    @media only screen and (max-width: $breakpoint-monitor - 1px) {
+      display: none;
+    }
   }
   .cocktail-badge {
     white-space: normal;
@@ -113,6 +116,37 @@ $avatar-size-monitor: $avatar-size * 1.4;
     }
   }
 }
+
+// [class*="cocktail-badge-list-control--"] {
+//   position: absolute;
+//   bottom: 0;
+//   width: 60px;
+//   height: 100%;
+//   background-color: $alpha-dark;
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     top: calc(50% - 15px);
+//     height: 30px;
+//     width: 30px;
+//     border-top: 4px solid rgba($white, 0.9);
+//     border-right: 4px solid rgba($white, 0.9);
+//   }
+//   &.cocktail-badge-list-control--left {
+//     left: 0;
+//     &:after {
+//       left: 22px;
+//       transform: rotate(-135deg);
+//     }
+//   }
+//   &.cocktail-badge-list-control--right {
+//     right: 0;
+//     &:after {
+//       right: 22px;
+//       transform: rotate(45deg);
+//     }
+//   }
+// }
 
 .cocktail-lab-actions {
   transform: translate(0, -50%);
