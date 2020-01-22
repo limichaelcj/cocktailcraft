@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :random]
   before_action :find_cocktail, only: [:show, :edit, :update, :publish, :destroy, :mark]
 
   after_action :verify_authorized, only: [:edit, :update, :publish, :destroy]
