@@ -77,4 +77,4 @@ gem 'will_paginate'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary'
 gem 'rest-client', '~> 2.0', '>= 2.0.2'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
